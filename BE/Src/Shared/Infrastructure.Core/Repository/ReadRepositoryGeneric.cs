@@ -1,0 +1,104 @@
+﻿using Domain.Core.Base;
+using Domain.Core.Interface.IRepository;
+using Microsoft.EntityFrameworkCore;
+using System.Linq.Expressions;
+
+namespace Infrastructure.Core.Repository
+{
+    public class ReadRepositoryGeneric<TEntity> : IReadRepositoryGeneric<TEntity>
+        where TEntity : Entity
+    {
+        protected readonly DbContext _context;
+        protected readonly DbSet<TEntity> _entities;
+
+        public ReadRepositoryGeneric(DbContext context)
+        {
+            _context = context;
+            _entities = context.Set<TEntity>();
+        }
+
+        public async Task<IEnumerable<TEntity>> GetAllAsync(CancellationToken token = default)
+        {
+            return await _entities
+                .AsNoTracking()
+                .ToListAsync(token);
+        }
+
+        public async Task<TEntity?> GetByIdAsync(Guid id, CancellationToken token = default)
+        {
+            return await _entities
+                .AsNoTracking()
+                .FirstOrDefaultAsync(e => e.Id == id, token);
+        }
+
+        public async Task<bool> ExistsByIdAsync(Guid id, CancellationToken token = default)
+        {
+            return await _entities
+                .AsNoTracking()
+                .AnyAsync(e => e.Id == id, token);
+        }
+
+        public async Task<IEnumerable<TEntity>> FindAsync(
+            Expression<Func<TEntity, bool>> condition,
+            CancellationToken token = default)
+        {
+            return await _entities
+                .AsNoTracking()
+                .Where(condition)
+                .ToListAsync(token);
+        }
+
+        public async Task<bool> AnyAsync(
+            Expression<Func<TEntity, bool>> condition,
+            CancellationToken token = default)
+        {
+            return await _entities.AsNoTracking().AnyAsync(condition, token);
+        }
+
+        // Child
+
+        public async Task<IEnumerable<TChild>> GetAllChildAsync<TChild>(
+            Expression<Func<TEntity, IEnumerable<TChild>>> navigation,
+            CancellationToken token = default)
+        {
+            return await _entities
+                .AsNoTracking()
+                .SelectMany(navigation)
+                .ToListAsync(token);
+        }
+
+        public async Task<TChild?> GetChildById<TChild>(
+           Expression<Func<TEntity, IEnumerable<TChild>>> navigation,
+           Expression<Func<TChild, bool>> childCondition,
+           CancellationToken token = default)
+        {
+            return await _entities
+                .AsNoTracking()
+                .SelectMany(navigation)
+                .FirstOrDefaultAsync(childCondition);
+        }
+
+        public async Task<IEnumerable<TChild>> FindChildAsync<TChild>(
+           Expression<Func<TEntity, IEnumerable<TChild>>> navigation,
+           Expression<Func<TChild, bool>> childCondition,
+           CancellationToken token = default)
+        {
+            return await _entities
+                .AsNoTracking()
+                .SelectMany(navigation)
+                .Where(childCondition)
+                .ToListAsync(token);
+        }
+
+        public async Task<bool> ExistsChildById<TChild>(
+           Expression<Func<TEntity, IEnumerable<TChild>>> navigation,
+           Expression<Func<TChild, bool>> childCondition,
+           CancellationToken token)
+        {
+            return await _entities
+                .AsNoTracking()
+                .SelectMany(navigation)
+                .AnyAsync(childCondition);
+        }
+    }
+}
