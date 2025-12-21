@@ -12,16 +12,6 @@ namespace Api.Core.Middleware
         private readonly RequestDelegate _next;
         private readonly ILogger<ExceptionMiddleware> _logger;
 
-        private static readonly Dictionary<ErrorCategory, int> StatusMap = new()
-        {
-            [ErrorCategory.ValidationFailed] = StatusCodes.Status400BadRequest,
-            [ErrorCategory.NotFound] = StatusCodes.Status404NotFound,
-            [ErrorCategory.Conflict] = StatusCodes.Status409Conflict,
-            [ErrorCategory.Unauthorized] = StatusCodes.Status401Unauthorized,
-            [ErrorCategory.Forbidden] = StatusCodes.Status403Forbidden,
-            [ErrorCategory.InternalServerError] = StatusCodes.Status500InternalServerError
-        };
-
         public ExceptionMiddleware(RequestDelegate next, ILogger<ExceptionMiddleware> logger)
         {
             _next = next;
@@ -34,16 +24,19 @@ namespace Api.Core.Middleware
             {
                 await _next(context);
             }
-            catch (BusinessRuleException ruleEx)
+            catch (Exception ruleEx) when (ruleEx.GetType().IsGenericType && ruleEx.GetType().GetGenericTypeDefinition().Name.Contains("BusinessRuleException"))
             {
-                _logger.LogWarning(ruleEx, "Business rule violation ({ErrorCategory})", ruleEx.ErrorCategory);
+                _logger.LogWarning(ruleEx, "Business rule violation");
+
+                var errorProperty = ruleEx.GetType().GetProperty("ErrorCategory");
+                var errorCategory = (ErrorCategory?)errorProperty?.GetValue(ruleEx) ?? ErrorCategory.ValidationFailed;
 
                 var errorDetails = new List<CustomErrorDetail>
                 {
                     ToCustomErrorDetail(ruleEx)
                 };
 
-                await WriteProblemDetailsAsync(context, ruleEx.ErrorCategory, errorDetails);
+                await WriteProblemDetailsAsync(context, errorCategory, errorDetails);
             }
             catch (MultiRuleException multiEx)
             {
@@ -72,19 +65,31 @@ namespace Api.Core.Middleware
             }
         }
 
-        private static CustomErrorDetail ToCustomErrorDetail(BusinessRuleException ex)
+        private static CustomErrorDetail ToCustomErrorDetail(Exception ex)
         {
+            var fieldProperty = ex.GetType().GetProperty("Field");
+            var errorCodeProperty = ex.GetType().GetProperty("ErrorCode");
+            var parametersProperty = ex.GetType().GetProperty("Parameters");
+
+            var field = fieldProperty?.GetValue(ex)?.ToString() ?? "Unknown";
+            var errorCode = errorCodeProperty?.GetValue(ex)?.ToString() ?? "UNKNOWN_ERROR";
+            var parameters = parametersProperty?.GetValue(ex) as IReadOnlyDictionary<object, object>;
+
             Dictionary<string, object>? parameter = null;
 
-            if (ex.Parameters != null && ex.Parameters.Count > 0)
+            if (parameters != null && parameters.Count > 0)
             {
-                parameter = new Dictionary<string, object>(ex.Parameters);
+                parameter = new Dictionary<string, object>();
+                foreach (var kvp in parameters)
+                {
+                    parameter[kvp.Key.ToString() ?? "key"] = kvp.Value;
+                }
             }
 
             return new CustomErrorDetail
             {
-                Field = ex.Field,
-                ErrorCode = ex.ErrorCode.ToString(),
+                Field = field,
+                ErrorCode = errorCode,
                 Parameter = parameter?.Count > 0 ? parameter : null
             };
         }
@@ -94,9 +99,7 @@ namespace Api.Core.Middleware
             ErrorCategory errorCategory,
             List<CustomErrorDetail> errorDetails)
         {
-            StatusMap.TryGetValue(errorCategory, out var status);
-            if (status == 0)
-                status = StatusCodes.Status500InternalServerError;
+            var status = (int)errorCategory;
 
             var problem = new CustomProblemDetails
             {

@@ -3,21 +3,21 @@
     public enum ErrorCategory
     {
         // 400
-        ValidationFailed,
+        ValidationFailed = 400,
 
         // 404
-        NotFound,
+        NotFound = 404,
 
         // 409
-        Conflict,
+        Conflict = 409,
 
         // 401
-        Unauthorized,
+        Unauthorized = 401,
 
         // 403
-        Forbidden,
+        Forbidden = 403,
 
         // 500
-        InternalServerError
+        InternalServerError = 500
     }
 }

@@ -54,51 +54,5 @@ namespace Infrastructure.Core.Repository
         {
             return await _entities.AsNoTracking().AnyAsync(condition, token);
         }
-
-        // Child
-
-        public async Task<IEnumerable<TChild>> GetAllChildAsync<TChild>(
-            Expression<Func<TEntity, IEnumerable<TChild>>> navigation,
-            CancellationToken token = default)
-        {
-            return await _entities
-                .AsNoTracking()
-                .SelectMany(navigation)
-                .ToListAsync(token);
-        }
-
-        public async Task<TChild?> GetChildById<TChild>(
-           Expression<Func<TEntity, IEnumerable<TChild>>> navigation,
-           Expression<Func<TChild, bool>> childCondition,
-           CancellationToken token = default)
-        {
-            return await _entities
-                .AsNoTracking()
-                .SelectMany(navigation)
-                .FirstOrDefaultAsync(childCondition);
-        }
-
-        public async Task<IEnumerable<TChild>> FindChildAsync<TChild>(
-           Expression<Func<TEntity, IEnumerable<TChild>>> navigation,
-           Expression<Func<TChild, bool>> childCondition,
-           CancellationToken token = default)
-        {
-            return await _entities
-                .AsNoTracking()
-                .SelectMany(navigation)
-                .Where(childCondition)
-                .ToListAsync(token);
-        }
-
-        public async Task<bool> ExistsChildById<TChild>(
-           Expression<Func<TEntity, IEnumerable<TChild>>> navigation,
-           Expression<Func<TChild, bool>> childCondition,
-           CancellationToken token)
-        {
-            return await _entities
-                .AsNoTracking()
-                .SelectMany(navigation)
-                .AnyAsync(childCondition);
-        }
     }
 }

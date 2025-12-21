@@ -1,27 +1,27 @@
 ﻿using Domain.Core.Enums;
+using Domain.Core.Enums.Messages;
 using Domain.Core.Interface.Rule;
-using Domain.Core.Messages.FieldNames;
 
 namespace Domain.Core.Rule.NumberRule
 {
-    public class MaxValueLimitRule<T> : IBusinessRule where T : struct, IComparable
+    public class MaxValueLimitRule<T, TField> : IBusinessRule<TField> where T : struct, IComparable where TField : Enum
     {
         private readonly T _value;
         private readonly T _maxValue;
-        private readonly string _field;
+        private readonly TField _field;
 
-        public MaxValueLimitRule(T value, T maxValue, string field)
+        public MaxValueLimitRule(T value, T maxValue, TField field)
         {
             _value = value;
             _maxValue = maxValue;
             _field = field;
         }
 
-        public string Field => _field;
+        public TField Field => _field;
 
         public ErrorCode Error => ErrorCode.ExceedsMaximum;
 
-        public IReadOnlyDictionary<string, object> Parameters => new Dictionary<string, object>
+        public IReadOnlyDictionary<object, object> Parameters => new Dictionary<object, object>
         {
             {ParamField.Value,$"{_value} > {_maxValue}" }
         };

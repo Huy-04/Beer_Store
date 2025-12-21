@@ -1,8 +1,10 @@
 using Domain.Core.Base;
 using Domain.Core.Enums;
 using Domain.Core.Interface.Rule;
+using Domain.Core.Enums.Messages;
 using Domain.Core.Rule;
-using Domain.Core.Rule.RuleFactory;
+using Domain.Core.Rule.EnumRule;
+using Domain.Core.Rule.NumberRule;
 using System.Text.Json.Serialization;
 
 namespace Domain.Core.ValueObjects
@@ -27,9 +29,11 @@ namespace Domain.Core.ValueObjects
 
         public static Money Create(decimal amount, CurrencyEnum currency)
         {
-            RuleValidator.CheckRules(new IBusinessRule[] {
-                MoneyRuleFactory.CurrencyValidate(currency),
-                MoneyRuleFactory.AmountNotNegative(amount)
+            RuleValidator.CheckRules<MoneyField>(new IBusinessRule<MoneyField>[] {
+                 new NotNegativeRule<decimal, MoneyField>(amount, MoneyField.Amount),
+                 new EnumValidateRule<CurrencyEnum, MoneyField>(currency,
+                 Enum.GetValues(typeof(CurrencyEnum)).Cast<CurrencyEnum>().ToList(),
+                 MoneyField.Currency)
             });
 
             switch (currency)
@@ -60,18 +64,18 @@ namespace Domain.Core.ValueObjects
 
         public Money Multiply(decimal factor)
         {
-            RuleValidator.CheckRules(new IBusinessRule[]
+            RuleValidator.CheckRules<MoneyField>(new IBusinessRule<MoneyField>[]
             {
-                MoneyRuleFactory.FactorNotNegative(factor)
+                new NotNegativeRule<decimal, MoneyField>(factor, MoneyField.Factor)
             });
             return new Money(Amount * factor, Currency);
         }
 
         private void EnsureSameCurrency(Money other)
         {
-            RuleValidator.CheckRules(new IBusinessRule[]
+            RuleValidator.CheckRules<MoneyField>(new IBusinessRule<MoneyField>[]
             {
-                MoneyRuleFactory.CurrencyEqual(Currency,other.Currency)
+                new EnumEqualRule<CurrencyEnum, MoneyField>(Currency, other.Currency, MoneyField.Currency)
             });
         }
 

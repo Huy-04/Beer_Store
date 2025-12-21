@@ -3,13 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BeerStore.Domain", "BeerStore.Domain\BeerStore.Domain.csproj", "{FEA16E50-2619-4AD6-BC94-257186ECD969}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{8A3B2C1D-4E5F-6A7B-8C9D-0E1F2A3B4C5D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BeerStore.Application", "BeerStore.Application\BeerStore.Application.csproj", "{5FEA1337-1892-4F6C-96C9-BA93F989C6A1}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BeerStore.Domain", "Core\BeerStore.Domain\BeerStore.Domain.csproj", "{FEA16E50-2619-4AD6-BC94-257186ECD969}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BeerStore.Infrastructure", "BeerStore.Infrastructure\BeerStore.Infrastructure.csproj", "{B3ADFB17-08A8-4B88-8345-7CC8FD9224AD}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BeerStore.Application", "Core\BeerStore.Application\BeerStore.Application.csproj", "{5FEA1337-1892-4F6C-96C9-BA93F989C6A1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BeerStore.Api", "BeerStore.Api\BeerStore.Api.csproj", "{315688A1-FD41-44C6-8E59-49264F768F97}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BeerStore.Infrastructure", "Core\BeerStore.Infrastructure\BeerStore.Infrastructure.csproj", "{B3ADFB17-08A8-4B88-8345-7CC8FD9224AD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BeerStore.Api", "Core\BeerStore.Api\BeerStore.Api.csproj", "{315688A1-FD41-44C6-8E59-49264F768F97}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shared", "Shared", "{4F52FD11-658E-A102-6CD3-7D7C16FFA15B}"
 EndProject
@@ -132,6 +134,10 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
+		{FEA16E50-2619-4AD6-BC94-257186ECD969} = {8A3B2C1D-4E5F-6A7B-8C9D-0E1F2A3B4C5D}
+		{5FEA1337-1892-4F6C-96C9-BA93F989C6A1} = {8A3B2C1D-4E5F-6A7B-8C9D-0E1F2A3B4C5D}
+		{B3ADFB17-08A8-4B88-8345-7CC8FD9224AD} = {8A3B2C1D-4E5F-6A7B-8C9D-0E1F2A3B4C5D}
+		{315688A1-FD41-44C6-8E59-49264F768F97} = {8A3B2C1D-4E5F-6A7B-8C9D-0E1F2A3B4C5D}
 		{EC29B35F-E3D8-4922-A38B-46278FFF16B8} = {4F52FD11-658E-A102-6CD3-7D7C16FFA15B}
 		{6E2A0B57-3312-4A05-83A1-8BC87CE5E11E} = {4F52FD11-658E-A102-6CD3-7D7C16FFA15B}
 		{E5643430-CAD8-4DA7-A142-8F8F72ED2DFC} = {4F52FD11-658E-A102-6CD3-7D7C16FFA15B}

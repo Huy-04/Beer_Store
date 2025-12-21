@@ -14,11 +14,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "c:\\Code\\Project\\Beer_Store\\BE\\Src\\Shared\\Domain.Core\\Domain.Core.csproj",
+      "projectUniqueName": "C:\\Code\\Project\\Beer_Store\\BE\\Src\\Shared\\Domain.Core\\Domain.Core.csproj",
       "projectName": "Domain.Core",
-      "projectPath": "c:\\Code\\Project\\Beer_Store\\BE\\Src\\Shared\\Domain.Core\\Domain.Core.csproj",
+      "projectPath": "C:\\Code\\Project\\Beer_Store\\BE\\Src\\Shared\\Domain.Core\\Domain.Core.csproj",
       "packagesPath": "C:\\Users\\hlbee\\.nuget\\packages\\",
-      "outputPath": "c:\\Code\\Project\\Beer_Store\\BE\\Src\\Shared\\Domain.Core\\obj\\",
+      "outputPath": "C:\\Code\\Project\\Beer_Store\\BE\\Src\\Shared\\Domain.Core\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -72,7 +72,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.100/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.101/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

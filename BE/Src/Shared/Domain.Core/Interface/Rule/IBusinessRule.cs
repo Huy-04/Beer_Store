@@ -2,13 +2,13 @@
 
 namespace Domain.Core.Interface.Rule
 {
-    public interface IBusinessRule
+    public interface IBusinessRule<TField> where TField : Enum
     {
         ErrorCode Error { get; }
 
-        string Field { get; }
+        TField Field { get; }
 
-        IReadOnlyDictionary<string, object> Parameters { get; }
+        IReadOnlyDictionary<object, object> Parameters { get; }
 
         bool IsSatisfied();
     }

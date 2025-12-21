@@ -1,14 +1,15 @@
 ﻿using Domain.Core.Enums;
+using Domain.Core.Enums.Messages;
 using Domain.Core.Interface.Rule;
 
 namespace Domain.Core.Rule.StringRule
 {
-    public class StringNotEmpty : IBusinessRule
+    public class StringNotEmpty<TField> : IBusinessRule<TField> where TField : Enum
     {
         private readonly string _value;
-        private readonly string _field;
+        private readonly TField _field;
 
-        public StringNotEmpty(string value, string field)
+        public StringNotEmpty(string value, TField field)
         {
             _value = value;
             _field = field;
@@ -16,10 +17,10 @@ namespace Domain.Core.Rule.StringRule
 
         public bool IsSatisfied() => !string.IsNullOrEmpty(_value?.Trim());
 
-        public string Field => _field;
+        public TField Field => _field;
 
         public ErrorCode Error => ErrorCode.NameEmpty;
 
-        public IReadOnlyDictionary<string, object> Parameters => new Dictionary<string, object>();
+        public IReadOnlyDictionary<object, object> Parameters => new Dictionary<object, object>();
     }
 }

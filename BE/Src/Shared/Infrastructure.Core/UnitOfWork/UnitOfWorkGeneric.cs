@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Storage;
 
 namespace Infrastructure.Core.UnitOfWork
 {
-    public class UnitOfWorkGeneric : IUintOfWorkGeneric
+    public class UnitOfWorkGeneric : IUnitOfWorkGeneric
     {
         private readonly DbContext _context;
         private IDbContextTransaction? _transaction;

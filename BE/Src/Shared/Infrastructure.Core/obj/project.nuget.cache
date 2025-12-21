@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "Dpfli7jSDq8=",
+  "dgSpecHash": "X+7pkbP0tzg=",
   "success": true,
-  "projectFilePath": "c:\\Code\\Project\\Beer_Store\\BE\\Src\\Shared\\Infrastructure.Core\\Infrastructure.Core.csproj",
+  "projectFilePath": "C:\\Code\\Project\\Beer_Store\\BE\\Src\\Shared\\Infrastructure.Core\\Infrastructure.Core.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\hlbee\\.nuget\\packages\\azure.core\\1.44.1\\azure.core.1.44.1.nupkg.sha512",
     "C:\\Users\\hlbee\\.nuget\\packages\\mediatr\\13.0.0\\mediatr.13.0.0.nupkg.sha512",

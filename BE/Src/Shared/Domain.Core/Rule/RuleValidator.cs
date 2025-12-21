@@ -6,12 +6,12 @@ namespace Domain.Core.Rule
 {
     public static class RuleValidator
     {
-        public static void CheckRules(IEnumerable<IBusinessRule> rules)
+        public static void CheckRules<TField>(IEnumerable<IBusinessRule<TField>> rules) where TField : Enum
         {
             var broken = rules.Where(r => !r.IsSatisfied()).ToList();
             if (broken.Any())
             {
-                var ex = broken.Select(r => new BusinessRuleException(
+                var ex = broken.Select(r => (Exception)new BusinessRuleException<TField>(
                     ErrorCategory.ValidationFailed,
                     r.Field,
                     r.Error,

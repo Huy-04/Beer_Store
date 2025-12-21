@@ -1,7 +1,8 @@
-﻿using Domain.Core.Base;
+using Domain.Core.Base;
 using Domain.Core.Interface.Rule;
+using Domain.Core.Enums.Messages;
 using Domain.Core.Rule;
-using Domain.Core.Rule.RuleFactory;
+using Domain.Core.Rule.StringRule;
 
 namespace Domain.Core.ValueObjects
 {
@@ -21,10 +22,11 @@ namespace Domain.Core.ValueObjects
 
         public static Description Create(string value)
         {
-            RuleValidator.CheckRules(new IBusinessRule[]
+            RuleValidator.CheckRules<CommonField>(new IBusinessRule<CommonField>[]
             {
-                DescriptionRuleFactory.DescriptionMaxLength(value),
-                DescriptionRuleFactory.DescriptionNotEmpty(value)
+                new StringMaxLength<CommonField>(value, 255, CommonField.Description),
+                new StringNotEmpty<CommonField>(value, CommonField.Description),
+                new StringMinimum<CommonField>(value, 5, CommonField.Description),
             });
             return new Description(value);
         }

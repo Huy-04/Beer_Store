@@ -1,25 +1,25 @@
 ﻿using Domain.Core.Enums;
+using Domain.Core.Enums.Messages;
 using Domain.Core.Interface.Rule;
-using Domain.Core.Messages.FieldNames;
 
 namespace Domain.Core.Rule.NumberRule
 {
-    public class NotNegativeRule<T> : IBusinessRule where T : struct, IComparable
+    public class NotNegativeRule<T, TField> : IBusinessRule<TField> where T : struct, IComparable where TField : Enum
     {
         private readonly T _value;
-        private readonly string _field;
+        private readonly TField _field;
 
-        public NotNegativeRule(T value, string field)
+        public NotNegativeRule(T value, TField field)
         {
             _value = value;
             _field = field;
         }
 
-        public string Field => _field;
+        public TField Field => _field;
 
         public ErrorCode Error => ErrorCode.NotNegative;
 
-        public IReadOnlyDictionary<string, object> Parameters => new Dictionary<string, object>
+        public IReadOnlyDictionary<object, object> Parameters => new Dictionary<object, object>
         {
             {ParamField.Value,_value }
         };

@@ -2,9 +2,9 @@
 {
     public class MultiRuleException : Exception
     {
-        public IEnumerable<BusinessRuleException> Errors { get; }
+        public IEnumerable<Exception> Errors { get; }
 
-        public MultiRuleException(IEnumerable<BusinessRuleException> errors)
+        public MultiRuleException(IEnumerable<Exception> errors)
         {
             Errors = errors;
         }

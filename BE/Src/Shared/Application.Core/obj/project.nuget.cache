@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "LzctW2hD5no=",
+  "dgSpecHash": "n6k26+eunSI=",
   "success": true,
-  "projectFilePath": "c:\\Code\\Project\\Beer_Store\\BE\\Src\\Shared\\Application.Core\\Application.Core.csproj",
+  "projectFilePath": "C:\\Code\\Project\\Beer_Store\\BE\\Src\\Shared\\Application.Core\\Application.Core.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\hlbee\\.nuget\\packages\\mediatr\\13.0.0\\mediatr.13.0.0.nupkg.sha512",
     "C:\\Users\\hlbee\\.nuget\\packages\\mediatr.contracts\\2.0.1\\mediatr.contracts.2.0.1.nupkg.sha512",

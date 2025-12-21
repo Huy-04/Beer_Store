@@ -1,0 +1,16 @@
+C:\Code\Project\Beer_Store\BE\Src\Core\BeerStore.Domain\bin\Debug\net9.0\BeerStore.Domain.deps.json
+C:\Code\Project\Beer_Store\BE\Src\Core\BeerStore.Domain\bin\Debug\net9.0\BeerStore.Domain.dll
+C:\Code\Project\Beer_Store\BE\Src\Core\BeerStore.Domain\bin\Debug\net9.0\BeerStore.Domain.pdb
+C:\Code\Project\Beer_Store\BE\Src\Core\BeerStore.Domain\bin\Debug\net9.0\Domain.Core.dll
+C:\Code\Project\Beer_Store\BE\Src\Core\BeerStore.Domain\bin\Debug\net9.0\Domain.Core.pdb
+C:\Code\Project\Beer_Store\BE\Src\Core\BeerStore.Domain\obj\Debug\net9.0\BeerStore.Domain.csproj.AssemblyReference.cache
+C:\Code\Project\Beer_Store\BE\Src\Core\BeerStore.Domain\obj\Debug\net9.0\BeerStore.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Code\Project\Beer_Store\BE\Src\Core\BeerStore.Domain\obj\Debug\net9.0\BeerStore.Domain.AssemblyInfoInputs.cache
+C:\Code\Project\Beer_Store\BE\Src\Core\BeerStore.Domain\obj\Debug\net9.0\BeerStore.Domain.AssemblyInfo.cs
+C:\Code\Project\Beer_Store\BE\Src\Core\BeerStore.Domain\obj\Debug\net9.0\BeerStore.Domain.csproj.CoreCompileInputs.cache
+C:\Code\Project\Beer_Store\BE\Src\Core\BeerStore.Domain\obj\Debug\net9.0\BeerStore.Domain.sourcelink.json
+C:\Code\Project\Beer_Store\BE\Src\Core\BeerStore.Domain\obj\Debug\net9.0\BeerStor.3D72C36D.Up2Date
+C:\Code\Project\Beer_Store\BE\Src\Core\BeerStore.Domain\obj\Debug\net9.0\BeerStore.Domain.dll
+C:\Code\Project\Beer_Store\BE\Src\Core\BeerStore.Domain\obj\Debug\net9.0\refint\BeerStore.Domain.dll
+C:\Code\Project\Beer_Store\BE\Src\Core\BeerStore.Domain\obj\Debug\net9.0\BeerStore.Domain.pdb
+C:\Code\Project\Beer_Store\BE\Src\Core\BeerStore.Domain\obj\Debug\net9.0\ref\BeerStore.Domain.dll
