@@ -38,7 +38,7 @@ namespace BeerStore.Application.Modules.Auth.Permission.Commands.UpdatePermissio
                         ErrorCode.IdNotFound,
                         new Dictionary<object, object>
                         {
-                            {ParamField.Value.ToString(),command.IdPermission }
+                            {ParamField.Value, command.IdPermission }
                         });
                 }
 
@@ -52,7 +52,7 @@ namespace BeerStore.Application.Modules.Auth.Permission.Commands.UpdatePermissio
                         PermissionField.PermissionName,
                         ErrorCode.NameAlreadyExists,
                         new Dictionary<object, object> {
-                            { ParamField.Value.ToString(), newName.Value }
+                            { ParamField.Value, newName.Value }
                         });
                 }
 

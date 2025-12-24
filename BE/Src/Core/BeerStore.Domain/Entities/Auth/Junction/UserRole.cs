@@ -18,7 +18,7 @@ namespace BeerStore.Domain.Entities.Auth.Junction
             RoleId = roleId;
         }
 
-        internal static UserRole Create(Guid userId, Guid roleId)
+        public static UserRole Create(Guid userId, Guid roleId)
         {
             var userRole = new UserRole(Guid.NewGuid(), userId, roleId);
             return userRole;

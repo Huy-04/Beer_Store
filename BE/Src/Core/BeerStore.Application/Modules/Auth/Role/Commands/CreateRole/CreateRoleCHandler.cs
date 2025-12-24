@@ -37,7 +37,7 @@ namespace BeerStore.Application.Modules.Auth.Role.Commands.CreateRole
                         RoleField.RoleName,
                         ErrorCode.NameAlreadyExists,
                         new Dictionary<object, object> {
-                            { ParamField.Value.ToString(), role.RoleName.Value }
+                            { ParamField.Value, role.RoleName.Value }
                         });
                 }
 

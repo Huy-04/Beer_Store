@@ -10,14 +10,14 @@
         "projectUniqueName": "C:\\Code\\Project\\Beer_Store\\BE\\Src\\Shared\\Api.Core\\Api.Core.csproj",
         "projectName": "Api.Core",
         "projectPath": "C:\\Code\\Project\\Beer_Store\\BE\\Src\\Shared\\Api.Core\\Api.Core.csproj",
-        "packagesPath": "C:\\Users\\hlbee\\.nuget\\packages\\",
+        "packagesPath": "C:\\Users\\beer\\.nuget\\packages\\",
         "outputPath": "C:\\Code\\Project\\Beer_Store\\BE\\Src\\Shared\\Api.Core\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\hlbee\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\beer\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -26,6 +26,7 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -89,14 +90,14 @@
         "projectUniqueName": "C:\\Code\\Project\\Beer_Store\\BE\\Src\\Shared\\Domain.Core\\Domain.Core.csproj",
         "projectName": "Domain.Core",
         "projectPath": "C:\\Code\\Project\\Beer_Store\\BE\\Src\\Shared\\Domain.Core\\Domain.Core.csproj",
-        "packagesPath": "C:\\Users\\hlbee\\.nuget\\packages\\",
+        "packagesPath": "C:\\Users\\beer\\.nuget\\packages\\",
         "outputPath": "C:\\Code\\Project\\Beer_Store\\BE\\Src\\Shared\\Domain.Core\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\hlbee\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\beer\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -105,6 +106,7 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {

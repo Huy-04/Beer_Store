@@ -2,6 +2,7 @@ using BeerStore.Application.Interface.IUnitOfWork.Auth;
 using BeerStore.Application.Interface.Services;
 using BeerStore.Domain.IRepository.Auth;
 using BeerStore.Domain.IRepository.Auth.Read;
+using BeerStore.Domain.IRepository.Auth.Write;
 using BeerStore.Infrastructure.Persistence.Db;
 using BeerStore.Infrastructure.Repository.Auth.Read;
 using BeerStore.Infrastructure.Repository.Auth.Write;
@@ -35,6 +36,22 @@ namespace BeerStore.Infrastructure
             // Permissions
             services.AddScoped<IRPermissionRepository, RPermissionRepository>();
             services.AddScoped<IWPermissionRepository, WPermissionRepository>();
+
+            // Address
+            services.AddScoped<IRAddressRepository, RAddressRepository>();
+            services.AddScoped<IWAddressRepository, WAddressRepository>();
+
+            // UserRole
+            services.AddScoped<IRUserRoleRepository, RUserRoleRepository>();
+            services.AddScoped<IWUserRoleRepository, WUserRoleRepository>();
+
+            // UserAddress
+            services.AddScoped<IRUserAddressRepository, RUserAddressRepository>();
+            services.AddScoped<IWUserAddressRepository, WUserAddressRepository>();
+
+            // RolePermission
+            services.AddScoped<IRRolePermissionRepository, RRolePermissionRepository>();
+            services.AddScoped<IWRolePermissionRepository, WRolePermissionRepository>();
 
             // Auth Unit Of Work
             services.AddScoped<IAuthUnitOfWork, AuthUnitOfWork>();

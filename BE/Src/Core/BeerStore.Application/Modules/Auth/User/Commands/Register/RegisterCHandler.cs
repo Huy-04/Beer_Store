@@ -33,19 +33,16 @@ namespace BeerStore.Application.Modules.Auth.User.Commands.Register
 
             try
             {
-                var userName = UserName.System;
-                var systemUser = await _auow.RUserRepository.GetByUserNameAsync(userName);
+                var systemUser = await _auow.RUserRepository.GetByUserNameAsync(UserName.System);
                 if (systemUser == null)
                 {
                     throw new BusinessRuleException<UserField>(
                         ErrorCategory.NotFound,
                         UserField.UserName,
-                        ErrorCode.UserNameNotFound,
-                        new Dictionary<object, object>
-                        {
-                            {ParamField.Value, userName.Value},
-                        });
+                        ErrorCode.UserNotFound,
+                        new Dictionary<object, object> { { ParamField.Value, UserName.System.Value } });
                 }
+
                 var user = command.Request.ToUser(_passwordHasher, systemUser.Id, systemUser.Id);
 
                 if (await _auow.RUserRepository.ExistsByUserNameAsync(user.UserName, token))

@@ -1,0 +1,25 @@
+using BeerStore.Application.DTOs.Auth.Address.Responses;
+using BeerStore.Application.Interface.IUnitOfWork.Auth;
+using BeerStore.Application.Mapping.Auth.AddressMap;
+using BeerStore.Domain.ValueObjects.Auth.User;
+using MediatR;
+
+namespace BeerStore.Application.Modules.Auth.Address.Queries.GetAddressByPhone
+{
+    public class GetAddressByPhoneQHandler : IRequestHandler<GetAddressByPhoneQuery, IEnumerable<AddressResponse>>
+    {
+        private readonly IAuthUnitOfWork _auow;
+
+        public GetAddressByPhoneQHandler(IAuthUnitOfWork auow)
+        {
+            _auow = auow;
+        }
+
+        public async Task<IEnumerable<AddressResponse>> Handle(GetAddressByPhoneQuery query, CancellationToken token)
+        {
+            var phone = Phone.Create(query.Phone);
+            var list = await _auow.RAddressRepository.FindAsync(a => a.Phone == phone, token);
+            return list.Select(a => a.ToAddressResponse());
+        }
+    }
+}

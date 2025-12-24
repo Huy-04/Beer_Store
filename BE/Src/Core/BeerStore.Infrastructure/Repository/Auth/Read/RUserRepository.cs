@@ -1,10 +1,7 @@
-﻿using Azure.Core;
-using BeerStore.Domain.Entities.Auth;
+﻿using BeerStore.Domain.Entities.Auth;
 using BeerStore.Domain.IRepository.Auth.Read;
 using BeerStore.Domain.ValueObjects.Auth.User;
-using BeerStore.Domain.ValueObjects.Auth.User.Status;
 using BeerStore.Infrastructure.Persistence.Db;
-using Domain.Core.Enums;
 using Infrastructure.Core.Repository;
 using Microsoft.EntityFrameworkCore;
 
@@ -37,19 +34,19 @@ namespace BeerStore.Infrastructure.Repository.Auth.Read
                 .AnyAsync(u => u.Email == email && (idUser == null || u.Id != idUser), token);
         }
 
-        public async Task<IEnumerable<User>> GetAllWithRolesAsync(CancellationToken token = default)
-        {
-            return await _entities
-                .AsNoTracking()
-                .Include(u => u.UserRoles)
-                .ToListAsync(token);
-        }
-
         public async Task<User?> GetByUserNameAsync(UserName userName, CancellationToken token = default)
         {
             return await _entities
                 .AsNoTracking()
                 .FirstOrDefaultAsync(u => u.UserName == userName, token);
+        }
+
+        public async Task<User?> GetByEmailWithRolesAsync(Email email, CancellationToken token = default)
+        {
+            return await _entities
+                .AsNoTracking()
+                .Include(u => u.UserRoles)
+                .FirstOrDefaultAsync(u => u.Email == email, token);
         }
     }
 }

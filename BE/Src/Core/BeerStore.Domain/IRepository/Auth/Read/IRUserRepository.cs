@@ -12,8 +12,8 @@ namespace BeerStore.Domain.IRepository.Auth.Read
 
         Task<bool> ExistsByEmailAsync(Email email, CancellationToken token = default, Guid? idUser = null);
 
-        Task<IEnumerable<User>> GetAllWithRolesAsync(CancellationToken token = default);
-
         Task<User?> GetByUserNameAsync(UserName userName, CancellationToken token = default);
+
+        Task<User?> GetByEmailWithRolesAsync(Email email, CancellationToken token = default);
     }
 }

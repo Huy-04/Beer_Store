@@ -4,7 +4,6 @@ using BeerStore.Application.Mapping.Auth.PermissionMap;
 using BeerStore.Domain.Enums.Messages;
 using Domain.Core.Enums;
 using Domain.Core.Enums.Messages;
-using Domain.Core.Enums.Messages;
 using Domain.Core.RuleException;
 using MediatR;
 using Microsoft.Extensions.Logging;
@@ -38,7 +37,7 @@ namespace BeerStore.Application.Modules.Auth.Permission.Commands.CreatePermissio
                         PermissionField.PermissionName,
                         ErrorCode.NameAlreadyExists,
                         new Dictionary<object, object> {
-                            { ParamField.Value.ToString(), permission.PermissionName.Value } }
+                            { ParamField.Value, permission.PermissionName.Value } }
                         );
                 }
 

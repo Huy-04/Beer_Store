@@ -35,7 +35,7 @@ namespace BeerStore.Application.Modules.Auth.Role.Commands.RemoveRole
                         ErrorCode.IdNotFound,
                         new Dictionary<object, object>
                         {
-                            {ParamField.Value.ToString(),command.IdRole }
+                            {ParamField.Value, command.IdRole }
                         });
                 }
 

@@ -1,8 +1,11 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <ItemGroup>
+    <Compile Remove="DTOs\Auth\a\**" />
     <Compile Remove="Features\**" />
+    <EmbeddedResource Remove="DTOs\Auth\a\**" />
     <EmbeddedResource Remove="Features\**" />
+    <None Remove="DTOs\Auth\a\**" />
     <None Remove="Features\**" />
   </ItemGroup>
 
@@ -16,7 +19,15 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="DTOs\Auth\a\" />
+    <Folder Include="Modules\Auth\Address\Commands\CreateAddress\" />
+    <Folder Include="Modules\Auth\Address\Commands\RemoveAddress\" />
+    <Folder Include="Modules\Auth\Address\Commands\UpdateAddress\" />
+    <Folder Include="Modules\Auth\Address\Queries\GetAllAddress\" />
+    <Folder Include="Modules\Auth\Address\Queries\GetAddressById\" />
+    <Folder Include="Modules\Auth\Address\Queries\GetAddressByPhone\" />
+    <Folder Include="Modules\Auth\Junction\RolePermission\" />
+    <Folder Include="Modules\Auth\Junction\UserAddress\" />
+    <Folder Include="Modules\Auth\Junction\UserRole\" />
   </ItemGroup>
 
   <PropertyGroup>

@@ -1,0 +1,116 @@
+[2025-12-24 08:12:44.815 +07:00] [INF] [c1ec850f32c4cefef85066d595af413a] [Diagnostics] [Request starting HTTP/1.1 POST https://localhost:7124/api/auth/login - application/json 68]
+[2025-12-24 08:12:45.517 +07:00] [ERR] [c1ec850f32c4cefef85066d595af413a] [ExceptionMiddleware] [Unhandled exception]
+System.InvalidOperationException: No service for type 'MediatR.IRequestHandler`2[BeerStore.Application.Modules.Auth.User.Commands.Login.LoginCommand,BeerStore.Application.DTOs.Auth.User.Responses.Login.LoginResponse]' has been registered.
+   at Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService(IServiceProvider provider, Type serviceType)
+   at Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService[T](IServiceProvider provider)
+   at MediatR.Wrappers.RequestHandlerWrapperImpl`2.<>c__DisplayClass1_0.<Handle>g__Handler|0(CancellationToken t)
+   at MediatR.Wrappers.RequestHandlerWrapperImpl`2.Handle(IRequest`1 request, IServiceProvider serviceProvider, CancellationToken cancellationToken)
+   at MediatR.Mediator.Send[TResponse](IRequest`1 request, CancellationToken cancellationToken)
+   at BeerStore.Api.Controllers.Auth.AuthController.Login(LoginRequest request, CancellationToken token) in C:\Code\Project\Beer_Store\BE\Src\Core\BeerStore.Api\Controllers\Auth\AuthController.cs:line 29
+   at lambda_method6(Closure, Object)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.AwaitableObjectResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Api.Core.Middleware.ExceptionMiddleware.InvokeAsync(HttpContext context) in C:\Code\Project\Beer_Store\BE\Src\Shared\Api.Core\Middleware\ExceptionMiddleware.cs:line 25
+[2025-12-24 08:12:45.660 +07:00] [INF] [c1ec850f32c4cefef85066d595af413a] [Diagnostics] [Request finished HTTP/1.1 POST https://localhost:7124/api/auth/login - 500 null application/problem+json 859.1364ms]
+[2025-12-24 08:19:56.478 +07:00] [INF] [5a2da5871de43f2b742e44ad2cd62610] [Diagnostics] [Request starting HTTP/1.1 POST https://localhost:7124/api/auth/login - application/json 68]
+[2025-12-24 08:20:00.248 +07:00] [WRN] [5a2da5871de43f2b742e44ad2cd62610] [LoginCHandler] [Login failed: User with Email 'admin@beerstore.com1' not found]
+[2025-12-24 08:20:00.328 +07:00] [ERR] [5a2da5871de43f2b742e44ad2cd62610] [LoginCHandler] [Exception occurred while logging in. Request: {"Email":"admin@beerstore.com1","Password":"useradmin1","$type":"LoginRequest"}]
+Domain.Core.RuleException.BusinessRuleException`1[BeerStore.Domain.Enums.Messages.UserField]: Exception of type 'Domain.Core.RuleException.BusinessRuleException`1[BeerStore.Domain.Enums.Messages.UserField]' was thrown.
+   at BeerStore.Application.Modules.Auth.User.Commands.Login.LoginCHandler.Handle(LoginCommand command, CancellationToken token) in C:\Code\Project\Beer_Store\BE\Src\Core\BeerStore.Application\Modules\Auth\User\Commands\Login\LoginCHandler.cs:line 41
+[2025-12-24 08:20:40.652 +07:00] [WRN] [5a2da5871de43f2b742e44ad2cd62610] [ExceptionMiddleware] [Business rule violation]
+Domain.Core.RuleException.BusinessRuleException`1[BeerStore.Domain.Enums.Messages.UserField]: Exception of type 'Domain.Core.RuleException.BusinessRuleException`1[BeerStore.Domain.Enums.Messages.UserField]' was thrown.
+   at BeerStore.Application.Modules.Auth.User.Commands.Login.LoginCHandler.Handle(LoginCommand command, CancellationToken token) in C:\Code\Project\Beer_Store\BE\Src\Core\BeerStore.Application\Modules\Auth\User\Commands\Login\LoginCHandler.cs:line 41
+   at BeerStore.Api.Controllers.Auth.AuthController.Login(LoginRequest request, CancellationToken token) in C:\Code\Project\Beer_Store\BE\Src\Core\BeerStore.Api\Controllers\Auth\AuthController.cs:line 29
+   at lambda_method6(Closure, Object)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.AwaitableObjectResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Api.Core.Middleware.ExceptionMiddleware.InvokeAsync(HttpContext context) in C:\Code\Project\Beer_Store\BE\Src\Shared\Api.Core\Middleware\ExceptionMiddleware.cs:line 25
+[2025-12-24 08:20:40.729 +07:00] [INF] [5a2da5871de43f2b742e44ad2cd62610] [Diagnostics] [Request finished HTTP/1.1 POST https://localhost:7124/api/auth/login - 401 null application/problem+json 44263.4119ms]
+[2025-12-24 08:20:58.934 +07:00] [INF] [38c8c1e2f37670a1915dc88ddb03acfa] [Diagnostics] [Request starting HTTP/1.1 POST https://localhost:7124/api/auth/login - application/json 68]
+[2025-12-24 08:21:02.321 +07:00] [WRN] [38c8c1e2f37670a1915dc88ddb03acfa] [LoginCHandler] [Login failed: User with Email 'admin@beerstore.com1' not found]
+[2025-12-24 08:21:02.416 +07:00] [ERR] [38c8c1e2f37670a1915dc88ddb03acfa] [LoginCHandler] [Exception occurred while logging in. Request: {"Email":"admin@beerstore.com1","Password":"useradmin1","$type":"LoginRequest"}]
+Domain.Core.RuleException.BusinessRuleException`1[BeerStore.Domain.Enums.Messages.UserField]: Exception of type 'Domain.Core.RuleException.BusinessRuleException`1[BeerStore.Domain.Enums.Messages.UserField]' was thrown.
+   at BeerStore.Application.Modules.Auth.User.Commands.Login.LoginCHandler.Handle(LoginCommand command, CancellationToken token) in C:\Code\Project\Beer_Store\BE\Src\Core\BeerStore.Application\Modules\Auth\User\Commands\Login\LoginCHandler.cs:line 41
+[2025-12-24 08:21:04.999 +07:00] [WRN] [38c8c1e2f37670a1915dc88ddb03acfa] [ExceptionMiddleware] [Business rule violation]
+Domain.Core.RuleException.BusinessRuleException`1[BeerStore.Domain.Enums.Messages.UserField]: Exception of type 'Domain.Core.RuleException.BusinessRuleException`1[BeerStore.Domain.Enums.Messages.UserField]' was thrown.
+   at BeerStore.Application.Modules.Auth.User.Commands.Login.LoginCHandler.Handle(LoginCommand command, CancellationToken token) in C:\Code\Project\Beer_Store\BE\Src\Core\BeerStore.Application\Modules\Auth\User\Commands\Login\LoginCHandler.cs:line 41
+   at BeerStore.Api.Controllers.Auth.AuthController.Login(LoginRequest request, CancellationToken token) in C:\Code\Project\Beer_Store\BE\Src\Core\BeerStore.Api\Controllers\Auth\AuthController.cs:line 29
+   at lambda_method6(Closure, Object)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.AwaitableObjectResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Api.Core.Middleware.ExceptionMiddleware.InvokeAsync(HttpContext context) in C:\Code\Project\Beer_Store\BE\Src\Shared\Api.Core\Middleware\ExceptionMiddleware.cs:line 25
+[2025-12-24 08:21:05.074 +07:00] [INF] [38c8c1e2f37670a1915dc88ddb03acfa] [Diagnostics] [Request finished HTTP/1.1 POST https://localhost:7124/api/auth/login - 401 null application/problem+json 6176.1549ms]
+[2025-12-24 08:21:08.827 +07:00] [INF] [337627f69daae5cb1e00dc11a180b73a] [Diagnostics] [Request starting HTTP/1.1 POST https://localhost:7124/api/auth/login - application/json 68]
+[2025-12-24 08:21:08.932 +07:00] [WRN] [337627f69daae5cb1e00dc11a180b73a] [LoginCHandler] [Login failed: User with Email 'admin@beerstore.com1' not found]
+[2025-12-24 08:21:08.972 +07:00] [ERR] [337627f69daae5cb1e00dc11a180b73a] [LoginCHandler] [Exception occurred while logging in. Request: {"Email":"admin@beerstore.com1","Password":"useradmin1","$type":"LoginRequest"}]
+Domain.Core.RuleException.BusinessRuleException`1[BeerStore.Domain.Enums.Messages.UserField]: Exception of type 'Domain.Core.RuleException.BusinessRuleException`1[BeerStore.Domain.Enums.Messages.UserField]' was thrown.
+   at BeerStore.Application.Modules.Auth.User.Commands.Login.LoginCHandler.Handle(LoginCommand command, CancellationToken token) in C:\Code\Project\Beer_Store\BE\Src\Core\BeerStore.Application\Modules\Auth\User\Commands\Login\LoginCHandler.cs:line 41
+[2025-12-24 08:21:09.247 +07:00] [WRN] [337627f69daae5cb1e00dc11a180b73a] [ExceptionMiddleware] [Business rule violation]
+Domain.Core.RuleException.BusinessRuleException`1[BeerStore.Domain.Enums.Messages.UserField]: Exception of type 'Domain.Core.RuleException.BusinessRuleException`1[BeerStore.Domain.Enums.Messages.UserField]' was thrown.
+   at BeerStore.Application.Modules.Auth.User.Commands.Login.LoginCHandler.Handle(LoginCommand command, CancellationToken token) in C:\Code\Project\Beer_Store\BE\Src\Core\BeerStore.Application\Modules\Auth\User\Commands\Login\LoginCHandler.cs:line 41
+   at BeerStore.Api.Controllers.Auth.AuthController.Login(LoginRequest request, CancellationToken token) in C:\Code\Project\Beer_Store\BE\Src\Core\BeerStore.Api\Controllers\Auth\AuthController.cs:line 29
+   at lambda_method6(Closure, Object)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.AwaitableObjectResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Api.Core.Middleware.ExceptionMiddleware.InvokeAsync(HttpContext context) in C:\Code\Project\Beer_Store\BE\Src\Shared\Api.Core\Middleware\ExceptionMiddleware.cs:line 25
+[2025-12-24 08:21:09.263 +07:00] [INF] [337627f69daae5cb1e00dc11a180b73a] [Diagnostics] [Request finished HTTP/1.1 POST https://localhost:7124/api/auth/login - 401 null application/problem+json 436.9493ms]
+[2025-12-24 08:21:29.447 +07:00] [INF] [8c0be05fbdd918a6cadc78d6206bf224] [Diagnostics] [Request starting HTTP/1.1 POST https://localhost:7124/api/auth/login - application/json 68]
+[2025-12-24 08:21:30.319 +07:00] [WRN] [8c0be05fbdd918a6cadc78d6206bf224] [LoginCHandler] [Login failed: Invalid password for Email 'admin@beerstore.com']
+[2025-12-24 08:21:30.372 +07:00] [ERR] [8c0be05fbdd918a6cadc78d6206bf224] [LoginCHandler] [Exception occurred while logging in. Request: {"Email":"admin@beerstore.com","Password":"useradmin11","$type":"LoginRequest"}]
+Domain.Core.RuleException.BusinessRuleException`1[BeerStore.Domain.Enums.Messages.UserField]: Exception of type 'Domain.Core.RuleException.BusinessRuleException`1[BeerStore.Domain.Enums.Messages.UserField]' was thrown.
+   at BeerStore.Application.Modules.Auth.User.Commands.Login.LoginCHandler.Handle(LoginCommand command, CancellationToken token) in C:\Code\Project\Beer_Store\BE\Src\Core\BeerStore.Application\Modules\Auth\User\Commands\Login\LoginCHandler.cs:line 67
+[2025-12-24 08:21:30.701 +07:00] [WRN] [8c0be05fbdd918a6cadc78d6206bf224] [ExceptionMiddleware] [Business rule violation]
+Domain.Core.RuleException.BusinessRuleException`1[BeerStore.Domain.Enums.Messages.UserField]: Exception of type 'Domain.Core.RuleException.BusinessRuleException`1[BeerStore.Domain.Enums.Messages.UserField]' was thrown.
+   at BeerStore.Application.Modules.Auth.User.Commands.Login.LoginCHandler.Handle(LoginCommand command, CancellationToken token) in C:\Code\Project\Beer_Store\BE\Src\Core\BeerStore.Application\Modules\Auth\User\Commands\Login\LoginCHandler.cs:line 67
+   at BeerStore.Api.Controllers.Auth.AuthController.Login(LoginRequest request, CancellationToken token) in C:\Code\Project\Beer_Store\BE\Src\Core\BeerStore.Api\Controllers\Auth\AuthController.cs:line 29
+   at lambda_method6(Closure, Object)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.AwaitableObjectResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Api.Core.Middleware.ExceptionMiddleware.InvokeAsync(HttpContext context) in C:\Code\Project\Beer_Store\BE\Src\Shared\Api.Core\Middleware\ExceptionMiddleware.cs:line 25
+[2025-12-24 08:21:30.711 +07:00] [INF] [8c0be05fbdd918a6cadc78d6206bf224] [Diagnostics] [Request finished HTTP/1.1 POST https://localhost:7124/api/auth/login - 401 null application/problem+json 1263.7493ms]

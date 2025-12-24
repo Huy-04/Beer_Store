@@ -17,7 +17,7 @@ namespace BeerStore.Domain.Entities.Auth.Junction
             AddressId = addressId;
         }
 
-        internal static UserAddress Create(Guid userId, Guid addressId)
+        public static UserAddress Create(Guid userId, Guid addressId)
         {
             var userAddress = new UserAddress(Guid.NewGuid(), userId, addressId);
             return userAddress;

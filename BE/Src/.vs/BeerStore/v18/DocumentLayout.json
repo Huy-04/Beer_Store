@@ -3,20 +3,56 @@
   "WorkspaceRootPath": "C:\\Code\\Project\\Beer_Store\\BE\\Src\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{B3ADFB17-08A8-4B88-8345-7CC8FD9224AD}|Core\\BeerStore.Infrastructure\\BeerStore.Infrastructure.csproj|c:\\code\\project\\beer_store\\be\\src\\core\\beerstore.infrastructure\\persistence\\entityconfigurations\\auth\\junction\\useraddressconfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B3ADFB17-08A8-4B88-8345-7CC8FD9224AD}|Core\\BeerStore.Infrastructure\\BeerStore.Infrastructure.csproj|solutionrelative:core\\beerstore.infrastructure\\persistence\\entityconfigurations\\auth\\junction\\useraddressconfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{5FEA1337-1892-4F6C-96C9-BA93F989C6A1}|Core\\BeerStore.Application\\BeerStore.Application.csproj|c:\\code\\project\\beer_store\\be\\src\\core\\beerstore.application\\modules\\auth\\user\\commands\\login\\loginchandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5FEA1337-1892-4F6C-96C9-BA93F989C6A1}|Core\\BeerStore.Application\\BeerStore.Application.csproj|solutionrelative:core\\beerstore.application\\modules\\auth\\user\\commands\\login\\loginchandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B3ADFB17-08A8-4B88-8345-7CC8FD9224AD}|Core\\BeerStore.Infrastructure\\BeerStore.Infrastructure.csproj|c:\\code\\project\\beer_store\\be\\src\\core\\beerstore.infrastructure\\persistence\\entityconfigurations\\auth\\junction\\rolepermissionconfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B3ADFB17-08A8-4B88-8345-7CC8FD9224AD}|Core\\BeerStore.Infrastructure\\BeerStore.Infrastructure.csproj|solutionrelative:core\\beerstore.infrastructure\\persistence\\entityconfigurations\\auth\\junction\\rolepermissionconfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{B3ADFB17-08A8-4B88-8345-7CC8FD9224AD}|Core\\BeerStore.Infrastructure\\BeerStore.Infrastructure.csproj|c:\\code\\project\\beer_store\\be\\src\\core\\beerstore.infrastructure\\repository\\auth\\read\\ruserrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B3ADFB17-08A8-4B88-8345-7CC8FD9224AD}|Core\\BeerStore.Infrastructure\\BeerStore.Infrastructure.csproj|solutionrelative:core\\beerstore.infrastructure\\repository\\auth\\read\\ruserrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B3ADFB17-08A8-4B88-8345-7CC8FD9224AD}|Core\\BeerStore.Infrastructure\\BeerStore.Infrastructure.csproj|c:\\code\\project\\beer_store\\be\\src\\core\\beerstore.infrastructure\\persistence\\entityconfigurations\\auth\\addressconfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B3ADFB17-08A8-4B88-8345-7CC8FD9224AD}|Core\\BeerStore.Infrastructure\\BeerStore.Infrastructure.csproj|solutionrelative:core\\beerstore.infrastructure\\persistence\\entityconfigurations\\auth\\addressconfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{FEA16E50-2619-4AD6-BC94-257186ECD969}|Core\\BeerStore.Domain\\BeerStore.Domain.csproj|c:\\code\\project\\beer_store\\be\\src\\core\\beerstore.domain\\irepository\\auth\\read\\iruserrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FEA16E50-2619-4AD6-BC94-257186ECD969}|Core\\BeerStore.Domain\\BeerStore.Domain.csproj|solutionrelative:core\\beerstore.domain\\irepository\\auth\\read\\iruserrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{FEA16E50-2619-4AD6-BC94-257186ECD969}|Core\\BeerStore.Domain\\BeerStore.Domain.csproj|c:\\code\\project\\beer_store\\be\\src\\core\\beerstore.domain\\entities\\auth\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{FEA16E50-2619-4AD6-BC94-257186ECD969}|Core\\BeerStore.Domain\\BeerStore.Domain.csproj|solutionrelative:core\\beerstore.domain\\entities\\auth\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{EC29B35F-E3D8-4922-A38B-46278FFF16B8}|Shared\\Domain.Core\\Domain.Core.csproj|c:\\code\\project\\beer_store\\be\\src\\shared\\domain.core\\enums\\errorcode.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EC29B35F-E3D8-4922-A38B-46278FFF16B8}|Shared\\Domain.Core\\Domain.Core.csproj|solutionrelative:shared\\domain.core\\enums\\errorcode.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5FEA1337-1892-4F6C-96C9-BA93F989C6A1}|Core\\BeerStore.Application\\BeerStore.Application.csproj|c:\\code\\project\\beer_store\\be\\src\\core\\beerstore.application\\modules\\auth\\user\\commands\\register\\registerchandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5FEA1337-1892-4F6C-96C9-BA93F989C6A1}|Core\\BeerStore.Application\\BeerStore.Application.csproj|solutionrelative:core\\beerstore.application\\modules\\auth\\user\\commands\\register\\registerchandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5FEA1337-1892-4F6C-96C9-BA93F989C6A1}|Core\\BeerStore.Application\\BeerStore.Application.csproj|c:\\code\\project\\beer_store\\be\\src\\core\\beerstore.application\\modules\\auth\\user\\commands\\register\\registercommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5FEA1337-1892-4F6C-96C9-BA93F989C6A1}|Core\\BeerStore.Application\\BeerStore.Application.csproj|solutionrelative:core\\beerstore.application\\modules\\auth\\user\\commands\\register\\registercommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5FEA1337-1892-4F6C-96C9-BA93F989C6A1}|Core\\BeerStore.Application\\BeerStore.Application.csproj|c:\\code\\project\\beer_store\\be\\src\\core\\beerstore.application\\modules\\auth\\user\\commands\\login\\logincommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5FEA1337-1892-4F6C-96C9-BA93F989C6A1}|Core\\BeerStore.Application\\BeerStore.Application.csproj|solutionrelative:core\\beerstore.application\\modules\\auth\\user\\commands\\login\\logincommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{315688A1-FD41-44C6-8E59-49264F768F97}|Core\\BeerStore.Api\\BeerStore.Api.csproj|c:\\code\\project\\beer_store\\be\\src\\core\\beerstore.api\\controllers\\auth\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{315688A1-FD41-44C6-8E59-49264F768F97}|Core\\BeerStore.Api\\BeerStore.Api.csproj|solutionrelative:core\\beerstore.api\\controllers\\auth\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{315688A1-FD41-44C6-8E59-49264F768F97}|Core\\BeerStore.Api\\BeerStore.Api.csproj|c:\\code\\project\\beer_store\\be\\src\\core\\beerstore.api\\controllers\\auth\\rolepermissioncontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{315688A1-FD41-44C6-8E59-49264F768F97}|Core\\BeerStore.Api\\BeerStore.Api.csproj|solutionrelative:core\\beerstore.api\\controllers\\auth\\rolepermissioncontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{315688A1-FD41-44C6-8E59-49264F768F97}|Core\\BeerStore.Api\\BeerStore.Api.csproj|c:\\code\\project\\beer_store\\be\\src\\core\\beerstore.api\\controllers\\auth\\useraddresscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{315688A1-FD41-44C6-8E59-49264F768F97}|Core\\BeerStore.Api\\BeerStore.Api.csproj|solutionrelative:core\\beerstore.api\\controllers\\auth\\useraddresscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{315688A1-FD41-44C6-8E59-49264F768F97}|Core\\BeerStore.Api\\BeerStore.Api.csproj|c:\\code\\project\\beer_store\\be\\src\\core\\beerstore.api\\controllers\\auth\\userrolecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{315688A1-FD41-44C6-8E59-49264F768F97}|Core\\BeerStore.Api\\BeerStore.Api.csproj|solutionrelative:core\\beerstore.api\\controllers\\auth\\userrolecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5FEA1337-1892-4F6C-96C9-BA93F989C6A1}|Core\\BeerStore.Application\\BeerStore.Application.csproj|c:\\code\\project\\beer_store\\be\\src\\core\\beerstore.application\\modules\\auth\\address\\commands\\createaddress\\createaddresschandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5FEA1337-1892-4F6C-96C9-BA93F989C6A1}|Core\\BeerStore.Application\\BeerStore.Application.csproj|solutionrelative:core\\beerstore.application\\modules\\auth\\address\\commands\\createaddress\\createaddresschandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B3ADFB17-08A8-4B88-8345-7CC8FD9224AD}|Core\\BeerStore.Infrastructure\\BeerStore.Infrastructure.csproj|c:\\code\\project\\beer_store\\be\\src\\core\\beerstore.infrastructure\\repository\\auth\\read\\raddressrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B3ADFB17-08A8-4B88-8345-7CC8FD9224AD}|Core\\BeerStore.Infrastructure\\BeerStore.Infrastructure.csproj|solutionrelative:core\\beerstore.infrastructure\\repository\\auth\\read\\raddressrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -26,7 +62,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 4,
           "Children": [
             {
               "$type": "Bookmark",
@@ -34,54 +70,171 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "AddressConfiguration.cs",
-              "DocumentMoniker": "C:\\Code\\Project\\Beer_Store\\BE\\Src\\Core\\BeerStore.Infrastructure\\Persistence\\EntityConfigurations\\Auth\\AddressConfiguration.cs",
-              "RelativeDocumentMoniker": "Core\\BeerStore.Infrastructure\\Persistence\\EntityConfigurations\\Auth\\AddressConfiguration.cs",
-              "ToolTip": "C:\\Code\\Project\\Beer_Store\\BE\\Src\\Core\\BeerStore.Infrastructure\\Persistence\\EntityConfigurations\\Auth\\AddressConfiguration.cs",
-              "RelativeToolTip": "Core\\BeerStore.Infrastructure\\Persistence\\EntityConfigurations\\Auth\\AddressConfiguration.cs",
-              "ViewState": "AgIAAAgAAAAAAAAAAAD4vx0AAAAhAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-17T22:50:10.856Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "RolePermissionConfiguration.cs",
-              "DocumentMoniker": "C:\\Code\\Project\\Beer_Store\\BE\\Src\\Core\\BeerStore.Infrastructure\\Persistence\\EntityConfigurations\\Auth\\Junction\\RolePermissionConfiguration.cs",
-              "RelativeDocumentMoniker": "Core\\BeerStore.Infrastructure\\Persistence\\EntityConfigurations\\Auth\\Junction\\RolePermissionConfiguration.cs",
-              "ToolTip": "C:\\Code\\Project\\Beer_Store\\BE\\Src\\Core\\BeerStore.Infrastructure\\Persistence\\EntityConfigurations\\Auth\\Junction\\RolePermissionConfiguration.cs",
-              "RelativeToolTip": "Core\\BeerStore.Infrastructure\\Persistence\\EntityConfigurations\\Auth\\Junction\\RolePermissionConfiguration.cs",
-              "ViewState": "AgIAABAAAAAAAAAAAAAQwCcAAAABAAAAAAAAAA==",
+              "Title": "RUserRepository.cs",
+              "DocumentMoniker": "C:\\Code\\Project\\Beer_Store\\BE\\Src\\Core\\BeerStore.Infrastructure\\Repository\\Auth\\Read\\RUserRepository.cs",
+              "RelativeDocumentMoniker": "Core\\BeerStore.Infrastructure\\Repository\\Auth\\Read\\RUserRepository.cs",
+              "ToolTip": "C:\\Code\\Project\\Beer_Store\\BE\\Src\\Core\\BeerStore.Infrastructure\\Repository\\Auth\\Read\\RUserRepository.cs",
+              "RelativeToolTip": "Core\\BeerStore.Infrastructure\\Repository\\Auth\\Read\\RUserRepository.cs",
+              "ViewState": "AgIAAB8AAAAAAAAAAAAkwCIAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-17T22:41:05.391Z",
+              "WhenOpened": "2025-12-24T01:19:45.584Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "UserAddressConfiguration.cs",
-              "DocumentMoniker": "C:\\Code\\Project\\Beer_Store\\BE\\Src\\Core\\BeerStore.Infrastructure\\Persistence\\EntityConfigurations\\Auth\\Junction\\UserAddressConfiguration.cs",
-              "RelativeDocumentMoniker": "Core\\BeerStore.Infrastructure\\Persistence\\EntityConfigurations\\Auth\\Junction\\UserAddressConfiguration.cs",
-              "ToolTip": "C:\\Code\\Project\\Beer_Store\\BE\\Src\\Core\\BeerStore.Infrastructure\\Persistence\\EntityConfigurations\\Auth\\Junction\\UserAddressConfiguration.cs",
-              "RelativeToolTip": "Core\\BeerStore.Infrastructure\\Persistence\\EntityConfigurations\\Auth\\Junction\\UserAddressConfiguration.cs",
-              "ViewState": "AgIAAAsAAAAAAAAAAAAQwBkAAAAAAAAAAAAAAA==",
+              "DocumentIndex": 2,
+              "Title": "IRUserRepository.cs",
+              "DocumentMoniker": "C:\\Code\\Project\\Beer_Store\\BE\\Src\\Core\\BeerStore.Domain\\IRepository\\Auth\\Read\\IRUserRepository.cs",
+              "RelativeDocumentMoniker": "Core\\BeerStore.Domain\\IRepository\\Auth\\Read\\IRUserRepository.cs",
+              "ToolTip": "C:\\Code\\Project\\Beer_Store\\BE\\Src\\Core\\BeerStore.Domain\\IRepository\\Auth\\Read\\IRUserRepository.cs",
+              "RelativeToolTip": "Core\\BeerStore.Domain\\IRepository\\Auth\\Read\\IRUserRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-17T22:32:24.645Z",
+              "WhenOpened": "2025-12-24T01:19:19.612Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "User.cs",
-              "DocumentMoniker": "C:\\Code\\Project\\Beer_Store\\BE\\Src\\Core\\BeerStore.Domain\\Entities\\Auth\\User.cs",
-              "RelativeDocumentMoniker": "Core\\BeerStore.Domain\\Entities\\Auth\\User.cs",
-              "ToolTip": "C:\\Code\\Project\\Beer_Store\\BE\\Src\\Core\\BeerStore.Domain\\Entities\\Auth\\User.cs",
-              "RelativeToolTip": "Core\\BeerStore.Domain\\Entities\\Auth\\User.cs",
-              "ViewState": "AgIAAJMAAAAAAAAAAAAiwKIAAAAhAAAAAAAAAA==",
+              "Title": "ErrorCode.cs",
+              "DocumentMoniker": "C:\\Code\\Project\\Beer_Store\\BE\\Src\\Shared\\Domain.Core\\Enums\\ErrorCode.cs",
+              "RelativeDocumentMoniker": "Shared\\Domain.Core\\Enums\\ErrorCode.cs",
+              "ToolTip": "C:\\Code\\Project\\Beer_Store\\BE\\Src\\Shared\\Domain.Core\\Enums\\ErrorCode.cs",
+              "RelativeToolTip": "Shared\\Domain.Core\\Enums\\ErrorCode.cs",
+              "ViewState": "AgIAABsAAAAAAAAAAAAAACcAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-17T22:18:36.074Z",
+              "WhenOpened": "2025-12-24T01:16:49.123Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "LoginCHandler.cs",
+              "DocumentMoniker": "C:\\Code\\Project\\Beer_Store\\BE\\Src\\Core\\BeerStore.Application\\Modules\\Auth\\User\\Commands\\Login\\LoginCHandler.cs",
+              "RelativeDocumentMoniker": "Core\\BeerStore.Application\\Modules\\Auth\\User\\Commands\\Login\\LoginCHandler.cs",
+              "ToolTip": "C:\\Code\\Project\\Beer_Store\\BE\\Src\\Core\\BeerStore.Application\\Modules\\Auth\\User\\Commands\\Login\\LoginCHandler.cs",
+              "RelativeToolTip": "Core\\BeerStore.Application\\Modules\\Auth\\User\\Commands\\Login\\LoginCHandler.cs",
+              "ViewState": "AgIAAB0AAAAAAAAAAAAswCsAAAAvAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-24T01:15:11.606Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "RegisterCHandler.cs",
+              "DocumentMoniker": "C:\\Code\\Project\\Beer_Store\\BE\\Src\\Core\\BeerStore.Application\\Modules\\Auth\\User\\Commands\\Register\\RegisterCHandler.cs",
+              "RelativeDocumentMoniker": "Core\\BeerStore.Application\\Modules\\Auth\\User\\Commands\\Register\\RegisterCHandler.cs",
+              "ToolTip": "C:\\Code\\Project\\Beer_Store\\BE\\Src\\Core\\BeerStore.Application\\Modules\\Auth\\User\\Commands\\Register\\RegisterCHandler.cs",
+              "RelativeToolTip": "Core\\BeerStore.Application\\Modules\\Auth\\User\\Commands\\Register\\RegisterCHandler.cs",
+              "ViewState": "AgIAACIAAAAAAAAAAAAswC0AAAAUAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-24T00:23:19.734Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "LoginCommand.cs",
+              "DocumentMoniker": "C:\\Code\\Project\\Beer_Store\\BE\\Src\\Core\\BeerStore.Application\\Modules\\Auth\\User\\Commands\\Login\\LoginCommand.cs",
+              "RelativeDocumentMoniker": "Core\\BeerStore.Application\\Modules\\Auth\\User\\Commands\\Login\\LoginCommand.cs",
+              "ToolTip": "C:\\Code\\Project\\Beer_Store\\BE\\Src\\Core\\BeerStore.Application\\Modules\\Auth\\User\\Commands\\Login\\LoginCommand.cs",
+              "RelativeToolTip": "Core\\BeerStore.Application\\Modules\\Auth\\User\\Commands\\Login\\LoginCommand.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAfAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-24T00:22:25.868Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "RegisterCommand.cs",
+              "DocumentMoniker": "C:\\Code\\Project\\Beer_Store\\BE\\Src\\Core\\BeerStore.Application\\Modules\\Auth\\User\\Commands\\Register\\RegisterCommand.cs",
+              "RelativeDocumentMoniker": "Core\\BeerStore.Application\\Modules\\Auth\\User\\Commands\\Register\\RegisterCommand.cs",
+              "ToolTip": "C:\\Code\\Project\\Beer_Store\\BE\\Src\\Core\\BeerStore.Application\\Modules\\Auth\\User\\Commands\\Register\\RegisterCommand.cs",
+              "RelativeToolTip": "Core\\BeerStore.Application\\Modules\\Auth\\User\\Commands\\Register\\RegisterCommand.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAiAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-24T00:22:55.009Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "AuthController.cs",
+              "DocumentMoniker": "C:\\Code\\Project\\Beer_Store\\BE\\Src\\Core\\BeerStore.Api\\Controllers\\Auth\\AuthController.cs",
+              "RelativeDocumentMoniker": "Core\\BeerStore.Api\\Controllers\\Auth\\AuthController.cs",
+              "ToolTip": "C:\\Code\\Project\\Beer_Store\\BE\\Src\\Core\\BeerStore.Api\\Controllers\\Auth\\AuthController.cs",
+              "RelativeToolTip": "Core\\BeerStore.Api\\Controllers\\Auth\\AuthController.cs",
+              "ViewState": "AgIAABcAAAAAAAAAAAAowCEAAAAeAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-24T00:16:48.229Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "UserRoleController.cs",
+              "DocumentMoniker": "C:\\Code\\Project\\Beer_Store\\BE\\Src\\Core\\BeerStore.Api\\Controllers\\Auth\\UserRoleController.cs",
+              "RelativeDocumentMoniker": "Core\\BeerStore.Api\\Controllers\\Auth\\UserRoleController.cs",
+              "ToolTip": "C:\\Code\\Project\\Beer_Store\\BE\\Src\\Core\\BeerStore.Api\\Controllers\\Auth\\UserRoleController.cs",
+              "RelativeToolTip": "Core\\BeerStore.Api\\Controllers\\Auth\\UserRoleController.cs",
+              "ViewState": "AgIAAB8AAAAAAAAAAAAnwCwAAAAXAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-24T00:16:21.375Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "UserAddressController.cs",
+              "DocumentMoniker": "C:\\Code\\Project\\Beer_Store\\BE\\Src\\Core\\BeerStore.Api\\Controllers\\Auth\\UserAddressController.cs",
+              "RelativeDocumentMoniker": "Core\\BeerStore.Api\\Controllers\\Auth\\UserAddressController.cs",
+              "ToolTip": "C:\\Code\\Project\\Beer_Store\\BE\\Src\\Core\\BeerStore.Api\\Controllers\\Auth\\UserAddressController.cs",
+              "RelativeToolTip": "Core\\BeerStore.Api\\Controllers\\Auth\\UserAddressController.cs",
+              "ViewState": "AgIAACEAAAAAAAAAAAAewCwAAAAXAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-24T00:16:20.075Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "RolePermissionController.cs",
+              "DocumentMoniker": "C:\\Code\\Project\\Beer_Store\\BE\\Src\\Core\\BeerStore.Api\\Controllers\\Auth\\RolePermissionController.cs",
+              "RelativeDocumentMoniker": "Core\\BeerStore.Api\\Controllers\\Auth\\RolePermissionController.cs",
+              "ToolTip": "C:\\Code\\Project\\Beer_Store\\BE\\Src\\Core\\BeerStore.Api\\Controllers\\Auth\\RolePermissionController.cs",
+              "RelativeToolTip": "Core\\BeerStore.Api\\Controllers\\Auth\\RolePermissionController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACwAAAAXAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-24T00:16:16.196Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "CreateAddressCHandler.cs",
+              "DocumentMoniker": "C:\\Code\\Project\\Beer_Store\\BE\\Src\\Core\\BeerStore.Application\\Modules\\Auth\\Address\\Commands\\CreateAddress\\CreateAddressCHandler.cs",
+              "RelativeDocumentMoniker": "Core\\BeerStore.Application\\Modules\\Auth\\Address\\Commands\\CreateAddress\\CreateAddressCHandler.cs",
+              "ToolTip": "C:\\Code\\Project\\Beer_Store\\BE\\Src\\Core\\BeerStore.Application\\Modules\\Auth\\Address\\Commands\\CreateAddress\\CreateAddressCHandler.cs",
+              "RelativeToolTip": "Core\\BeerStore.Application\\Modules\\Auth\\Address\\Commands\\CreateAddress\\CreateAddressCHandler.cs",
+              "ViewState": "AgIAABQAAAAAAAAAAAAQwCIAAAAzAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-23T22:10:55.539Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "RAddressRepository.cs",
+              "DocumentMoniker": "C:\\Code\\Project\\Beer_Store\\BE\\Src\\Core\\BeerStore.Infrastructure\\Repository\\Auth\\Read\\RAddressRepository.cs",
+              "RelativeDocumentMoniker": "Core\\BeerStore.Infrastructure\\Repository\\Auth\\Read\\RAddressRepository.cs",
+              "ToolTip": "C:\\Code\\Project\\Beer_Store\\BE\\Src\\Core\\BeerStore.Infrastructure\\Repository\\Auth\\Read\\RAddressRepository.cs",
+              "RelativeToolTip": "Core\\BeerStore.Infrastructure\\Repository\\Auth\\Read\\RAddressRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-23T22:07:32.057Z",
               "EditorCaption": ""
             }
           ]

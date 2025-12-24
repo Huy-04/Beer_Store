@@ -2,6 +2,7 @@ using BeerStore.Application.DTOs.Auth.User.Responses.Login;
 using BeerStore.Application.Interface.IUnitOfWork.Auth;
 using BeerStore.Application.Interface.Services;
 using BeerStore.Domain.Enums.Messages;
+using BeerStore.Domain.ValueObjects.Auth.User;
 using Domain.Core.Enums;
 using Domain.Core.Enums.Messages;
 using Domain.Core.RuleException;
@@ -27,72 +28,81 @@ namespace BeerStore.Application.Modules.Auth.User.Commands.Login
 
         public async Task<LoginResponse> Handle(LoginCommand command, CancellationToken token)
         {
-            var request = command.Request;
-
-            var allUsers = await _auow.RUserRepository.GetAllWithRolesAsync(token);
-            var user = allUsers.FirstOrDefault(u =>
-                u.Email.Value == request.Email &&
-                u.UserStatus.Value == StatusEnum.Active);
-
-            if (user == null)
+            try
             {
-                _logger.LogWarning("Login failed: User with Email '{Email}' not found or inactive", request.Email);
-                throw new BusinessRuleException<UserField>(
-                    ErrorCategory.Unauthorized,
-                    UserField.Email,
-                    ErrorCode.UserNotFound,
-                    new Dictionary<object, object>
-                    {
-                        { ParamField.Value, request.Email },
-                    });
-            }
+                var request = command.Request;
 
-            if (user.UserStatus.Value != StatusEnum.Active)
-            {
-                _logger.LogWarning("Login failed: User account is inactive. Email: '{Email}', Status: {Status}", request.Email, user.UserStatus.Value);
-                throw new BusinessRuleException<UserField>(
-                    ErrorCategory.Unauthorized,
-                    UserField.UserStatus,
-                    ErrorCode.AccountInactive,
-                    new Dictionary<object, object>
-                    {
-                        { ParamField.Value, user.UserStatus.Value.ToString() },
-                    });
-            }
+                var user = await _auow.RUserRepository.GetByEmailWithRolesAsync(
+                    Email.Create(request.Email), token);
 
-            if (!_passwordHasher.VerifyPassword(request.Password, user.Password.Value))
-            {
-                _logger.LogWarning("Login failed: Invalid password for Email '{Email}'", request.Email);
-                throw new BusinessRuleException<UserField>(
-                    ErrorCategory.Unauthorized,
-                    UserField.Password,
-                    ErrorCode.InvalidPassword,
-                    new Dictionary<object, object>
-                    {
-                        { ParamField.Value, ParamField.InvalidPassword.ToString() },
-                    });
-            }
-
-            // Get user roles
-            var roles = new List<string>();
-            foreach (var userRole in user.UserRoles)
-            {
-                var role = await _auow.RRoleRepository.GetByIdAsync(userRole.RoleId, token);
-                if (role != null)
+                if (user == null)
                 {
-                    roles.Add(role.RoleName.Value);
+                    _logger.LogWarning("Login failed: User with Email '{Email}' not found", request.Email);
+                    throw new BusinessRuleException<UserField>(
+                        ErrorCategory.NotFound,
+                        UserField.Email,
+                        ErrorCode.UserNotFound,
+                        new Dictionary<object, object>
+                        {
+                            { ParamField.Value, request.Email },
+                        });
                 }
+
+                if (user.UserStatus.Value != StatusEnum.Active)
+                {
+                    _logger.LogWarning("Login failed: User account is inactive. Email: '{Email}', Status: {Status}", request.Email, user.UserStatus.Value);
+                    throw new BusinessRuleException<UserField>(
+                        ErrorCategory.Forbidden,
+                        UserField.UserStatus,
+                        ErrorCode.AccountInactive,
+                        new Dictionary<object, object>
+                        {
+                            { ParamField.Value, user.UserStatus.Value },
+                        });
+                }
+
+                if (!_passwordHasher.VerifyPassword(request.Password, user.Password.Value))
+                {
+                    _logger.LogWarning("Login failed: Invalid password for Email '{Email}'", request.Email);
+                    throw new BusinessRuleException<UserField>(
+                        ErrorCategory.Unauthorized,
+                        UserField.Password,
+                        ErrorCode.InvalidPassword,
+                        new Dictionary<object, object>
+                        {
+                            { ParamField.Value, "Invalid password" },
+                        });
+                }
+
+                // Get user roles
+                var roles = new List<string>();
+                foreach (var userRole in user.UserRoles)
+                {
+                    var role = await _auow.RRoleRepository.GetByIdAsync(userRole.RoleId, token);
+                    if (role != null)
+                    {
+                        roles.Add(role.RoleName.Value);
+                    }
+                }
+
+                // Generate JWT token
+                var jwtToken = _jwtService.GenerateToken(user.Id, user.Email, roles);
+
+                return new LoginResponse(
+                    Token: jwtToken,
+                    UserId: user.Id,
+                    Email: user.Email.Value,
+                    UserName: user.UserName.Value,
+                    Roles: roles);
             }
-
-            // Generate JWT token
-            var jwtToken = _jwtService.GenerateToken(user.Id, user.Email, roles);
-
-            return new LoginResponse(
-                Token: jwtToken,
-                UserId: user.Id,
-                Email: user.Email.Value,
-                UserName: user.UserName.Value,
-                Roles: roles);
+            catch (Exception ex)
+            {
+                _logger.LogError(ex,
+                    "Exception occurred while logging in. Request: {@Request}",
+                    command.Request
+                );
+                throw;
+            }
         }
     }
 }

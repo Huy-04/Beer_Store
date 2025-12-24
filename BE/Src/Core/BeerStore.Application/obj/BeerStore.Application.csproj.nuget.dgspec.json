@@ -10,14 +10,14 @@
         "projectUniqueName": "C:\\Code\\Project\\Beer_Store\\BE\\Src\\Core\\BeerStore.Application\\BeerStore.Application.csproj",
         "projectName": "BeerStore.Application",
         "projectPath": "C:\\Code\\Project\\Beer_Store\\BE\\Src\\Core\\BeerStore.Application\\BeerStore.Application.csproj",
-        "packagesPath": "C:\\Users\\hlbee\\.nuget\\packages\\",
+        "packagesPath": "C:\\Users\\beer\\.nuget\\packages\\",
         "outputPath": "C:\\Code\\Project\\Beer_Store\\BE\\Src\\Core\\BeerStore.Application\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\hlbee\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\beer\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -26,6 +26,7 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -88,14 +89,14 @@
         "projectUniqueName": "C:\\Code\\Project\\Beer_Store\\BE\\Src\\Core\\BeerStore.Domain\\BeerStore.Domain.csproj",
         "projectName": "BeerStore.Domain",
         "projectPath": "C:\\Code\\Project\\Beer_Store\\BE\\Src\\Core\\BeerStore.Domain\\BeerStore.Domain.csproj",
-        "packagesPath": "C:\\Users\\hlbee\\.nuget\\packages\\",
+        "packagesPath": "C:\\Users\\beer\\.nuget\\packages\\",
         "outputPath": "C:\\Code\\Project\\Beer_Store\\BE\\Src\\Core\\BeerStore.Domain\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\hlbee\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\beer\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -104,6 +105,7 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -157,14 +159,14 @@
         "projectUniqueName": "C:\\Code\\Project\\Beer_Store\\BE\\Src\\Shared\\Application.Core\\Application.Core.csproj",
         "projectName": "Application.Core",
         "projectPath": "C:\\Code\\Project\\Beer_Store\\BE\\Src\\Shared\\Application.Core\\Application.Core.csproj",
-        "packagesPath": "C:\\Users\\hlbee\\.nuget\\packages\\",
+        "packagesPath": "C:\\Users\\beer\\.nuget\\packages\\",
         "outputPath": "C:\\Code\\Project\\Beer_Store\\BE\\Src\\Shared\\Application.Core\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\hlbee\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\beer\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -173,6 +175,7 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -232,14 +235,14 @@
         "projectUniqueName": "C:\\Code\\Project\\Beer_Store\\BE\\Src\\Shared\\Domain.Core\\Domain.Core.csproj",
         "projectName": "Domain.Core",
         "projectPath": "C:\\Code\\Project\\Beer_Store\\BE\\Src\\Shared\\Domain.Core\\Domain.Core.csproj",
-        "packagesPath": "C:\\Users\\hlbee\\.nuget\\packages\\",
+        "packagesPath": "C:\\Users\\beer\\.nuget\\packages\\",
         "outputPath": "C:\\Code\\Project\\Beer_Store\\BE\\Src\\Shared\\Domain.Core\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\hlbee\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\beer\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -248,6 +251,7 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
