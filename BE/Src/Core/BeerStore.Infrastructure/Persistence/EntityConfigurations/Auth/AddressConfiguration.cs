@@ -1,5 +1,4 @@
-﻿using BeerStore.Domain.Entities.Auth;
-using BeerStore.Domain.Entities.Auth.Junction;
+using BeerStore.Domain.Entities.Auth;
 using BeerStore.Infrastructure.Persistence.EntityConfigurations.Auth.Converter;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
@@ -14,6 +13,11 @@ namespace BeerStore.Infrastructure.Persistence.EntityConfigurations.Auth
 
             entity.HasKey(a => a.Id);
             entity.Property(a => a.Id).HasColumnName("IdAddress");
+
+            entity.Property(a => a.UserId)
+                .IsRequired();
+
+            entity.HasIndex(a => a.UserId);
 
             entity.Property(a => a.Phone)
                 .HasConversion(AuthConverter.PhoneConverter)

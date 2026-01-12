@@ -1,4 +1,4 @@
-﻿using System.Text.Json.Serialization;
+using System.Text.Json.Serialization;
 
 namespace BeerStore.Domain.Enums
 {
@@ -8,5 +8,6 @@ namespace BeerStore.Domain.Enums
         user = 0,
         roles = 1,
         permissions = 2,
+        address = 3
     }
 }

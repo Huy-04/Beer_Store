@@ -3,10 +3,13 @@
   <ItemGroup>
     <Compile Remove="DTOs\Auth\a\**" />
     <Compile Remove="Features\**" />
+    <Compile Remove="Modules\Auth\Address\**" />
     <EmbeddedResource Remove="DTOs\Auth\a\**" />
     <EmbeddedResource Remove="Features\**" />
+    <EmbeddedResource Remove="Modules\Auth\Address\**" />
     <None Remove="DTOs\Auth\a\**" />
     <None Remove="Features\**" />
+    <None Remove="Modules\Auth\Address\**" />
   </ItemGroup>
 
   <ItemGroup>
@@ -19,12 +22,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Modules\Auth\Address\Commands\CreateAddress\" />
-    <Folder Include="Modules\Auth\Address\Commands\RemoveAddress\" />
-    <Folder Include="Modules\Auth\Address\Commands\UpdateAddress\" />
-    <Folder Include="Modules\Auth\Address\Queries\GetAllAddress\" />
-    <Folder Include="Modules\Auth\Address\Queries\GetAddressById\" />
-    <Folder Include="Modules\Auth\Address\Queries\GetAddressByPhone\" />
     <Folder Include="Modules\Auth\Junction\RolePermission\" />
     <Folder Include="Modules\Auth\Junction\UserAddress\" />
     <Folder Include="Modules\Auth\Junction\UserRole\" />

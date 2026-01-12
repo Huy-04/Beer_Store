@@ -1,10 +1,12 @@
-﻿using BeerStore.Domain.ValueObjects.Auth.Address;
+using BeerStore.Domain.ValueObjects.Auth.Address;
 using BeerStore.Domain.ValueObjects.Auth.User;
 
 namespace BeerStore.Domain.Entities.Auth
 {
     public class Address : AggregateRoot
     {
+        public Guid UserId { get; private set; }
+
         public Phone Phone { get; set; }
 
         public FullName FullName { get; set; }
@@ -32,9 +34,10 @@ namespace BeerStore.Domain.Entities.Auth
         private Address()
         { }
 
-        private Address(Guid id, Phone phone, FullName fullName, Province province, District district, Ward ward, Street street, IsDefault isDefault, AddressType addressType, Guid createdBy, Guid updatedBy)
+        private Address(Guid id, Guid userId, Phone phone, FullName fullName, Province province, District district, Ward ward, Street street, IsDefault isDefault, AddressType addressType, Guid createdBy, Guid updatedBy)
             : base(id)
         {
+            UserId = userId;
             Phone = phone;
             FullName = fullName;
             Province = province;
@@ -48,9 +51,9 @@ namespace BeerStore.Domain.Entities.Auth
             CreatedAt = UpdatedAt = DateTimeOffset.UtcNow;
         }
 
-        public static Address Create(Phone phone, FullName fullName, Province province, District district, Ward ward, Street street, IsDefault isDefault, AddressType addressType, Guid createdBy, Guid updatedBy)
+        public static Address Create(Guid userId, Phone phone, FullName fullName, Province province, District district, Ward ward, Street street, IsDefault isDefault, AddressType addressType, Guid createdBy, Guid updatedBy)
         {
-            var address = new Address(Guid.NewGuid(), phone, fullName, province, district, ward, street, isDefault, addressType, createdBy, updatedBy);
+            var address = new Address(Guid.NewGuid(), userId, phone, fullName, province, district, ward, street, isDefault, addressType, createdBy, updatedBy);
             return address;
         }
 

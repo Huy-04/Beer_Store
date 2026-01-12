@@ -46,7 +46,7 @@ namespace BeerStore.Application.Modules.Auth.Junction.UserRole.Commands.RemoveUs
             {
                 await _auow.RollbackTransactionAsync(token);
                 _logger.LogError(ex,
-                    "Exception occurred while removing UserRole. UserRoleId: {UserRoleId}",
+                    "Failed to remove UserRole. UserRoleId: {UserRoleId}",
                     command.UserRoleId
                 );
                 throw;

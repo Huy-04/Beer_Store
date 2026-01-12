@@ -1,4 +1,4 @@
-﻿namespace BeerStore.Application.DTOs.Auth.Role.Responses
+namespace BeerStore.Application.DTOs.Auth.Role.Responses
 {
     public record RoleResponse(
         Guid IdRole,

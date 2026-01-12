@@ -1,10 +1,11 @@
+using BeerStore.Application.Interface.Services;
+using BeerStore.Domain.ValueObjects.Auth.User;
+using Infrastructure.Core.Settings;
+using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
+using System.Security.Cryptography;
 using System.Text;
-using Microsoft.IdentityModel.Tokens;
-using BeerStore.Application.Interface.Services;
-using Infrastructure.Core.Settings;
-using BeerStore.Domain.ValueObjects.Auth.User;
 
 namespace BeerStore.Infrastructure.Services
 {
@@ -38,12 +39,25 @@ namespace BeerStore.Infrastructure.Services
                 issuer: _jwtSettings.Issuer,
                 audience: _jwtSettings.Audience,
                 claims: claims,
-                expires: DateTime.UtcNow.AddMinutes(_jwtSettings.ExpirationMinutes),
+                expires: DateTime.UtcNow.AddMinutes(_jwtSettings.AccessTokenExpirationMinutes),
                 signingCredentials: credentials
             );
 
             var tokenHandler = new JwtSecurityTokenHandler();
             return tokenHandler.WriteToken(token);
+        }
+
+        public string GenerateRefreshToken()
+        {
+            var randomBytes = RandomNumberGenerator.GetBytes(32);
+            return Convert.ToBase64String(randomBytes);
+        }
+
+        public string HashRefreshToken(string token)
+        {
+            var bytes = Encoding.UTF8.GetBytes(token);
+            var hash = SHA256.HashData(bytes);
+            return Convert.ToBase64String(hash);
         }
     }
 }

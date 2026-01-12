@@ -1,4 +1,4 @@
-﻿using BeerStore.Domain.Enums;
+using BeerStore.Domain.Enums;
 using BeerStore.Domain.ValueObjects.Auth.Address;
 using Domain.Core.Enums;
 

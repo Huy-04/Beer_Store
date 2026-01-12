@@ -1,4 +1,4 @@
-﻿using BeerStore.Domain.Entities.Auth;
+using BeerStore.Domain.Entities.Auth;
 using BeerStore.Domain.Entities.Auth.Junction;
 using BeerStore.Infrastructure.Persistence.EntityConfigurations.Auth.Converter;
 using Microsoft.EntityFrameworkCore;

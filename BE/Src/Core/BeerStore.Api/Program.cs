@@ -1,5 +1,6 @@
 using Api.Core.Logging;
 using Api.Core.Middleware;
+using Application.Core.Interface.ISettings;
 using BeerStore.Infrastructure;
 using Infrastructure.Core.Settings;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -66,7 +67,7 @@ if (jwtSettings == null)
 {
     throw new InvalidOperationException("JwtSettings not configured in appsettings.json");
 }
-builder.Services.AddSingleton(jwtSettings);
+builder.Services.AddSingleton<IJwtSettings>(jwtSettings);
 
 // Add MediatR
 builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblies(

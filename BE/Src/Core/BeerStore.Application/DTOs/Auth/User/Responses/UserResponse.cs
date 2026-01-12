@@ -1,4 +1,4 @@
-﻿using Domain.Core.Enums;
+using Domain.Core.Enums;
 
 namespace BeerStore.Application.DTOs.Auth.User.Responses
 {

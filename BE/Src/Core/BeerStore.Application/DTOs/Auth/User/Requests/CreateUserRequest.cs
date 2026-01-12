@@ -1,4 +1,4 @@
-﻿namespace BeerStore.Application.DTOs.Auth.User.Requests
+namespace BeerStore.Application.DTOs.Auth.User.Requests
 {
     public record CreateUserRequest(
         string Email,

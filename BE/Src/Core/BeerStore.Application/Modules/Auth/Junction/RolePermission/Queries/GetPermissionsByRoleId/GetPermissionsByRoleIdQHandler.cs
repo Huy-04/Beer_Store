@@ -1,6 +1,6 @@
 using BeerStore.Application.DTOs.Auth.Junction.RolePermission.Responses;
 using BeerStore.Application.Interface.IUnitOfWork.Auth;
-using BeerStore.Application.Mapping.Auth.Junction.RolePermissionMap;
+using BeerStore.Application.Mapping.Auth.JunctionMap.RolePermissionMap;
 using MediatR;
 
 namespace BeerStore.Application.Modules.Auth.Junction.RolePermission.Queries.GetPermissionsByRoleId

@@ -1,5 +1,5 @@
-﻿using BeerStore.Domain.Entities.Auth;
-using BeerStore.Domain.ValueObjects.Auth.Roles;
+using BeerStore.Domain.Entities.Auth;
+using BeerStore.Domain.ValueObjects.Auth.Role;
 using Domain.Core.Interface.IRepository;
 
 namespace BeerStore.Domain.IRepository.Auth.Read
@@ -8,6 +8,8 @@ namespace BeerStore.Domain.IRepository.Auth.Read
     {
         Task<bool> ExistsByNameAsync(RoleName roleName, CancellationToken token = default, Guid? idRole = null);
 
-        public Task<Role?> GetByNameAsync(RoleName roleName, CancellationToken token = default);
+        Task<Role?> GetByNameAsync(RoleName roleName, CancellationToken token = default);
+
+        Task<IEnumerable<Role>> GetRolesByIdsAsync(IEnumerable<Guid> roleIds, CancellationToken token = default);
     }
 }

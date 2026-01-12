@@ -1,4 +1,4 @@
-﻿using BeerStore.Application.DTOs.Auth.Role.Responses;
+using BeerStore.Application.DTOs.Auth.Role.Responses;
 using BeerStore.Domain.Entities.Auth;
 
 namespace BeerStore.Application.Mapping.Auth.RoleMap

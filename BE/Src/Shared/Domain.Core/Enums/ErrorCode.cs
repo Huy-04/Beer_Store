@@ -38,5 +38,10 @@
         InvalidPassword,
         AccountInactive,
 
+        // RefreshToken
+        TokenNotFound,
+        TokenExpired,
+        TokenRevoked,
+
     }
 }

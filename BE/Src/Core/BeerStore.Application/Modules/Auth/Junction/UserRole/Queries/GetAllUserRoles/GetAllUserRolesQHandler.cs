@@ -1,6 +1,6 @@
 using BeerStore.Application.DTOs.Auth.Junction.UserRole.Responses;
 using BeerStore.Application.Interface.IUnitOfWork.Auth;
-using BeerStore.Application.Mapping.Auth.Junction.UserRoleMap;
+using BeerStore.Application.Mapping.Auth.JunctionMap.UserRoleMap;
 using MediatR;
 
 namespace BeerStore.Application.Modules.Auth.Junction.UserRole.Queries.GetAllUserRoles

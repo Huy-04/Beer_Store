@@ -1,6 +1,6 @@
-﻿using BeerStore.Domain.Entities.Auth;
+using BeerStore.Domain.Entities.Auth;
 using BeerStore.Domain.IRepository.Auth.Read;
-using BeerStore.Domain.ValueObjects.Auth.Roles;
+using BeerStore.Domain.ValueObjects.Auth.Role;
 using BeerStore.Infrastructure.Persistence.Db;
 using Infrastructure.Core.Repository;
 using Microsoft.EntityFrameworkCore;
@@ -15,9 +15,7 @@ namespace BeerStore.Infrastructure.Repository.Auth.Read
 
         public Task<bool> ExistsByNameAsync(RoleName roleName, CancellationToken token = default, Guid? idRole = null)
         {
-            return _entities
-                .AsNoTracking()
-                .AnyAsync(r => r.RoleName == roleName && (idRole == null || r.Id != idRole), token);
+            return AnyAsync(r => r.RoleName == roleName && (idRole == null || r.Id != idRole), token);
         }
 
         public Task<Role?> GetByNameAsync(RoleName roleName, CancellationToken token = default)
@@ -25,6 +23,11 @@ namespace BeerStore.Infrastructure.Repository.Auth.Read
             return _entities
                 .AsNoTracking()
                 .FirstOrDefaultAsync(r => r.RoleName == roleName, token);
+        }
+
+        public async Task<IEnumerable<Role>> GetRolesByIdsAsync(IEnumerable<Guid> roleIds, CancellationToken token = default)
+        {
+            return await FindAsync(r => roleIds.Contains(r.Id), token);
         }
     }
 }

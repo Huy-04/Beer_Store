@@ -1,4 +1,4 @@
-﻿using BeerStore.Domain.Enums;
+using BeerStore.Domain.Enums;
 
 namespace BeerStore.Application.DTOs.Auth.Permission.Responses
 {

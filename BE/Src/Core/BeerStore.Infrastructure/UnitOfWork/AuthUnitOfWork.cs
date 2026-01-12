@@ -1,7 +1,8 @@
 ﻿using BeerStore.Application.Interface.IUnitOfWork.Auth;
-using BeerStore.Domain.IRepository.Auth;
 using BeerStore.Domain.IRepository.Auth.Read;
+using BeerStore.Domain.IRepository.Auth.Read.Junction;
 using BeerStore.Domain.IRepository.Auth.Write;
+using BeerStore.Domain.IRepository.Auth.Write.Junction;
 using BeerStore.Infrastructure.Persistence.Db;
 using Infrastructure.Core.UnitOfWork;
 
@@ -19,10 +20,10 @@ namespace BeerStore.Infrastructure.UnitOfWork
             IWPermissionRepository wPermissionRepo,
             IRAddressRepository rAddressRepo,
             IWAddressRepository wAddressRepo,
+            IRRefreshTokenRepository rRefreshTokenRepo,
+            IWRefreshTokenRepository wRefreshTokenRepo,
             IRUserRoleRepository rUserRoleRepo,
             IWUserRoleRepository wUserRoleRepo,
-            IRUserAddressRepository rUserAddressRepo,
-            IWUserAddressRepository wUserAddressRepo,
             IRRolePermissionRepository rRolePermissionRepo,
             IWRolePermissionRepository wRolePermissionRepo) : base(context)
         {
@@ -38,11 +39,11 @@ namespace BeerStore.Infrastructure.UnitOfWork
             RAddressRepository = rAddressRepo;
             WAddressRepository = wAddressRepo;
 
+            RRefreshTokenRepository = rRefreshTokenRepo;
+            WRefreshTokenRepository = wRefreshTokenRepo;
+
             RUserRoleRepository = rUserRoleRepo;
             WUserRoleRepository = wUserRoleRepo;
-
-            RUserAddressRepository = rUserAddressRepo;
-            WUserAddressRepository = wUserAddressRepo;
 
             RRolePermissionRepository = rRolePermissionRepo;
             WRolePermissionRepository = wRolePermissionRepo;
@@ -68,15 +69,15 @@ namespace BeerStore.Infrastructure.UnitOfWork
 
         public IWAddressRepository WAddressRepository { get; }
 
+        // RefreshToken
+        public IRRefreshTokenRepository RRefreshTokenRepository { get; }
+
+        public IWRefreshTokenRepository WRefreshTokenRepository { get; }
+
         // UserRole
         public IRUserRoleRepository RUserRoleRepository { get; }
 
         public IWUserRoleRepository WUserRoleRepository { get; }
-
-        // UserAddress
-        public IRUserAddressRepository RUserAddressRepository { get; }
-
-        public IWUserAddressRepository WUserAddressRepository { get; }
 
         // RolePermission
         public IRRolePermissionRepository RRolePermissionRepository { get; }

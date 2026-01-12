@@ -1,6 +1,6 @@
 using BeerStore.Application.DTOs.Auth.Junction.RolePermission.Responses;
 using BeerStore.Application.Interface.IUnitOfWork.Auth;
-using BeerStore.Application.Mapping.Auth.Junction.RolePermissionMap;
+using BeerStore.Application.Mapping.Auth.JunctionMap.RolePermissionMap;
 using BeerStore.Domain.Entities.Auth.Junction;
 using BeerStore.Domain.Enums.Messages;
 using RolePermissionEntity = BeerStore.Domain.Entities.Auth.Junction.RolePermission;
@@ -62,7 +62,7 @@ namespace BeerStore.Application.Modules.Auth.Junction.RolePermission.Commands.Ad
             {
                 await _auow.RollbackTransactionAsync(token);
                 _logger.LogError(ex,
-                    "Exception occurred while adding RolePermission. RoleId: {RoleId}, PermissionId: {PermissionId}",
+                    "Failed to add RolePermission. RoleId: {RoleId}, PermissionId: {PermissionId}",
                     command.RoleId, command.PermissionId
                 );
                 throw;

@@ -46,7 +46,7 @@ namespace BeerStore.Application.Modules.Auth.Junction.RolePermission.Commands.Re
             {
                 await _auow.RollbackTransactionAsync(token);
                 _logger.LogError(ex,
-                    "Exception occurred while removing RolePermission. RolePermissionId: {RolePermissionId}",
+                    "Failed to remove RolePermission. RolePermissionId: {RolePermissionId}",
                     command.RolePermissionId
                 );
                 throw;

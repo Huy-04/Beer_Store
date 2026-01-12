@@ -1,0 +1,1615 @@
+{
+	"info": {
+		"_postman_id": "38b7039d-f0ec-4f07-86ba-4bf3f290e155",
+		"name": "Web Restaurant",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "46875935",
+		"_collection_link": "https://beer-5570543.postman.co/workspace/Beer's-Workspace~36d11f45-1c45-4f90-8415-5f855e9251e2/collection/46875935-38b7039d-f0ec-4f07-86ba-4bf3f290e155?action=share&source=collection_link&creator=46875935"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Authentication",
+					"item": [
+						{
+							"name": "Login",
+							"protocolProfileBehavior": {
+								"strictSSL": false,
+								"followRedirects": true
+							},
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"email\": \"admin@beerstore.com\",\r\n  \"password\": \"useradmin\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://localhost:7124/api/auth/login",
+									"protocol": "https",
+									"host": [
+										"localhost"
+									],
+									"port": "7124",
+									"path": [
+										"api",
+										"auth",
+										"login"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Register",
+							"protocolProfileBehavior": {
+								"strictSSL": false,
+								"followRedirects": true
+							},
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"email\": \"string\",\r\n  \"phone\": \"string\",\r\n  \"fullName\": \"string\",\r\n  \"userName\": \"string\",\r\n  \"address\": \"string\",\r\n  \"password\": \"string\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://localhost:7124/api/auth/register",
+									"protocol": "https",
+									"host": [
+										"localhost"
+									],
+									"port": "7124",
+									"path": [
+										"api",
+										"auth",
+										"register"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Logout",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "",
+										"type": "text"
+									},
+									{
+										"key": "X-Device-Id",
+										"value": "",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "https://localhost:7124/api/auth/logout",
+									"protocol": "https",
+									"host": [
+										"localhost"
+									],
+									"port": "7124",
+									"path": [
+										"api",
+										"auth",
+										"logout"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Refresh Access Token",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "X-Device-Id",
+										"value": "",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"refreshToken\" : \"a\",\r\n    \"deviceId\" : \"a\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://localhost:7124/api/auth/refresh-accesstoken",
+									"protocol": "https",
+									"host": [
+										"localhost"
+									],
+									"port": "7124",
+									"path": [
+										"api",
+										"auth",
+										"refresh-accesstoken"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Users",
+					"item": [
+						{
+							"name": "Query",
+							"item": [
+								{
+									"name": "Get All User",
+									"protocolProfileBehavior": {
+										"strictSSL": false,
+										"followRedirects": true,
+										"disableBodyPruning": true
+									},
+									"request": {
+										"auth": {
+											"type": "noauth"
+										},
+										"method": "GET",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6IjExMTExMTExLTExMTEtMTExMS0xMTExLTExMTExMTExMTExMSIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL2VtYWlsYWRkcmVzcyI6ImFkbWluQGJlZXJzdG9yZS5jb20iLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJBZG1pbmlzdHJhdG9yIiwiZXhwIjoxNzY3MjQxNjgzLCJpc3MiOiJCZWVyU3RvcmVBcGkiLCJhdWQiOiJCZWVyU3RvcmVDbGllbnQifQ.rGZNidApWX897JSZplv8IV5dlatQQkFftZY1R2GRkfs",
+												"type": "string"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "https://localhost:7124/api/User",
+											"protocol": "https",
+											"host": [
+												"localhost"
+											],
+											"port": "7124",
+											"path": [
+												"api",
+												"User"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Get User By Id",
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6IjExMTExMTExLTExMTEtMTExMS0xMTExLTExMTExMTExMTExMSIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL2VtYWlsYWRkcmVzcyI6ImFkbWluQGJlZXJzdG9yZS5jb20iLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJBZG1pbmlzdHJhdG9yIiwiZXhwIjoxNzY3MjQxNjgzLCJpc3MiOiJCZWVyU3RvcmVBcGkiLCJhdWQiOiJCZWVyU3RvcmVDbGllbnQifQ.rGZNidApWX897JSZplv8IV5dlatQQkFftZY1R2GRkfs",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "https://localhost:7124/api/User/",
+											"protocol": "https",
+											"host": [
+												"localhost"
+											],
+											"port": "7124",
+											"path": [
+												"api",
+												"User",
+												""
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Get User By Email",
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6IjExMTExMTExLTExMTEtMTExMS0xMTExLTExMTExMTExMTExMSIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL2VtYWlsYWRkcmVzcyI6ImFkbWluQGJlZXJzdG9yZS5jb20iLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJBZG1pbmlzdHJhdG9yIiwiZXhwIjoxNzY1Nzk2NTkyLCJpc3MiOiJCZWVyU3RvcmVBcGkiLCJhdWQiOiJCZWVyU3RvcmVDbGllbnQifQ.lcX9VcrVowUftWUz_WzklfW-fq8sHTcFTNYb99D31ss",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "https://localhost:7124/api/User/email/test2",
+											"protocol": "https",
+											"host": [
+												"localhost"
+											],
+											"port": "7124",
+											"path": [
+												"api",
+												"User",
+												"email",
+												"test2"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Get User By UserName",
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6IjExMTExMTExLTExMTEtMTExMS0xMTExLTExMTExMTExMTExMSIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL2VtYWlsYWRkcmVzcyI6ImFkbWluQGJlZXJzdG9yZS5jb20iLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJBZG1pbmlzdHJhdG9yIiwiZXhwIjoxNzY1Nzk2NTkyLCJpc3MiOiJCZWVyU3RvcmVBcGkiLCJhdWQiOiJCZWVyU3RvcmVDbGllbnQifQ.lcX9VcrVowUftWUz_WzklfW-fq8sHTcFTNYb99D31ss",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "https://localhost:7124/api/User/username/admin",
+											"protocol": "https",
+											"host": [
+												"localhost"
+											],
+											"port": "7124",
+											"path": [
+												"api",
+												"User",
+												"username",
+												"admin"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Get User By Phone",
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6IjExMTExMTExLTExMTEtMTExMS0xMTExLTExMTExMTExMTExMSIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL2VtYWlsYWRkcmVzcyI6ImFkbWluQGJlZXJzdG9yZS5jb20iLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJBZG1pbmlzdHJhdG9yIiwiZXhwIjoxNzY1Nzk2NTkyLCJpc3MiOiJCZWVyU3RvcmVBcGkiLCJhdWQiOiJCZWVyU3RvcmVDbGllbnQifQ.lcX9VcrVowUftWUz_WzklfW-fq8sHTcFTNYb99D31ss",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "https://localhost:7124/api/User/phone/test2",
+											"protocol": "https",
+											"host": [
+												"localhost"
+											],
+											"port": "7124",
+											"path": [
+												"api",
+												"User",
+												"phone",
+												"test2"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Get User By User Status",
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6IjExMTExMTExLTExMTEtMTExMS0xMTExLTExMTExMTExMTExMSIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL2VtYWlsYWRkcmVzcyI6ImFkbWluQGJlZXJzdG9yZS5jb20iLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJBZG1pbmlzdHJhdG9yIiwiZXhwIjoxNzY1Nzk2NTkyLCJpc3MiOiJCZWVyU3RvcmVBcGkiLCJhdWQiOiJCZWVyU3RvcmVDbGllbnQifQ.lcX9VcrVowUftWUz_WzklfW-fq8sHTcFTNYb99D31ss",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "https://localhost:7124/api/User/userstatus/active",
+											"protocol": "https",
+											"host": [
+												"localhost"
+											],
+											"port": "7124",
+											"path": [
+												"api",
+												"User",
+												"userstatus",
+												"active"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Get User By Email Status",
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6IjExMTExMTExLTExMTEtMTExMS0xMTExLTExMTExMTExMTExMSIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL2VtYWlsYWRkcmVzcyI6ImFkbWluQGJlZXJzdG9yZS5jb20iLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJBZG1pbmlzdHJhdG9yIiwiZXhwIjoxNzY1Nzk2NTkyLCJpc3MiOiJCZWVyU3RvcmVBcGkiLCJhdWQiOiJCZWVyU3RvcmVDbGllbnQifQ.lcX9VcrVowUftWUz_WzklfW-fq8sHTcFTNYb99D31ss",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "https://localhost:7124/api/User/emailstatus/inactive",
+											"protocol": "https",
+											"host": [
+												"localhost"
+											],
+											"port": "7124",
+											"path": [
+												"api",
+												"User",
+												"emailstatus",
+												"inactive"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Get User By Phone Status",
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6IjExMTExMTExLTExMTEtMTExMS0xMTExLTExMTExMTExMTExMSIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL2VtYWlsYWRkcmVzcyI6ImFkbWluQGJlZXJzdG9yZS5jb20iLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJBZG1pbmlzdHJhdG9yIiwiZXhwIjoxNzY1Nzk2NTkyLCJpc3MiOiJCZWVyU3RvcmVBcGkiLCJhdWQiOiJCZWVyU3RvcmVDbGllbnQifQ.lcX9VcrVowUftWUz_WzklfW-fq8sHTcFTNYb99D31ss",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "https://localhost:7124/api/User/phonestatus/inactive",
+											"protocol": "https",
+											"host": [
+												"localhost"
+											],
+											"port": "7124",
+											"path": [
+												"api",
+												"User",
+												"phonestatus",
+												"inactive"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "Create User",
+							"protocolProfileBehavior": {
+								"strictSSL": false,
+								"followRedirects": true
+							},
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6IjExMTExMTExLTExMTEtMTExMS0xMTExLTExMTExMTExMTExMSIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL2VtYWlsYWRkcmVzcyI6ImFkbWluQGJlZXJzdG9yZS5jb20iLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJBZG1pbmlzdHJhdG9yIiwiZXhwIjoxNzY3MTA5NjEyLCJpc3MiOiJCZWVyU3RvcmVBcGkiLCJhdWQiOiJCZWVyU3RvcmVDbGllbnQifQ.K_uVsQ-GD1NW-Cbe3k7YrwIpD_Z7LIVFKdyHeQaEBwY",
+										"type": "string"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"email\": \"test1\",\r\n  \"phone\": \"test1\",\r\n  \"fullName\": \"test1\",\r\n  \"userName\": \"test1\",\r\n  \"password\": \"test1\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://localhost:7124/api/User",
+									"protocol": "https",
+									"host": [
+										"localhost"
+									],
+									"port": "7124",
+									"path": [
+										"api",
+										"User"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Remove User",
+							"protocolProfileBehavior": {
+								"strictSSL": false,
+								"followRedirects": true
+							},
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6IjExMTExMTExLTExMTEtMTExMS0xMTExLTExMTExMTExMTExMSIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL2VtYWlsYWRkcmVzcyI6ImFkbWluQGJlZXJzdG9yZS5jb20iLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJBZG1pbmlzdHJhdG9yIiwiZXhwIjoxNzY1NDk1MzI5LCJpc3MiOiJCZWVyU3RvcmVBcGkiLCJhdWQiOiJCZWVyU3RvcmVDbGllbnQifQ.LIlkNhY7V7PCu2bYjQRYlTsm7at8ENxlWZy8r55MPgM",
+										"type": "string"
+									}
+								],
+								"url": {
+									"raw": "https://localhost:7124/api/User/29160e6f-ec42-4d5b-ae18-97aeda6578a7",
+									"protocol": "https",
+									"host": [
+										"localhost"
+									],
+									"port": "7124",
+									"path": [
+										"api",
+										"User",
+										"29160e6f-ec42-4d5b-ae18-97aeda6578a7"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update User",
+							"protocolProfileBehavior": {
+								"strictSSL": false,
+								"followRedirects": true
+							},
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6IjExMTExMTExLTExMTEtMTExMS0xMTExLTExMTExMTExMTExMSIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL2VtYWlsYWRkcmVzcyI6ImFkbWluQGJlZXJzdG9yZS5jb20iLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJBZG1pbmlzdHJhdG9yIiwiZXhwIjoxNzY1NzQ0MDcyLCJpc3MiOiJCZWVyU3RvcmVBcGkiLCJhdWQiOiJCZWVyU3RvcmVDbGllbnQifQ.8iQdMBsLhp3wesu_Z_XVYbp3_yC53YjdNfFeoezKaAg",
+										"type": "string"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"email\": \"test2\",\r\n  \"phone\": \"test2\",\r\n  \"fullName\": \"test2\",\r\n  \"userName\": \"test2\",\r\n  \"address\": \"test2\",\r\n  \"password\": \"test2\",\r\n  \"userStatus\": 0,\r\n  \"emailStatus\": 1,\r\n  \"phoneStatus\": 1\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://localhost:7124/api/User/42c5d984-edcd-48ca-8454-fc85ba8a4647",
+									"protocol": "https",
+									"host": [
+										"localhost"
+									],
+									"port": "7124",
+									"path": [
+										"api",
+										"User",
+										"42c5d984-edcd-48ca-8454-fc85ba8a4647"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					]
+				},
+				{
+					"name": "Roles",
+					"item": [
+						{
+							"name": "Query",
+							"item": [
+								{
+									"name": "Get All Role",
+									"protocolProfileBehavior": {
+										"strictSSL": false,
+										"followRedirects": true,
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6IjExMTExMTExLTExMTEtMTExMS0xMTExLTExMTExMTExMTExMSIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL2VtYWlsYWRkcmVzcyI6ImFkbWluQGJlZXJzdG9yZS5jb20iLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJBZG1pbmlzdHJhdG9yIiwiZXhwIjoxNzY3MTk4MTE4LCJpc3MiOiJCZWVyU3RvcmVBcGkiLCJhdWQiOiJCZWVyU3RvcmVDbGllbnQifQ.AP6CzShY5h_HSqLW93zVijHlkeoTXX2hwevApbHcFuQ",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "https://localhost:7124/api/Role",
+											"protocol": "https",
+											"host": [
+												"localhost"
+											],
+											"port": "7124",
+											"path": [
+												"api",
+												"Role"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Get Role By Id",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6IjExMTExMTExLTExMTEtMTExMS0xMTExLTExMTExMTExMTExMSIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL2VtYWlsYWRkcmVzcyI6ImFkbWluQGJlZXJzdG9yZS5jb20iLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJBZG1pbmlzdHJhdG9yIiwiZXhwIjoxNzY3MTA5NjEyLCJpc3MiOiJCZWVyU3RvcmVBcGkiLCJhdWQiOiJCZWVyU3RvcmVDbGllbnQifQ.K_uVsQ-GD1NW-Cbe3k7YrwIpD_Z7LIVFKdyHeQaEBwY",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": ""
+										},
+										"url": {
+											"raw": "https://localhost:7124/api/Role/33333333-3333-3333-3333-333333333333",
+											"protocol": "https",
+											"host": [
+												"localhost"
+											],
+											"port": "7124",
+											"path": [
+												"api",
+												"Role",
+												"33333333-3333-3333-3333-333333333333"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "New Request",
+									"request": {
+										"method": "GET",
+										"header": []
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "Create Role",
+							"protocolProfileBehavior": {
+								"strictSSL": false,
+								"followRedirects": true
+							},
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6IjExMTExMTExLTExMTEtMTExMS0xMTExLTExMTExMTExMTExMSIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL2VtYWlsYWRkcmVzcyI6ImFkbWluQGJlZXJzdG9yZS5jb20iLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJBZG1pbmlzdHJhdG9yIiwiZXhwIjoxNzY3MTA5NjEyLCJpc3MiOiJCZWVyU3RvcmVBcGkiLCJhdWQiOiJCZWVyU3RvcmVDbGllbnQifQ.K_uVsQ-GD1NW-Cbe3k7YrwIpD_Z7LIVFKdyHeQaEBwY",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"roleName\": \"test1\",\r\n  \"description\": \"test1\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://localhost:7124/api/Role",
+									"protocol": "https",
+									"host": [
+										"localhost"
+									],
+									"port": "7124",
+									"path": [
+										"api",
+										"Role"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Remove Role",
+							"protocolProfileBehavior": {
+								"strictSSL": false,
+								"followRedirects": true
+							},
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6IjExMTExMTExLTExMTEtMTExMS0xMTExLTExMTExMTExMTExMSIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL2VtYWlsYWRkcmVzcyI6ImFkbWluQGJlZXJzdG9yZS5jb20iLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJBZG1pbmlzdHJhdG9yIiwiZXhwIjoxNzY1Nzk2NTkyLCJpc3MiOiJCZWVyU3RvcmVBcGkiLCJhdWQiOiJCZWVyU3RvcmVDbGllbnQifQ.lcX9VcrVowUftWUz_WzklfW-fq8sHTcFTNYb99D31ss",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://localhost:7124/api/Role/906b3db4-1be8-4dda-84f3-17327b95e849",
+									"protocol": "https",
+									"host": [
+										"localhost"
+									],
+									"port": "7124",
+									"path": [
+										"api",
+										"Role",
+										"906b3db4-1be8-4dda-84f3-17327b95e849"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update Role",
+							"protocolProfileBehavior": {
+								"strictSSL": false,
+								"followRedirects": true
+							},
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6IjExMTExMTExLTExMTEtMTExMS0xMTExLTExMTExMTExMTExMSIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL2VtYWlsYWRkcmVzcyI6ImFkbWluQGJlZXJzdG9yZS5jb20iLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJBZG1pbmlzdHJhdG9yIiwiZXhwIjoxNzY1ODA0ODA1LCJpc3MiOiJCZWVyU3RvcmVBcGkiLCJhdWQiOiJCZWVyU3RvcmVDbGllbnQifQ.8LZwDMoZzhOGH-C9YJiRChUwUnHj80rWBkZoB-IbZbY",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"roleName\": \"test1\",\r\n  \"description\": \"test2\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://localhost:7124/api/Role/4eb4620a-8195-486b-b59d-c008fe5dada2",
+									"protocol": "https",
+									"host": [
+										"localhost"
+									],
+									"port": "7124",
+									"path": [
+										"api",
+										"Role",
+										"4eb4620a-8195-486b-b59d-c008fe5dada2"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					]
+				},
+				{
+					"name": "Permissions",
+					"item": [
+						{
+							"name": "Query",
+							"item": [
+								{
+									"name": "Get All Permission",
+									"protocolProfileBehavior": {
+										"strictSSL": false,
+										"followRedirects": true
+									},
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6IjExMTExMTExLTExMTEtMTExMS0xMTExLTExMTExMTExMTExMSIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL2VtYWlsYWRkcmVzcyI6ImFkbWluQGJlZXJzdG9yZS5jb20iLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJBZG1pbmlzdHJhdG9yIiwiZXhwIjoxNzY3MTk4MTE4LCJpc3MiOiJCZWVyU3RvcmVBcGkiLCJhdWQiOiJCZWVyU3RvcmVDbGllbnQifQ.AP6CzShY5h_HSqLW93zVijHlkeoTXX2hwevApbHcFuQ",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "https://localhost:7124/api/Permission",
+											"protocol": "https",
+											"host": [
+												"localhost"
+											],
+											"port": "7124",
+											"path": [
+												"api",
+												"Permission"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Get Permission By Id",
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6IjExMTExMTExLTExMTEtMTExMS0xMTExLTExMTExMTExMTExMSIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL2VtYWlsYWRkcmVzcyI6ImFkbWluQGJlZXJzdG9yZS5jb20iLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJBZG1pbmlzdHJhdG9yIiwiZXhwIjoxNzY3MTk4MTE4LCJpc3MiOiJCZWVyU3RvcmVBcGkiLCJhdWQiOiJCZWVyU3RvcmVDbGllbnQifQ.AP6CzShY5h_HSqLW93zVijHlkeoTXX2hwevApbHcFuQ",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "https://localhost:7124/api/Permission/",
+											"protocol": "https",
+											"host": [
+												"localhost"
+											],
+											"port": "7124",
+											"path": [
+												"api",
+												"Permission",
+												""
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Get Permission By Module",
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6IjExMTExMTExLTExMTEtMTExMS0xMTExLTExMTExMTExMTExMSIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL2VtYWlsYWRkcmVzcyI6ImFkbWluQGJlZXJzdG9yZS5jb20iLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJBZG1pbmlzdHJhdG9yIiwiZXhwIjoxNzY1ODA0ODA1LCJpc3MiOiJCZWVyU3RvcmVBcGkiLCJhdWQiOiJCZWVyU3RvcmVDbGllbnQifQ.8LZwDMoZzhOGH-C9YJiRChUwUnHj80rWBkZoB-IbZbY",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "https://localhost:7124/api/Permission/module/user",
+											"protocol": "https",
+											"host": [
+												"localhost"
+											],
+											"port": "7124",
+											"path": [
+												"api",
+												"Permission",
+												"module",
+												"user"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "Create Permisson",
+							"protocolProfileBehavior": {
+								"strictSSL": false,
+								"followRedirects": true
+							},
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6IjExMTExMTExLTExMTEtMTExMS0xMTExLTExMTExMTExMTExMSIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL2VtYWlsYWRkcmVzcyI6ImFkbWluQGJlZXJzdG9yZS5jb20iLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJBZG1pbmlzdHJhdG9yIiwiZXhwIjoxNzY1ODA0ODA1LCJpc3MiOiJCZWVyU3RvcmVBcGkiLCJhdWQiOiJCZWVyU3RvcmVDbGllbnQifQ.8LZwDMoZzhOGH-C9YJiRChUwUnHj80rWBkZoB-IbZbY",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"permissionName\": \"test1\",\r\n  \"module\": 0,\r\n  \"operation\": 0,\r\n  \"description\": \"test1\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://localhost:7124/api/Permission",
+									"protocol": "https",
+									"host": [
+										"localhost"
+									],
+									"port": "7124",
+									"path": [
+										"api",
+										"Permission"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update Permission",
+							"protocolProfileBehavior": {
+								"strictSSL": false,
+								"followRedirects": true
+							},
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6IjExMTExMTExLTExMTEtMTExMS0xMTExLTExMTExMTExMTExMSIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL2VtYWlsYWRkcmVzcyI6ImFkbWluQGJlZXJzdG9yZS5jb20iLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJBZG1pbmlzdHJhdG9yIiwiZXhwIjoxNzY1ODA0ODA1LCJpc3MiOiJCZWVyU3RvcmVBcGkiLCJhdWQiOiJCZWVyU3RvcmVDbGllbnQifQ.8LZwDMoZzhOGH-C9YJiRChUwUnHj80rWBkZoB-IbZbY",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"permissionName\": \"test1\",\r\n  \"module\": 0,\r\n  \"operation\": 0,\r\n  \"description\": \"test2\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://localhost:7124/api/Permission/89cba5e4-0fbb-4621-ab2b-d14e2eba4c81",
+									"protocol": "https",
+									"host": [
+										"localhost"
+									],
+									"port": "7124",
+									"path": [
+										"api",
+										"Permission",
+										"89cba5e4-0fbb-4621-ab2b-d14e2eba4c81"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Remove Permission",
+							"protocolProfileBehavior": {
+								"strictSSL": false,
+								"followRedirects": true
+							},
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6IjExMTExMTExLTExMTEtMTExMS0xMTExLTExMTExMTExMTExMSIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL2VtYWlsYWRkcmVzcyI6ImFkbWluQGJlZXJzdG9yZS5jb20iLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJBZG1pbmlzdHJhdG9yIiwiZXhwIjoxNzY1ODA0ODA1LCJpc3MiOiJCZWVyU3RvcmVBcGkiLCJhdWQiOiJCZWVyU3RvcmVDbGllbnQifQ.8LZwDMoZzhOGH-C9YJiRChUwUnHj80rWBkZoB-IbZbY",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "https://localhost:7124/api/Permission/89cba5e4-0fbb-4621-ab2b-d14e2eba4c81",
+									"protocol": "https",
+									"host": [
+										"localhost"
+									],
+									"port": "7124",
+									"path": [
+										"api",
+										"Permission",
+										"89cba5e4-0fbb-4621-ab2b-d14e2eba4c81"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					]
+				},
+				{
+					"name": "Junction",
+					"item": [
+						{
+							"name": "UserRole",
+							"item": [
+								{
+									"name": "Query",
+									"item": [
+										{
+											"name": "Get All UserRole",
+											"protocolProfileBehavior": {
+												"disableBodyPruning": true
+											},
+											"request": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Authorization",
+														"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6IjExMTExMTExLTExMTEtMTExMS0xMTExLTExMTExMTExMTExMSIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL2VtYWlsYWRkcmVzcyI6ImFkbWluQGJlZXJzdG9yZS5jb20iLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJBZG1pbmlzdHJhdG9yIiwiZXhwIjoxNzY3MTk4MTE4LCJpc3MiOiJCZWVyU3RvcmVBcGkiLCJhdWQiOiJCZWVyU3RvcmVDbGllbnQifQ.AP6CzShY5h_HSqLW93zVijHlkeoTXX2hwevApbHcFuQ",
+														"type": "text"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": ""
+												},
+												"url": {
+													"raw": "https://localhost:7124/api/UserRole",
+													"protocol": "https",
+													"host": [
+														"localhost"
+													],
+													"port": "7124",
+													"path": [
+														"api",
+														"UserRole"
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "Get UserRole By Id",
+											"request": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Authorization",
+														"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6IjExMTExMTExLTExMTEtMTExMS0xMTExLTExMTExMTExMTExMSIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL2VtYWlsYWRkcmVzcyI6ImFkbWluQGJlZXJzdG9yZS5jb20iLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJBZG1pbmlzdHJhdG9yIiwiZXhwIjoxNzY3MTA5NjEyLCJpc3MiOiJCZWVyU3RvcmVBcGkiLCJhdWQiOiJCZWVyU3RvcmVDbGllbnQifQ.K_uVsQ-GD1NW-Cbe3k7YrwIpD_Z7LIVFKdyHeQaEBwY",
+														"type": "text"
+													}
+												],
+												"url": {
+													"raw": "https://localhost:7124/api/UserRole/user/00000000-0000-0000-0000-000000000000",
+													"protocol": "https",
+													"host": [
+														"localhost"
+													],
+													"port": "7124",
+													"path": [
+														"api",
+														"UserRole",
+														"user",
+														"00000000-0000-0000-0000-000000000000"
+													]
+												}
+											},
+											"response": []
+										}
+									]
+								},
+								{
+									"name": "Add UserRole",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6IjExMTExMTExLTExMTEtMTExMS0xMTExLTExMTExMTExMTExMSIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL2VtYWlsYWRkcmVzcyI6ImFkbWluQGJlZXJzdG9yZS5jb20iLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJBZG1pbmlzdHJhdG9yIiwiZXhwIjoxNzY3MTE0MTI3LCJpc3MiOiJCZWVyU3RvcmVBcGkiLCJhdWQiOiJCZWVyU3RvcmVDbGllbnQifQ.LME2f8N2Kq8VRp-pvGDgHtHfexPyvkBF0J7rmaEHC-0",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"userId\": \"b09be8be-a87b-4405-a1d0-e5835cb19b78\",\r\n    \"roleId\": \"b0277960-75bf-4683-99ce-fda21a7d8536\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "https://localhost:7124/api/UserRole",
+											"protocol": "https",
+											"host": [
+												"localhost"
+											],
+											"port": "7124",
+											"path": [
+												"api",
+												"UserRole"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Remove UserRole",
+									"request": {
+										"method": "DELETE",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6IjExMTExMTExLTExMTEtMTExMS0xMTExLTExMTExMTExMTExMSIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL2VtYWlsYWRkcmVzcyI6ImFkbWluQGJlZXJzdG9yZS5jb20iLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJBZG1pbmlzdHJhdG9yIiwiZXhwIjoxNzY3MTk4MTE4LCJpc3MiOiJCZWVyU3RvcmVBcGkiLCJhdWQiOiJCZWVyU3RvcmVDbGllbnQifQ.AP6CzShY5h_HSqLW93zVijHlkeoTXX2hwevApbHcFuQ",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": ""
+										},
+										"url": {
+											"raw": "https://localhost:7124/api/UserRole/d012957b-690d-44a6-b7f2-29ec8ee6bab6",
+											"protocol": "https",
+											"host": [
+												"localhost"
+											],
+											"port": "7124",
+											"path": [
+												"api",
+												"UserRole",
+												"d012957b-690d-44a6-b7f2-29ec8ee6bab6"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "RolePermission",
+							"item": [
+								{
+									"name": "Query",
+									"item": [
+										{
+											"name": "Get All RolePermission",
+											"request": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Authorization",
+														"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6IjExMTExMTExLTExMTEtMTExMS0xMTExLTExMTExMTExMTExMSIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL2VtYWlsYWRkcmVzcyI6ImFkbWluQGJlZXJzdG9yZS5jb20iLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJBZG1pbmlzdHJhdG9yIiwiZXhwIjoxNzY3MTk4MTE4LCJpc3MiOiJCZWVyU3RvcmVBcGkiLCJhdWQiOiJCZWVyU3RvcmVDbGllbnQifQ.AP6CzShY5h_HSqLW93zVijHlkeoTXX2hwevApbHcFuQ",
+														"type": "text"
+													}
+												],
+												"url": {
+													"raw": "https://localhost:7124/api/RolePermission",
+													"protocol": "https",
+													"host": [
+														"localhost"
+													],
+													"port": "7124",
+													"path": [
+														"api",
+														"RolePermission"
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "Get RolePermission By Id",
+											"request": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Authorization",
+														"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6IjExMTExMTExLTExMTEtMTExMS0xMTExLTExMTExMTExMTExMSIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL2VtYWlsYWRkcmVzcyI6ImFkbWluQGJlZXJzdG9yZS5jb20iLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJBZG1pbmlzdHJhdG9yIiwiZXhwIjoxNzY3MTk4MTE4LCJpc3MiOiJCZWVyU3RvcmVBcGkiLCJhdWQiOiJCZWVyU3RvcmVDbGllbnQifQ.AP6CzShY5h_HSqLW93zVijHlkeoTXX2hwevApbHcFuQ",
+														"type": "text"
+													}
+												],
+												"url": {
+													"raw": "https://localhost:7124/api/RolePermission/role/b0277960-75bf-4683-99ce-fda21a7d8536",
+													"protocol": "https",
+													"host": [
+														"localhost"
+													],
+													"port": "7124",
+													"path": [
+														"api",
+														"RolePermission",
+														"role",
+														"b0277960-75bf-4683-99ce-fda21a7d8536"
+													]
+												}
+											},
+											"response": []
+										}
+									]
+								},
+								{
+									"name": "Add RolePermission",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6IjExMTExMTExLTExMTEtMTExMS0xMTExLTExMTExMTExMTExMSIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL2VtYWlsYWRkcmVzcyI6ImFkbWluQGJlZXJzdG9yZS5jb20iLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJBZG1pbmlzdHJhdG9yIiwiZXhwIjoxNzY3MTk4MTE4LCJpc3MiOiJCZWVyU3RvcmVBcGkiLCJhdWQiOiJCZWVyU3RvcmVDbGllbnQifQ.AP6CzShY5h_HSqLW93zVijHlkeoTXX2hwevApbHcFuQ",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"roleId\": \"b0277960-75bf-4683-99ce-fda21a7d8536\",\r\n    \"permissionId\": \"10000000-0000-0000-0000-000000000001\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "https://localhost:7124/api/RolePermission",
+											"protocol": "https",
+											"host": [
+												"localhost"
+											],
+											"port": "7124",
+											"path": [
+												"api",
+												"RolePermission"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Remove RolePermission",
+									"request": {
+										"method": "DELETE",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6IjExMTExMTExLTExMTEtMTExMS0xMTExLTExMTExMTExMTExMSIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL2VtYWlsYWRkcmVzcyI6ImFkbWluQGJlZXJzdG9yZS5jb20iLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJBZG1pbmlzdHJhdG9yIiwiZXhwIjoxNzY3MTk4MTE4LCJpc3MiOiJCZWVyU3RvcmVBcGkiLCJhdWQiOiJCZWVyU3RvcmVDbGllbnQifQ.AP6CzShY5h_HSqLW93zVijHlkeoTXX2hwevApbHcFuQ",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "https://localhost:7124/api/RolePermission/1a94873e-6334-419e-9a18-f8534f8ca61c",
+											"protocol": "https",
+											"host": [
+												"localhost"
+											],
+											"port": "7124",
+											"path": [
+												"api",
+												"RolePermission",
+												"1a94873e-6334-419e-9a18-f8534f8ca61c"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "Address",
+					"item": [
+						{
+							"name": "Query",
+							"item": [
+								{
+									"name": "Get All Address",
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6IjExMTExMTExLTExMTEtMTExMS0xMTExLTExMTExMTExMTExMSIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL2VtYWlsYWRkcmVzcyI6ImFkbWluQGJlZXJzdG9yZS5jb20iLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJBZG1pbmlzdHJhdG9yIiwiZXhwIjoxNzY3MjQxNjgzLCJpc3MiOiJCZWVyU3RvcmVBcGkiLCJhdWQiOiJCZWVyU3RvcmVDbGllbnQifQ.rGZNidApWX897JSZplv8IV5dlatQQkFftZY1R2GRkfs",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "https://localhost:7124/api/Address",
+											"protocol": "https",
+											"host": [
+												"localhost"
+											],
+											"port": "7124",
+											"path": [
+												"api",
+												"Address"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Get Addeess By Id",
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6IjExMTExMTExLTExMTEtMTExMS0xMTExLTExMTExMTExMTExMSIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL2VtYWlsYWRkcmVzcyI6ImFkbWluQGJlZXJzdG9yZS5jb20iLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJBZG1pbmlzdHJhdG9yIiwiZXhwIjoxNzY3MjQxNjgzLCJpc3MiOiJCZWVyU3RvcmVBcGkiLCJhdWQiOiJCZWVyU3RvcmVDbGllbnQifQ.rGZNidApWX897JSZplv8IV5dlatQQkFftZY1R2GRkfs",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "https://localhost:7124/api/Address/e7be6a2b-30bd-43b2-a7cb-53b021a3d542",
+											"protocol": "https",
+											"host": [
+												"localhost"
+											],
+											"port": "7124",
+											"path": [
+												"api",
+												"Address",
+												"e7be6a2b-30bd-43b2-a7cb-53b021a3d542"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Get Address By Phone",
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "https://localhost:7124/api/Address/phone/",
+											"protocol": "https",
+											"host": [
+												"localhost"
+											],
+											"port": "7124",
+											"path": [
+												"api",
+												"Address",
+												"phone",
+												""
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "Create Address",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6IjExMTExMTExLTExMTEtMTExMS0xMTExLTExMTExMTExMTExMSIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL2VtYWlsYWRkcmVzcyI6ImFkbWluQGJlZXJzdG9yZS5jb20iLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJBZG1pbmlzdHJhdG9yIiwiZXhwIjoxNzY3MjQxNjgzLCJpc3MiOiJCZWVyU3RvcmVBcGkiLCJhdWQiOiJCZWVyU3RvcmVDbGllbnQifQ.rGZNidApWX897JSZplv8IV5dlatQQkFftZY1R2GRkfs",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"phone\": \"test2\",\r\n  \"fullName\": \"test2\",\r\n  \"province\": \"test2\",\r\n  \"district\": \"test2\",\r\n  \"ward\": \"test2\",\r\n  \"street\": \"test2\",\r\n  \"isDefault\": \"Active\",\r\n  \"addressType\": \"Home\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://localhost:7124/api/Address",
+									"protocol": "https",
+									"host": [
+										"localhost"
+									],
+									"port": "7124",
+									"path": [
+										"api",
+										"Address"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update Address",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6IjExMTExMTExLTExMTEtMTExMS0xMTExLTExMTExMTExMTExMSIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL2VtYWlsYWRkcmVzcyI6ImFkbWluQGJlZXJzdG9yZS5jb20iLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJBZG1pbmlzdHJhdG9yIiwiZXhwIjoxNzY3MjQxNjgzLCJpc3MiOiJCZWVyU3RvcmVBcGkiLCJhdWQiOiJCZWVyU3RvcmVDbGllbnQifQ.rGZNidApWX897JSZplv8IV5dlatQQkFftZY1R2GRkfs",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"phone\": \"test3\",\r\n  \"fullName\": \"test3\",\r\n  \"province\": \"test3\",\r\n  \"district\": \"test3\",\r\n  \"ward\": \"test2\",\r\n  \"street\": \"test2\",\r\n  \"isDefault\": \"Active\",\r\n  \"addressType\": \"Home\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://localhost:7124/api/Address/e7be6a2b-30bd-43b2-a7cb-53b021a3d542",
+									"protocol": "https",
+									"host": [
+										"localhost"
+									],
+									"port": "7124",
+									"path": [
+										"api",
+										"Address",
+										"e7be6a2b-30bd-43b2-a7cb-53b021a3d542"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Remove Address",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6IjExMTExMTExLTExMTEtMTExMS0xMTExLTExMTExMTExMTExMSIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL2VtYWlsYWRkcmVzcyI6ImFkbWluQGJlZXJzdG9yZS5jb20iLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJBZG1pbmlzdHJhdG9yIiwiZXhwIjoxNzY3MjQxNjgzLCJpc3MiOiJCZWVyU3RvcmVBcGkiLCJhdWQiOiJCZWVyU3RvcmVDbGllbnQifQ.rGZNidApWX897JSZplv8IV5dlatQQkFftZY1R2GRkfs",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "https://localhost:7124/api/Address/e7be6a2b-30bd-43b2-a7cb-53b021a3d542",
+									"protocol": "https",
+									"host": [
+										"localhost"
+									],
+									"port": "7124",
+									"path": [
+										"api",
+										"Address",
+										"e7be6a2b-30bd-43b2-a7cb-53b021a3d542"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "RefreshToken",
+					"item": [
+						{
+							"name": "Get Refresh Token",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "https://localhost:7124/api/RefreshToken",
+									"protocol": "https",
+									"host": [
+										"localhost"
+									],
+									"port": "7124",
+									"path": [
+										"api",
+										"RefreshToken"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Refresh Token By UserId",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "https://localhost:7124/api/RefreshToken/user/",
+									"protocol": "https",
+									"host": [
+										"localhost"
+									],
+									"port": "7124",
+									"path": [
+										"api",
+										"RefreshToken",
+										"user",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Revoke Refresh Token",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "https://localhost:7124/api/RefreshToken/revoke/",
+									"protocol": "https",
+									"host": [
+										"localhost"
+									],
+									"port": "7124",
+									"path": [
+										"api",
+										"RefreshToken",
+										"revoke",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Revoke All Refresh Token By UserId",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "https://localhost:7124/api/RefreshToken/revoke-all/user/",
+									"protocol": "https",
+									"host": [
+										"localhost"
+									],
+									"port": "7124",
+									"path": [
+										"api",
+										"RefreshToken",
+										"revoke-all",
+										"user",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Revoke Refresh Token By UserId And DeviceId",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"UserId\": \"\",\r\n    \"deviceId\" : \"\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://localhost:7124/api/RefreshToken/revoke-device",
+									"protocol": "https",
+									"host": [
+										"localhost"
+									],
+									"port": "7124",
+									"path": [
+										"api",
+										"RefreshToken",
+										"revoke-device"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			]
+		}
+	]
+}

@@ -1,13 +1,18 @@
+using Application.Core.Interface.ISettings;
 using BeerStore.Application.Interface.IUnitOfWork.Auth;
 using BeerStore.Application.Interface.Services;
-using BeerStore.Domain.IRepository.Auth;
 using BeerStore.Domain.IRepository.Auth.Read;
+using BeerStore.Domain.IRepository.Auth.Read.Junction;
 using BeerStore.Domain.IRepository.Auth.Write;
+using BeerStore.Domain.IRepository.Auth.Write.Junction;
 using BeerStore.Infrastructure.Persistence.Db;
 using BeerStore.Infrastructure.Repository.Auth.Read;
+using BeerStore.Infrastructure.Repository.Auth.Read.Junction;
 using BeerStore.Infrastructure.Repository.Auth.Write;
+using BeerStore.Infrastructure.Repository.Auth.Write.Junction;
 using BeerStore.Infrastructure.Services;
 using BeerStore.Infrastructure.UnitOfWork;
+using Infrastructure.Core.Settings;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -41,13 +46,13 @@ namespace BeerStore.Infrastructure
             services.AddScoped<IRAddressRepository, RAddressRepository>();
             services.AddScoped<IWAddressRepository, WAddressRepository>();
 
+            // RefreshToken
+            services.AddScoped<IRRefreshTokenRepository, RRefreshTokenRepository>();
+            services.AddScoped<IWRefreshTokenRepository, WRefreshTokenRepository>();
+
             // UserRole
             services.AddScoped<IRUserRoleRepository, RUserRoleRepository>();
             services.AddScoped<IWUserRoleRepository, WUserRoleRepository>();
-
-            // UserAddress
-            services.AddScoped<IRUserAddressRepository, RUserAddressRepository>();
-            services.AddScoped<IWUserAddressRepository, WUserAddressRepository>();
 
             // RolePermission
             services.AddScoped<IRRolePermissionRepository, RRolePermissionRepository>();
@@ -58,6 +63,7 @@ namespace BeerStore.Infrastructure
 
             // JWT Service
             services.AddScoped<IJwtService, JwtService>();
+            services.AddScoped<IJwtSettings, JwtSettings>();
 
             // Password Hasher
             services.AddScoped<IPasswordHasher, PasswordHasher>();

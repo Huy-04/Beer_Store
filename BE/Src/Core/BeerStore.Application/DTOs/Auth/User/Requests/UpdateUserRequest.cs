@@ -1,4 +1,4 @@
-﻿using BeerStore.Domain.Entities.Auth;
+using BeerStore.Domain.Entities.Auth;
 using Domain.Core.Enums;
 
 namespace BeerStore.Application.DTOs.Auth.User.Requests

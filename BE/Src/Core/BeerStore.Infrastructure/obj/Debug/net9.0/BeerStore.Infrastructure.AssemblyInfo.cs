@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("BeerStore.Infrastructure")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+9ed3ebe2f43b414b4cf3ed6ebcbc654f9da34a42")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+70de5c06d0aac82302f98554c58426fb1e7ffcf6")]
 [assembly: System.Reflection.AssemblyProductAttribute("BeerStore.Infrastructure")]
 [assembly: System.Reflection.AssemblyTitleAttribute("BeerStore.Infrastructure")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

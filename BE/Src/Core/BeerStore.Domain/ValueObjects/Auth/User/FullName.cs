@@ -6,7 +6,7 @@ using Domain.Core.ValueObjects;
 
 namespace BeerStore.Domain.ValueObjects.Auth.User
 {
-    public class FullName : NameBase
+    public class FullName : StringBase
     {
         private FullName(string value) : base(value)
         {

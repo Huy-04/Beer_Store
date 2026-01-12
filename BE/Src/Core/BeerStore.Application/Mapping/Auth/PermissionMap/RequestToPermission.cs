@@ -1,7 +1,7 @@
-﻿using BeerStore.Application.DTOs.Auth.Permission.Requests;
+using BeerStore.Application.DTOs.Auth.Permission.Requests;
 using BeerStore.Domain.Entities.Auth;
-using BeerStore.Domain.ValueObjects.Auth.Permissions;
-using BeerStore.Domain.ValueObjects.Auth.Permissions.Enums;
+using BeerStore.Domain.ValueObjects.Auth.Permission;
+using BeerStore.Domain.ValueObjects.Auth.Permission.Enums;
 using Domain.Core.ValueObjects;
 
 namespace BeerStore.Application.Mapping.Auth.PermissionMap

@@ -1,5 +1,5 @@
-﻿using BeerStore.Domain.Entities.Auth.Junction;
-using BeerStore.Domain.ValueObjects.Auth.Roles;
+using BeerStore.Domain.Entities.Auth.Junction;
+using BeerStore.Domain.ValueObjects.Auth.Role;
 using Domain.Core.ValueObjects;
 
 namespace BeerStore.Domain.Entities.Auth

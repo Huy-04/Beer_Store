@@ -1,4 +1,4 @@
-﻿using BeerStore.Domain.Entities.Auth;
+using BeerStore.Domain.Entities.Auth;
 using BeerStore.Domain.Entities.Auth.Junction;
 using Microsoft.EntityFrameworkCore;
 using System.Reflection;
@@ -17,6 +17,10 @@ namespace BeerStore.Infrastructure.Persistence.Db
         public DbSet<Role> Roles => Set<Role>();
 
         public DbSet<Permission> Permissions => Set<Permission>();
+
+        public DbSet<Address> Addresses => Set<Address>();
+
+        public DbSet<RefreshToken> RefreshTokens => Set<RefreshToken>();
 
         public DbSet<UserRole> UserRoles => Set<UserRole>();
 

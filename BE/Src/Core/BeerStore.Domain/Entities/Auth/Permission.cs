@@ -1,5 +1,5 @@
-﻿using BeerStore.Domain.ValueObjects.Auth.Permissions;
-using BeerStore.Domain.ValueObjects.Auth.Permissions.Enums;
+using BeerStore.Domain.ValueObjects.Auth.Permission;
+using BeerStore.Domain.ValueObjects.Auth.Permission.Enums;
 using Domain.Core.ValueObjects;
 
 namespace BeerStore.Domain.Entities.Auth

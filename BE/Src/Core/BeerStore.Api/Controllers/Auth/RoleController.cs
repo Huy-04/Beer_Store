@@ -1,10 +1,11 @@
+using Api.Core;
 using BeerStore.Application.DTOs.Auth.Role.Requests;
 using BeerStore.Application.DTOs.Auth.Role.Responses;
-using BeerStore.Application.Modules.Auth.Role.Commands.CreateRole;
-using BeerStore.Application.Modules.Auth.Role.Commands.RemoveRole;
-using BeerStore.Application.Modules.Auth.Role.Commands.UpdateRole;
-using BeerStore.Application.Modules.Auth.Role.Queries.GetAllRole;
-using BeerStore.Application.Modules.Auth.Role.Queries.GetRoleById;
+using BeerStore.Application.Modules.Auth.Roles.Commands.CreateRole;
+using BeerStore.Application.Modules.Auth.Roles.Commands.RemoveRole;
+using BeerStore.Application.Modules.Auth.Roles.Commands.UpdateRole;
+using BeerStore.Application.Modules.Auth.Roles.Queries.GetAllRole;
+using BeerStore.Application.Modules.Auth.Roles.Queries.GetRoleById;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;

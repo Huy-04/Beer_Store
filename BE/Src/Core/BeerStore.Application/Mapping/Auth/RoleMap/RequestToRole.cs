@@ -1,6 +1,6 @@
-﻿using BeerStore.Application.DTOs.Auth.Role.Requests;
+using BeerStore.Application.DTOs.Auth.Role.Requests;
 using BeerStore.Domain.Entities.Auth;
-using BeerStore.Domain.ValueObjects.Auth.Roles;
+using BeerStore.Domain.ValueObjects.Auth.Role;
 using Domain.Core.ValueObjects;
 
 namespace BeerStore.Application.Mapping.Auth.RoleMap

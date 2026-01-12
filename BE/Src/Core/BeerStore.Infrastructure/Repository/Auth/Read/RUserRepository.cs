@@ -1,4 +1,4 @@
-﻿using BeerStore.Domain.Entities.Auth;
+using BeerStore.Domain.Entities.Auth;
 using BeerStore.Domain.IRepository.Auth.Read;
 using BeerStore.Domain.ValueObjects.Auth.User;
 using BeerStore.Infrastructure.Persistence.Db;
@@ -15,23 +15,17 @@ namespace BeerStore.Infrastructure.Repository.Auth.Read
 
         public Task<bool> ExistsByUserNameAsync(UserName userName, CancellationToken token = default, Guid? idUser = null)
         {
-            return _entities
-                .AsNoTracking()
-                .AnyAsync(u => u.UserName == userName && (idUser == null || u.Id != idUser), token);
+            return AnyAsync(u => u.UserName == userName && (idUser == null || u.Id != idUser), token);
         }
 
         public Task<bool> ExistsByPhoneAsync(Phone phone, CancellationToken token = default, Guid? idUser = null)
         {
-            return _entities
-                .AsNoTracking()
-                .AnyAsync(u => u.Phone == phone && (idUser == null || u.Id != idUser), token);
+            return AnyAsync(u => u.Phone == phone && (idUser == null || u.Id != idUser), token);
         }
 
         public Task<bool> ExistsByEmailAsync(Email email, CancellationToken token = default, Guid? idUser = null)
         {
-            return _entities
-                .AsNoTracking()
-                .AnyAsync(u => u.Email == email && (idUser == null || u.Id != idUser), token);
+            return AnyAsync(u => u.Email == email && (idUser == null || u.Id != idUser), token);
         }
 
         public async Task<User?> GetByUserNameAsync(UserName userName, CancellationToken token = default)
@@ -47,6 +41,14 @@ namespace BeerStore.Infrastructure.Repository.Auth.Read
                 .AsNoTracking()
                 .Include(u => u.UserRoles)
                 .FirstOrDefaultAsync(u => u.Email == email, token);
+        }
+
+        public async Task<User?> GetByIdWithRolesAsync(Guid userId, CancellationToken token = default)
+        {
+            return await _entities
+                .AsNoTracking()
+                .Include(u => u.UserRoles)
+                .FirstOrDefaultAsync(u => u.Id == userId, token);
         }
     }
 }

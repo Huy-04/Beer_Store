@@ -1,4 +1,4 @@
-﻿using BeerStore.Application.DTOs.Auth.Address.Requests;
+using BeerStore.Application.DTOs.Auth.Address.Requests;
 using BeerStore.Domain.Entities.Auth;
 using BeerStore.Domain.ValueObjects.Auth.Address;
 using BeerStore.Domain.ValueObjects.Auth.User;
@@ -7,9 +7,10 @@ namespace BeerStore.Application.Mapping.Auth.AddressMap
 {
     public static class RequestToAddress
     {
-        public static Address ToAddress(this AddressRequest request, Guid createdBy, Guid updatedBy)
+        public static Address ToAddress(this AddressRequest request, Guid userId, Guid createdBy, Guid updatedBy)
         {
             return Address.Create(
+                userId,
                 Phone.Create(request.Phone),
                 FullName.Create(request.FullName),
                 Province.Create(request.Province),

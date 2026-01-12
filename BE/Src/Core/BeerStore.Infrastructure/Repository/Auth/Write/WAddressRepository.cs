@@ -1,4 +1,4 @@
-﻿using BeerStore.Domain.Entities.Auth;
+using BeerStore.Domain.Entities.Auth;
 using BeerStore.Domain.IRepository.Auth.Write;
 using BeerStore.Infrastructure.Persistence.Db;
 using Infrastructure.Core.IRepository;

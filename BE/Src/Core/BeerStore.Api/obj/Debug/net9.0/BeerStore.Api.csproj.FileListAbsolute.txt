@@ -210,4 +210,3 @@ C:\Code\Project\Beer_Store\BE\Src\Core\BeerStore.Api\obj\Debug\net9.0\refint\Bee
 C:\Code\Project\Beer_Store\BE\Src\Core\BeerStore.Api\obj\Debug\net9.0\BeerStore.Api.pdb
 C:\Code\Project\Beer_Store\BE\Src\Core\BeerStore.Api\obj\Debug\net9.0\BeerStore.Api.genruntimeconfig.cache
 C:\Code\Project\Beer_Store\BE\Src\Core\BeerStore.Api\obj\Debug\net9.0\ref\BeerStore.Api.dll
-C:\Code\Project\Beer_Store\BE\Src\Core\BeerStore.Api\obj\Debug\net9.0\staticwebassets.upToDateCheck.txt

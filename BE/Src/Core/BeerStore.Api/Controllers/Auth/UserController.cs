@@ -1,16 +1,17 @@
+using Api.Core;
 using BeerStore.Application.DTOs.Auth.User.Requests;
 using BeerStore.Application.DTOs.Auth.User.Responses;
-using BeerStore.Application.Modules.Auth.User.Commands.CreateUser;
-using BeerStore.Application.Modules.Auth.User.Commands.RemoveUser;
-using BeerStore.Application.Modules.Auth.User.Commands.UpdateUser;
-using BeerStore.Application.Modules.Auth.User.Queries.GetAllUser;
-using BeerStore.Application.Modules.Auth.User.Queries.GetByUserByEmailStatus;
-using BeerStore.Application.Modules.Auth.User.Queries.GetUserByEmail;
-using BeerStore.Application.Modules.Auth.User.Queries.GetUserById;
-using BeerStore.Application.Modules.Auth.User.Queries.GetUserByPhone;
-using BeerStore.Application.Modules.Auth.User.Queries.GetUserByPhoneStatus;
-using BeerStore.Application.Modules.Auth.User.Queries.GetUserByUserName;
-using BeerStore.Application.Modules.Auth.User.Queries.GetUserByUserStatus;
+using BeerStore.Application.Modules.Auth.Users.Commands.CreateUser;
+using BeerStore.Application.Modules.Auth.Users.Commands.RemoveUser;
+using BeerStore.Application.Modules.Auth.Users.Commands.UpdateUser;
+using BeerStore.Application.Modules.Auth.Users.Queries.GetAllUser;
+using BeerStore.Application.Modules.Auth.Users.Queries.GetByUserByEmailStatus;
+using BeerStore.Application.Modules.Auth.Users.Queries.GetUserByEmail;
+using BeerStore.Application.Modules.Auth.Users.Queries.GetUserById;
+using BeerStore.Application.Modules.Auth.Users.Queries.GetUserByPhone;
+using BeerStore.Application.Modules.Auth.Users.Queries.GetUserByPhoneStatus;
+using BeerStore.Application.Modules.Auth.Users.Queries.GetUserByUserName;
+using BeerStore.Application.Modules.Auth.Users.Queries.GetUserByUserStatus;
 using Domain.Core.Enums;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
@@ -70,8 +71,8 @@ namespace BeerStore.Api.Controllers.Auth
             return Ok(result);
         }
 
-        // Get: api/User/emailstatus/{status}
-        [HttpGet("emailstatus/{status}")]
+        // Get: api/User/email-status/{status}
+        [HttpGet("email-status/{status}")]
         public async Task<ActionResult<IEnumerable<UserResponse>>> GetByEmailStatus(
             [FromRoute] StatusEnum status, CancellationToken token)
         {
@@ -79,8 +80,8 @@ namespace BeerStore.Api.Controllers.Auth
             return Ok(result);
         }
 
-        // Get: api/User/phonestatus/{status}
-        [HttpGet("phonestatus/{status}")]
+        // Get: api/User/phone-status/{status}
+        [HttpGet("phone-status/{status}")]
         public async Task<ActionResult<IEnumerable<UserResponse>>> GetByPhoneStatus(
             [FromRoute] StatusEnum status, CancellationToken token)
         {
@@ -88,8 +89,8 @@ namespace BeerStore.Api.Controllers.Auth
             return Ok(result);
         }
 
-        // Get: api/User/userstatus/{status}
-        [HttpGet("userstatus/{status}")]
+        // Get: api/User/user-status/{status}
+        [HttpGet("user-status/{status}")]
         public async Task<ActionResult<IEnumerable<UserResponse>>> GetByUserStatus(
             [FromRoute] StatusEnum status, CancellationToken token)
         {

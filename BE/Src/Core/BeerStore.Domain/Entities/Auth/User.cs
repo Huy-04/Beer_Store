@@ -1,4 +1,4 @@
-﻿using BeerStore.Domain.Entities.Auth.Junction;
+using BeerStore.Domain.Entities.Auth.Junction;
 using BeerStore.Domain.ValueObjects.Auth.User;
 using BeerStore.Domain.ValueObjects.Auth.User.Status;
 using Domain.Core.Enums;
@@ -26,10 +26,6 @@ namespace BeerStore.Domain.Entities.Auth
         private readonly List<UserRole> _userRoles = new List<UserRole>();
 
         public IReadOnlyCollection<UserRole> UserRoles => _userRoles.AsReadOnly();
-
-        private readonly List<UserAddress> _userAddresses = new List<UserAddress>();
-
-        public IReadOnlyCollection<UserAddress> UserAddresses => _userAddresses.AsReadOnly();
 
         public Guid CreatedBy { get; private set; }
 
@@ -178,23 +174,6 @@ namespace BeerStore.Domain.Entities.Auth
             var userRole = _userRoles.FirstOrDefault(ur => ur.Id == idUserRole);
             if (userRole == null) return;
             _userRoles.Remove(userRole);
-            Touch();
-        }
-
-        // Address Manager
-        public UserAddress AddAddress(Guid userId, Guid addressId)
-        {
-            var userAddress = UserAddress.Create(userId, addressId);
-            _userAddresses.Add(userAddress);
-            Touch();
-            return userAddress;
-        }
-
-        public void RemoveAddress(Guid addressId)
-        {
-            var userAddress = _userAddresses.FirstOrDefault(ua => ua.Id == addressId);
-            if (userAddress == null) return;
-            _userAddresses.Remove(userAddress);
             Touch();
         }
 

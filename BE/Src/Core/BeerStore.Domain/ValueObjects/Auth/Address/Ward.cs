@@ -1,4 +1,4 @@
-﻿using BeerStore.Domain.Enums.Messages;
+using BeerStore.Domain.Enums.Messages;
 using Domain.Core.Interface.Rule;
 using Domain.Core.Rule;
 using Domain.Core.Rule.StringRule;
@@ -6,7 +6,7 @@ using Domain.Core.ValueObjects;
 
 namespace BeerStore.Domain.ValueObjects.Auth.Address
 {
-    public class Ward : NameBase
+    public class Ward : StringBase
     {
         private Ward(string value) : base(value)
         {

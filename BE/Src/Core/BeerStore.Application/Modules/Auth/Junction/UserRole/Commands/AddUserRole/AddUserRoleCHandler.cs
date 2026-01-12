@@ -1,6 +1,6 @@
 using BeerStore.Application.DTOs.Auth.Junction.UserRole.Responses;
 using BeerStore.Application.Interface.IUnitOfWork.Auth;
-using BeerStore.Application.Mapping.Auth.Junction.UserRoleMap;
+using BeerStore.Application.Mapping.Auth.JunctionMap.UserRoleMap;
 using BeerStore.Domain.Entities.Auth.Junction;
 using BeerStore.Domain.Enums.Messages;
 using UserRoleEntity = BeerStore.Domain.Entities.Auth.Junction.UserRole;
@@ -62,7 +62,7 @@ namespace BeerStore.Application.Modules.Auth.Junction.UserRole.Commands.AddUserR
             {
                 await _auow.RollbackTransactionAsync(token);
                 _logger.LogError(ex,
-                    "Exception occurred while adding UserRole. UserId: {UserId}, RoleId: {RoleId}",
+                    "Failed to add UserRole. UserId: {UserId}, RoleId: {RoleId}",
                     command.UserId, command.RoleId
                 );
                 throw;

@@ -1,7 +1,9 @@
-﻿using Application.Core.IUnitOfWork;
+using Application.Core.Interface.IUnitOfWork;
 using BeerStore.Domain.IRepository.Auth;
 using BeerStore.Domain.IRepository.Auth.Read;
+using BeerStore.Domain.IRepository.Auth.Read.Junction;
 using BeerStore.Domain.IRepository.Auth.Write;
+using BeerStore.Domain.IRepository.Auth.Write.Junction;
 
 namespace BeerStore.Application.Interface.IUnitOfWork.Auth
 {
@@ -23,20 +25,19 @@ namespace BeerStore.Application.Interface.IUnitOfWork.Auth
         IWPermissionRepository WPermissionRepository { get; }
 
         // Address
-
         IRAddressRepository RAddressRepository { get; }
 
         IWAddressRepository WAddressRepository { get; }
+
+        // RefreshToken
+        IRRefreshTokenRepository RRefreshTokenRepository { get; }
+
+        IWRefreshTokenRepository WRefreshTokenRepository { get; }
 
         // UserRole
         IRUserRoleRepository RUserRoleRepository { get; }
 
         IWUserRoleRepository WUserRoleRepository { get; }
-
-        // UserAddress
-        IRUserAddressRepository RUserAddressRepository { get; }
-
-        IWUserAddressRepository WUserAddressRepository { get; }
 
         // RolePermission
         IRRolePermissionRepository RRolePermissionRepository { get; }
