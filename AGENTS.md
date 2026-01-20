@@ -10,6 +10,7 @@
 - **RuleValidator** - Domain validation (trong Domain.Core)
 - **BCrypt.NET** - Password hashing
 - **JWT Bearer** - Authentication
+- **Permission-based Authorization** - Handler-level authorization
 - **SQL Server** - Database
 
 ---
@@ -22,7 +23,7 @@ BE/Src/
 │   ├── BeerStore.Api/           # Controllers, Program.cs
 │   ├── BeerStore.Application/   # Commands, Queries, DTOs
 │   ├── BeerStore.Domain/        # Entities, Value Objects
-│   └── BeerStore.Infrastructure/# Repositories, DbContext
+│   └── BeerStore.Infrastructure/# Repositories, DbContext, Authorization
 └── Shared/
     ├── Api.Core/                # Base controllers, Middleware
     ├── Application.Core/        # IUnitOfWorkGeneric, DTOs
@@ -41,6 +42,7 @@ BE/Src/
 | Commands | `BeerStore.Application/Modules/{Module}/{Feature}/Commands/` |
 | Queries | `BeerStore.Application/Modules/{Module}/{Feature}/Queries/` |
 | Repositories | `BeerStore.Infrastructure/Repository/` |
+| Authorization | `BeerStore.Application/Interface/Services/Authorization/` |
 
 ---
 
@@ -51,6 +53,7 @@ BE/Src/
 - `@.agent/rules/conventions.md` - Coding conventions
 - `@.agent/rules/modules.md` - Module structure
 - `@.agent/rules/shared.md` - Shared layer patterns
+- `@.agent/rules/authorization.md` - Permission-based authorization
 
 ---
 
@@ -60,7 +63,10 @@ BE/Src/
 - Tạo plan trước mọi thay đổi
 - Sử dụng Value Objects cho domain concepts
 - Validate bằng RuleValidator trong Domain layer
+- Gọi `_authService.EnsureCan...()` đầu tiên trong handler
 
 ❌ **DON'T:**
 - Không commit appsettings với secrets
 - Không đặt logic trong Controllers
+- Không bỏ qua authorization check trong handlers
+

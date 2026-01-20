@@ -1,6 +1,6 @@
 ---
 trigger: always_on
-glob: *.cs
+glob: 
 description: Coding conventions for Beer Store
 ---
 
@@ -90,17 +90,21 @@ public class Email : StringBase
 public class CreateUserCHandler : IRequestHandler<CreateUserCommand, UserResponse>
 {
     private readonly IAuthUnitOfWork _auow;
+    private readonly IAuthAuthorizationService _authService;
     
     public async Task<UserResponse> Handle(CreateUserCommand command, CancellationToken token)
     {
+        // 1. Authorization check (đầu tiên)
+        _authService.EnsureCanCreateUser();
+        
         await _auow.BeginTransactionAsync(token);
         try
         {
-            // Business logic checks
+            // 2. Business logic checks
             if (await _auow.RUserRepository.ExistsByEmailAsync(user.Email, token))
                 throw new BusinessRuleException<UserField>(...);
             
-            // Write operations
+            // 3. Write operations
             await _auow.WUserRepository.AddAsync(user, token);
             await _auow.CommitTransactionAsync(token);
             
