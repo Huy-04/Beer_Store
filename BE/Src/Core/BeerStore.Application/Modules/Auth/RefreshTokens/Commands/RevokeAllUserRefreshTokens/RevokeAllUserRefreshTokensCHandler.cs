@@ -1,40 +1,43 @@
 using BeerStore.Application.Interface.IUnitOfWork.Auth;
+using BeerStore.Application.Interface.Services.Authorization;
 using BeerStore.Application.Mapping.Auth.RefreshTokenMap;
 using MediatR;
 using Microsoft.Extensions.Logging;
 
 namespace BeerStore.Application.Modules.Auth.RefreshTokens.Commands.RevokeAllUserRefreshTokens
 {
-    public class RevokeAllUserRefreshTokensCHandler : IRequestHandler<RevokeAllUserRefreshTokensCommand, int>
+    public class RevokeAllUserRefreshTokensCHandler : IRequestHandler<RevokeAllUserRefreshTokensCommand, bool>
     {
         private readonly IAuthUnitOfWork _auow;
         private readonly ILogger<RevokeAllUserRefreshTokensCHandler> _logger;
+        private readonly IAuthAuthorizationService _authService;
 
-        public RevokeAllUserRefreshTokensCHandler(IAuthUnitOfWork auow, ILogger<RevokeAllUserRefreshTokensCHandler> logger)
+        public RevokeAllUserRefreshTokensCHandler(IAuthUnitOfWork auow, ILogger<RevokeAllUserRefreshTokensCHandler> logger, IAuthAuthorizationService authService)
         {
             _auow = auow;
             _logger = logger;
+            _authService = authService;
         }
 
-        public async Task<int> Handle(RevokeAllUserRefreshTokensCommand command, CancellationToken token)
+        public async Task<bool> Handle(RevokeAllUserRefreshTokensCommand command, CancellationToken token)
         {
+            _authService.EnsureCanRevokeRefreshToken(command.UserId);
+
             await _auow.BeginTransactionAsync(token);
 
             try
             {
                 var activeTokens = await _auow.RRefreshTokenRepository.GetActiveByUserIdAsync(command.UserId, token);
-                var revokedCount = 0;
 
                 foreach (var refreshToken in activeTokens)
                 {
                     refreshToken.ApplyRefreshToke(command.UpdatedBy);
                     _auow.WRefreshTokenRepository.Update(refreshToken);
-                    revokedCount++;
                 }
 
                 await _auow.CommitTransactionAsync(token);
 
-                return revokedCount;
+                return true;
             }
             catch (Exception ex)
             {

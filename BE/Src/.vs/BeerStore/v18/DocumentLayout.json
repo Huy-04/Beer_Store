@@ -3,20 +3,20 @@
   "WorkspaceRootPath": "C:\\Code\\Project\\Beer_Store\\BE\\Src\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{315688A1-FD41-44C6-8E59-49264F768F97}|Core\\BeerStore.Api\\BeerStore.Api.csproj|c:\\code\\project\\beer_store\\be\\src\\core\\beerstore.api\\controllers\\auth\\refreshtokencontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{315688A1-FD41-44C6-8E59-49264F768F97}|Core\\BeerStore.Api\\BeerStore.Api.csproj|solutionrelative:core\\beerstore.api\\controllers\\auth\\refreshtokencontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{5FEA1337-1892-4F6C-96C9-BA93F989C6A1}|Core\\BeerStore.Application\\BeerStore.Application.csproj|c:\\code\\project\\beer_store\\be\\src\\core\\beerstore.application\\dtos\\auth\\refreshtoken\\requests\\revokeuserdevicerequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5FEA1337-1892-4F6C-96C9-BA93F989C6A1}|Core\\BeerStore.Application\\BeerStore.Application.csproj|solutionrelative:core\\beerstore.application\\dtos\\auth\\refreshtoken\\requests\\revokeuserdevicerequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{315688A1-FD41-44C6-8E59-49264F768F97}|Core\\BeerStore.Api\\BeerStore.Api.csproj|c:\\code\\project\\beer_store\\be\\src\\core\\beerstore.api\\controllers\\auth\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{315688A1-FD41-44C6-8E59-49264F768F97}|Core\\BeerStore.Api\\BeerStore.Api.csproj|solutionrelative:core\\beerstore.api\\controllers\\auth\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{B3ADFB17-08A8-4B88-8345-7CC8FD9224AD}|Core\\BeerStore.Infrastructure\\BeerStore.Infrastructure.csproj|c:\\code\\project\\beer_store\\be\\src\\core\\beerstore.infrastructure\\services\\currentusercontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B3ADFB17-08A8-4B88-8345-7CC8FD9224AD}|Core\\BeerStore.Infrastructure\\BeerStore.Infrastructure.csproj|solutionrelative:core\\beerstore.infrastructure\\services\\currentusercontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{315688A1-FD41-44C6-8E59-49264F768F97}|Core\\BeerStore.Api\\BeerStore.Api.csproj|c:\\code\\project\\beer_store\\be\\src\\core\\beerstore.api\\controllers\\auth\\authenticationcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{315688A1-FD41-44C6-8E59-49264F768F97}|Core\\BeerStore.Api\\BeerStore.Api.csproj|solutionrelative:core\\beerstore.api\\controllers\\auth\\authenticationcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B3ADFB17-08A8-4B88-8345-7CC8FD9224AD}|Core\\BeerStore.Infrastructure\\BeerStore.Infrastructure.csproj|c:\\code\\project\\beer_store\\be\\src\\core\\beerstore.infrastructure\\repository\\auth\\read\\rpermissionrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B3ADFB17-08A8-4B88-8345-7CC8FD9224AD}|Core\\BeerStore.Infrastructure\\BeerStore.Infrastructure.csproj|solutionrelative:core\\beerstore.infrastructure\\repository\\auth\\read\\rpermissionrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EC29B35F-E3D8-4922-A38B-46278FFF16B8}|Shared\\Domain.Core\\Domain.Core.csproj|c:\\code\\project\\beer_store\\be\\src\\shared\\domain.core\\valueobjects\\quantitybase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EC29B35F-E3D8-4922-A38B-46278FFF16B8}|Shared\\Domain.Core\\Domain.Core.csproj|solutionrelative:shared\\domain.core\\valueobjects\\quantitybase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -26,63 +26,61 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 3,
           "Children": [
             {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "RefreshTokenController.cs",
-              "DocumentMoniker": "C:\\Code\\Project\\Beer_Store\\BE\\Src\\Core\\BeerStore.Api\\Controllers\\Auth\\RefreshTokenController.cs",
-              "RelativeDocumentMoniker": "Core\\BeerStore.Api\\Controllers\\Auth\\RefreshTokenController.cs",
-              "ToolTip": "C:\\Code\\Project\\Beer_Store\\BE\\Src\\Core\\BeerStore.Api\\Controllers\\Auth\\RefreshTokenController.cs",
-              "RelativeToolTip": "Core\\BeerStore.Api\\Controllers\\Auth\\RefreshTokenController.cs",
-              "ViewState": "AgIAADcAAAAAAAAAAIA2wEgAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-12T15:24:52.82Z",
-              "EditorCaption": ""
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 1,
               "Title": "AuthenticationController.cs",
               "DocumentMoniker": "C:\\Code\\Project\\Beer_Store\\BE\\Src\\Core\\BeerStore.Api\\Controllers\\Auth\\AuthenticationController.cs",
               "RelativeDocumentMoniker": "Core\\BeerStore.Api\\Controllers\\Auth\\AuthenticationController.cs",
               "ToolTip": "C:\\Code\\Project\\Beer_Store\\BE\\Src\\Core\\BeerStore.Api\\Controllers\\Auth\\AuthenticationController.cs",
               "RelativeToolTip": "Core\\BeerStore.Api\\Controllers\\Auth\\AuthenticationController.cs",
-              "ViewState": "AgIAAC0AAAAAAAAAAAAewEAAAABLAAAAAAAAAA==",
+              "ViewState": "AgIAACQAAAAAAAAAAAAYwDIAAAAvAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-12T14:00:58.856Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "RevokeUserDeviceRequest.cs",
-              "DocumentMoniker": "C:\\Code\\Project\\Beer_Store\\BE\\Src\\Core\\BeerStore.Application\\DTOs\\Auth\\RefreshToken\\Requests\\RevokeUserDeviceRequest.cs",
-              "RelativeDocumentMoniker": "Core\\BeerStore.Application\\DTOs\\Auth\\RefreshToken\\Requests\\RevokeUserDeviceRequest.cs",
-              "ToolTip": "C:\\Code\\Project\\Beer_Store\\BE\\Src\\Core\\BeerStore.Application\\DTOs\\Auth\\RefreshToken\\Requests\\RevokeUserDeviceRequest.cs",
-              "RelativeToolTip": "Core\\BeerStore.Application\\DTOs\\Auth\\RefreshToken\\Requests\\RevokeUserDeviceRequest.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAABGAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-12T13:54:46.262Z",
+              "WhenOpened": "2026-01-19T01:53:01.555Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "UserController.cs",
-              "DocumentMoniker": "C:\\Code\\Project\\Beer_Store\\BE\\Src\\Core\\BeerStore.Api\\Controllers\\Auth\\UserController.cs",
-              "RelativeDocumentMoniker": "Core\\BeerStore.Api\\Controllers\\Auth\\UserController.cs",
-              "ToolTip": "C:\\Code\\Project\\Beer_Store\\BE\\Src\\Core\\BeerStore.Api\\Controllers\\Auth\\UserController.cs",
-              "RelativeToolTip": "Core\\BeerStore.Api\\Controllers\\Auth\\UserController.cs",
-              "ViewState": "AgIAAGgAAAAAAAAAAAAUwG8AAAA9AAAAAAAAAA==",
+              "Title": "RPermissionRepository.cs",
+              "DocumentMoniker": "C:\\Code\\Project\\Beer_Store\\BE\\Src\\Core\\BeerStore.Infrastructure\\Repository\\Auth\\Read\\RPermissionRepository.cs",
+              "RelativeDocumentMoniker": "Core\\BeerStore.Infrastructure\\Repository\\Auth\\Read\\RPermissionRepository.cs",
+              "ToolTip": "C:\\Code\\Project\\Beer_Store\\BE\\Src\\Core\\BeerStore.Infrastructure\\Repository\\Auth\\Read\\RPermissionRepository.cs",
+              "RelativeToolTip": "Core\\BeerStore.Infrastructure\\Repository\\Auth\\Read\\RPermissionRepository.cs",
+              "ViewState": "AgIAAA4AAAAAAAAAAAAAwBkAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-12T13:30:34.39Z",
+              "WhenOpened": "2026-01-19T01:28:26.253Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "CurrentUserContext.cs",
+              "DocumentMoniker": "C:\\Code\\Project\\Beer_Store\\BE\\Src\\Core\\BeerStore.Infrastructure\\Services\\CurrentUserContext.cs",
+              "RelativeDocumentMoniker": "Core\\BeerStore.Infrastructure\\Services\\CurrentUserContext.cs",
+              "ToolTip": "C:\\Code\\Project\\Beer_Store\\BE\\Src\\Core\\BeerStore.Infrastructure\\Services\\CurrentUserContext.cs",
+              "RelativeToolTip": "Core\\BeerStore.Infrastructure\\Services\\CurrentUserContext.cs",
+              "ViewState": "AgIAAB4AAAAAAAAAAAAowCwAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-18T03:36:12.279Z",
               "EditorCaption": ""
             },
             {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "QuantityBase.cs",
+              "DocumentMoniker": "C:\\Code\\Project\\Beer_Store\\BE\\Src\\Shared\\Domain.Core\\ValueObjects\\QuantityBase.cs",
+              "RelativeDocumentMoniker": "Shared\\Domain.Core\\ValueObjects\\QuantityBase.cs",
+              "ToolTip": "C:\\Code\\Project\\Beer_Store\\BE\\Src\\Shared\\Domain.Core\\ValueObjects\\QuantityBase.cs",
+              "RelativeToolTip": "Shared\\Domain.Core\\ValueObjects\\QuantityBase.cs",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAYwB8AAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-18T00:59:26.012Z"
             }
           ]
         }

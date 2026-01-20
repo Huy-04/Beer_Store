@@ -19,6 +19,9 @@ namespace BeerStore.Infrastructure.Persistence.EntityConfigurations.Auth
                 .HasConversion(AuthConverter.EmailConverter)
                 .HasMaxLength(100)
                 .IsRequired();
+            entity.HasIndex(u => u.Email)
+                .IsUnique()
+                .HasDatabaseName("IX_Users_Email");
 
             entity.Property(u => u.Phone)
                 .HasConversion(AuthConverter.PhoneConverter)
@@ -34,6 +37,9 @@ namespace BeerStore.Infrastructure.Persistence.EntityConfigurations.Auth
                 .HasConversion(AuthConverter.UserNameConverter)
                 .HasMaxLength(69)
                 .IsRequired();
+            entity.HasIndex(u => u.UserName)
+                .IsUnique()
+                .HasDatabaseName("IX_Users_UserName");
 
             entity.Property(u => u.Password)
                 .HasConversion(AuthConverter.PasswordConverter)

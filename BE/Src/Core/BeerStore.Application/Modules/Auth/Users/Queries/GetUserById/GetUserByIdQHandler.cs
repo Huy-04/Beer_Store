@@ -1,5 +1,6 @@
 using BeerStore.Application.DTOs.Auth.User.Responses;
 using BeerStore.Application.Interface.IUnitOfWork.Auth;
+using BeerStore.Application.Interface.Services.Authorization;
 using BeerStore.Application.Mapping.Auth.UserMap;
 using BeerStore.Domain.Enums.Messages;
 using Domain.Core.Enums;
@@ -14,15 +15,19 @@ namespace BeerStore.Application.Modules.Auth.Users.Queries.GetUserById
     {
         private readonly IAuthUnitOfWork _auow;
         private readonly ILogger<GetUserByIdQHandler> _logger;
+        private readonly IAuthAuthorizationService _authService;
 
-        public GetUserByIdQHandler(IAuthUnitOfWork auow, ILogger<GetUserByIdQHandler> logger)
+        public GetUserByIdQHandler(IAuthUnitOfWork auow, ILogger<GetUserByIdQHandler> logger, IAuthAuthorizationService authService)
         {
             _auow = auow;
             _logger = logger;
+            _authService = authService;
         }
 
         public async Task<UserResponse> Handle(GetUserByIdQuery query, CancellationToken token)
         {
+            _authService.EnsureCanReadUser(query.IdUser);
+
             var user = await _auow.RUserRepository.GetByIdAsync(query.IdUser, token);
 
             if (user == null)

@@ -2924,7 +2924,10 @@
         },
         "runtime": {
           "bin/placeholder/BeerStore.Infrastructure.dll": {}
-        }
+        },
+        "frameworkReferences": [
+          "Microsoft.AspNetCore.App"
+        ]
       },
       "Domain.Core/1.0.0": {
         "type": "project",
@@ -8976,7 +8979,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.101/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.102/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

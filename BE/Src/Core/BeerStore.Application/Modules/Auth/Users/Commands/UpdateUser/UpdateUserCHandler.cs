@@ -1,6 +1,7 @@
 using BeerStore.Application.DTOs.Auth.User.Responses;
 using BeerStore.Application.Interface.IUnitOfWork.Auth;
 using BeerStore.Application.Interface.Services;
+using BeerStore.Application.Interface.Services.Authorization;
 using BeerStore.Application.Mapping.Auth.UserMap;
 using BeerStore.Domain.Enums.Messages;
 using BeerStore.Domain.ValueObjects.Auth.User;
@@ -17,16 +18,20 @@ namespace BeerStore.Application.Modules.Auth.Users.Commands.UpdateUser
         private readonly IAuthUnitOfWork _auow;
         private readonly ILogger<UpdateUserCHandler> _logger;
         private readonly IPasswordHasher _passwordHasher;
+        private readonly IAuthAuthorizationService _authService;
 
-        public UpdateUserCHandler(IAuthUnitOfWork auow, ILogger<UpdateUserCHandler> logger, IPasswordHasher passwordHasher)
+        public UpdateUserCHandler(IAuthUnitOfWork auow, ILogger<UpdateUserCHandler> logger, IPasswordHasher passwordHasher, IAuthAuthorizationService authService)
         {
             _auow = auow;
             _logger = logger;
             _passwordHasher = passwordHasher;
+            _authService = authService;
         }
 
         public async Task<UserResponse> Handle(UpdateUserCommand command, CancellationToken token)
         {
+            _authService.EnsureCanUpdateUser(command.IdUser);
+
             await _auow.BeginTransactionAsync(token);
 
             try
@@ -107,3 +112,4 @@ namespace BeerStore.Application.Modules.Auth.Users.Commands.UpdateUser
         }
     }
 }
+

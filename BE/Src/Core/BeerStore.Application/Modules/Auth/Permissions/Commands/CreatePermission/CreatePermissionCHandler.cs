@@ -1,5 +1,6 @@
 using BeerStore.Application.DTOs.Auth.Permission.Responses;
 using BeerStore.Application.Interface.IUnitOfWork.Auth;
+using BeerStore.Application.Interface.Services.Authorization;
 using BeerStore.Application.Mapping.Auth.PermissionMap;
 using BeerStore.Domain.Enums.Messages;
 using Domain.Core.Enums;
@@ -14,15 +15,19 @@ namespace BeerStore.Application.Modules.Auth.Permissions.Commands.CreatePermissi
     {
         private readonly IAuthUnitOfWork _auow;
         private readonly ILogger<CreatePermissionCHandler> _logger;
+        private readonly IAuthAuthorizationService _authService;
 
-        public CreatePermissionCHandler(IAuthUnitOfWork auow, ILogger<CreatePermissionCHandler> logger)
+        public CreatePermissionCHandler(IAuthUnitOfWork auow, ILogger<CreatePermissionCHandler> logger, IAuthAuthorizationService authService)
         {
             _auow = auow;
             _logger = logger;
+            _authService = authService;
         }
 
         public async Task<PermissionResponse> Handle(CreatePermissionCommand command, CancellationToken token)
         {
+            _authService.EnsureCanCreatePermission();
+
             await _auow.BeginTransactionAsync(token);
 
             try
@@ -58,3 +63,4 @@ namespace BeerStore.Application.Modules.Auth.Permissions.Commands.CreatePermissi
         }
     }
 }
+

@@ -2,6 +2,7 @@ using Application.Core.Interface.ISettings;
 using BeerStore.Application.DTOs.Auth.RefreshToken.Responses;
 using BeerStore.Application.Interface.IUnitOfWork.Auth;
 using BeerStore.Application.Interface.Services;
+using BeerStore.Application.Interface.Services.Authorization;
 using BeerStore.Application.Mapping.Auth.RefreshTokenMap;
 using BeerStore.Domain.ValueObjects.Auth.RefreshToken;
 using MediatR;
@@ -15,19 +16,23 @@ namespace BeerStore.Application.Modules.Auth.RefreshTokens.Commands.CreateRefres
         private readonly IJwtService _jwtService;
         private readonly ILogger<CreateRefreshTokenCHandler> _logger;
         private readonly IJwtSettings _jwtSetting;
+        private readonly IAuthAuthorizationService _authService;
 
         public CreateRefreshTokenCHandler(IAuthUnitOfWork auow,
             IJwtService jwtService, ILogger<CreateRefreshTokenCHandler> logger,
-            IJwtSettings jwtSettings)
+            IJwtSettings jwtSettings, IAuthAuthorizationService authService)
         {
             _auow = auow;
             _jwtService = jwtService;
             _logger = logger;
             _jwtSetting = jwtSettings;
+            _authService = authService;
         }
 
         public async Task<RefreshTokenResponse> Handle(CreateRefreshTokenCommand command, CancellationToken token)
         {
+            _authService.EnsureCanCreateRefreshToken(command.Request.userId);
+
             await _auow.BeginTransactionAsync(token);
 
             try

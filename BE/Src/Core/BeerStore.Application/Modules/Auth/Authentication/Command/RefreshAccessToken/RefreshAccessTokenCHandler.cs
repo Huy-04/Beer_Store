@@ -31,14 +31,14 @@ namespace BeerStore.Application.Modules.Auth.Authentication.Command.RefreshAcces
             {
                 var hashedToken = _jwtService.HashRefreshToken(command.RefreshToken);
 
-                var refreshToken = await _auow.RRefreshTokenRepository.FindTokenAsync(token,
-                    tokenHash: hashedToken, deviceId: command.DeviceId);
+                var refreshToken = await _auow.RRefreshTokenRepository
+                    .GetByTokenHashAndDeviceId(hashedToken, command.DeviceId, token);
 
                 if (refreshToken == null)
                 {
-                    _logger.LogWarning("Token not found for DeviceId {DeviceId}", command.DeviceId);
+                    _logger.LogWarning("Invalid or expired token for DeviceId {DeviceId}", command.DeviceId);
                     throw new BusinessRuleException<RefreshTokenField>(
-                        ErrorCategory.NotFound,
+                        ErrorCategory.Unauthorized,
                         RefreshTokenField.TokenHash,
                         ErrorCode.TokenNotFound,
                         new Dictionary<object, object>());
@@ -51,16 +51,6 @@ namespace BeerStore.Application.Modules.Auth.Authentication.Command.RefreshAcces
                         ErrorCategory.Forbidden,
                         RefreshTokenField.TokenStatus,
                         ErrorCode.TokenRevoked,
-                        new Dictionary<object, object>());
-                }
-
-                if (refreshToken.ExpiresAt < DateTimeOffset.UtcNow)
-                {
-                    _logger.LogWarning("Token expired for UserId {UserId}", refreshToken.UserId);
-                    throw new BusinessRuleException<RefreshTokenField>(
-                        ErrorCategory.Unauthorized,
-                        RefreshTokenField.ExpiresAt,
-                        ErrorCode.TokenExpired,
                         new Dictionary<object, object>());
                 }
 
@@ -90,8 +80,12 @@ namespace BeerStore.Application.Modules.Auth.Authentication.Command.RefreshAcces
                 var rolesEntities = await _auow.RRoleRepository.GetRolesByIdsAsync(roleIds, token);
                 var roles = rolesEntities.Select(r => r.RoleName.Value).ToList();
 
+                // Get permissions for roles
+                var permissions = (await _auow.RPermissionRepository
+                    .GetPermissionNamesByRoleIdsAsync(roleIds, token)).ToList();
+
                 // Generate AccessToken
-                var accessToken = _jwtService.GenerateToken(user.Id, user.Email, roles);
+                var accessToken = _jwtService.GenerateToken(user.Id, user.Email, roles, permissions);
 
                 return new LoginResponse(
                     accessToken,

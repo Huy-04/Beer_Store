@@ -1,0 +1,303 @@
+[2026-01-16 21:19:01.767 +07:00] [INF] [c7eb39956c72a65d0d9ccc25cd72fcce] [Diagnostics] [Request starting HTTP/1.1 POST https://localhost:7124/api/auth/login - application/json 66]
+[2026-01-16 21:19:04.242 +07:00] [INF] [c7eb39956c72a65d0d9ccc25cd72fcce] [Diagnostics] [Request finished HTTP/1.1 POST https://localhost:7124/api/auth/login - 404 0 null 2491.4973ms]
+[2026-01-16 21:19:04.256 +07:00] [INF] [c7eb39956c72a65d0d9ccc25cd72fcce] [Diagnostics] [Request reached the end of the middleware pipeline without being handled by application code. Request path: POST https://localhost:7124/api/auth/login, Response status code: 404]
+[2026-01-16 21:20:27.308 +07:00] [INF] [c74072a32b3a45a485128d245468e526] [Diagnostics] [Request starting HTTP/1.1 POST https://localhost:7124/api/auth/login - application/json 66]
+[2026-01-16 21:20:27.326 +07:00] [INF] [c74072a32b3a45a485128d245468e526] [Diagnostics] [Request finished HTTP/1.1 POST https://localhost:7124/api/auth/login - 404 0 null 18.2683ms]
+[2026-01-16 21:20:27.334 +07:00] [INF] [c74072a32b3a45a485128d245468e526] [Diagnostics] [Request reached the end of the middleware pipeline without being handled by application code. Request path: POST https://localhost:7124/api/auth/login, Response status code: 404]
+[2026-01-16 21:21:11.990 +07:00] [INF] [e3b4a0e31222418a22cb4558e8336556] [Diagnostics] [Request starting HTTP/1.1 POST https://localhost:7124/api/auth/login - application/json 66]
+[2026-01-16 21:21:11.999 +07:00] [INF] [e3b4a0e31222418a22cb4558e8336556] [Diagnostics] [Request finished HTTP/1.1 POST https://localhost:7124/api/auth/login - 404 0 null 10.039ms]
+[2026-01-16 21:21:12.008 +07:00] [INF] [e3b4a0e31222418a22cb4558e8336556] [Diagnostics] [Request reached the end of the middleware pipeline without being handled by application code. Request path: POST https://localhost:7124/api/auth/login, Response status code: 404]
+[2026-01-16 21:23:09.291 +07:00] [INF] [a8b10e530ca9e39ebdd5064ba6452122] [Diagnostics] [Request starting HTTP/1.1 POST https://localhost:7124/api/authentication/login - application/json 66]
+[2026-01-16 21:23:09.774 +07:00] [INF] [a8b10e530ca9e39ebdd5064ba6452122] [Diagnostics] [Request finished HTTP/1.1 POST https://localhost:7124/api/authentication/login - 400 null application/problem+json; charset=utf-8 494.3225ms]
+[2026-01-16 21:23:52.490 +07:00] [INF] [6ec91a51bd5d346acc0b37c234aad1b8] [Diagnostics] [Request starting HTTP/1.1 POST https://localhost:7124/api/authentication/login - application/json 66]
+[2026-01-16 21:23:59.037 +07:00] [ERR] [6ec91a51bd5d346acc0b37c234aad1b8] [LoginCHandler] [Failed to login. Email: admin@beerstore.com]
+System.InvalidOperationException: The LINQ expression 'DbSet<RefreshToken>()
+    .Where(r => True && False || (Guid?)r.UserId == __userId_0 && False || r.DeviceId.Value == __deviceId_1)' could not be translated. Either rewrite the query in a form that can be translated, or switch to client evaluation explicitly by inserting a call to 'AsEnumerable', 'AsAsyncEnumerable', 'ToList', or 'ToListAsync'. See https://go.microsoft.com/fwlink/?linkid=2101038 for more information.
+   at Microsoft.EntityFrameworkCore.Query.QueryableMethodTranslatingExpressionVisitor.Translate(Expression expression)
+   at Microsoft.EntityFrameworkCore.Query.QueryCompilationContext.CreateQueryExecutorExpression[TResult](Expression query)
+   at Microsoft.EntityFrameworkCore.Query.QueryCompilationContext.CreateQueryExecutor[TResult](Expression query)
+   at Microsoft.EntityFrameworkCore.Storage.Database.CompileQuery[TResult](Expression query, Boolean async)
+   at Microsoft.EntityFrameworkCore.Query.Internal.QueryCompiler.CompileQueryCore[TResult](IDatabase database, Expression query, IModel model, Boolean async)
+   at Microsoft.EntityFrameworkCore.Query.Internal.QueryCompiler.<>c__DisplayClass11_0`1.<ExecuteCore>b__0()
+   at Microsoft.EntityFrameworkCore.Query.Internal.CompiledQueryCache.GetOrAddQuery[TResult](Object cacheKey, Func`1 compiler)
+   at Microsoft.EntityFrameworkCore.Query.Internal.QueryCompiler.ExecuteCore[TResult](Expression query, Boolean async, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.QueryCompiler.ExecuteAsync[TResult](Expression query, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.EntityQueryProvider.ExecuteAsync[TResult](Expression expression, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.EntityFrameworkQueryableExtensions.ExecuteAsync[TSource,TResult](MethodInfo operatorMethodInfo, IQueryable`1 source, Expression expression, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.EntityFrameworkQueryableExtensions.ExecuteAsync[TSource,TResult](MethodInfo operatorMethodInfo, IQueryable`1 source, LambdaExpression expression, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.EntityFrameworkQueryableExtensions.FirstOrDefaultAsync[TSource](IQueryable`1 source, Expression`1 predicate, CancellationToken cancellationToken)
+   at BeerStore.Infrastructure.Repository.Auth.Read.RRefreshTokenRepository.FindTokenAsync(CancellationToken token, String tokenHash, Nullable`1 userId, String deviceId) in C:\Code\Project\Beer_Store\BE\Src\Core\BeerStore.Infrastructure\Repository\Auth\Read\RRefreshTokenRepository.cs:line 18
+   at BeerStore.Application.Modules.Auth.Authentication.Command.Login.LoginCHandler.Handle(LoginCommand command, CancellationToken token) in C:\Code\Project\Beer_Store\BE\Src\Core\BeerStore.Application\Modules\Auth\Authentication\Command\Login\LoginCHandler.cs:line 101
+[2026-01-16 21:23:59.468 +07:00] [ERR] [6ec91a51bd5d346acc0b37c234aad1b8] [ExceptionMiddleware] [Unhandled exception]
+System.InvalidOperationException: The LINQ expression 'DbSet<RefreshToken>()
+    .Where(r => True && False || (Guid?)r.UserId == __userId_0 && False || r.DeviceId.Value == __deviceId_1)' could not be translated. Either rewrite the query in a form that can be translated, or switch to client evaluation explicitly by inserting a call to 'AsEnumerable', 'AsAsyncEnumerable', 'ToList', or 'ToListAsync'. See https://go.microsoft.com/fwlink/?linkid=2101038 for more information.
+   at Microsoft.EntityFrameworkCore.Query.QueryableMethodTranslatingExpressionVisitor.Translate(Expression expression)
+   at Microsoft.EntityFrameworkCore.Query.QueryCompilationContext.CreateQueryExecutorExpression[TResult](Expression query)
+   at Microsoft.EntityFrameworkCore.Query.QueryCompilationContext.CreateQueryExecutor[TResult](Expression query)
+   at Microsoft.EntityFrameworkCore.Storage.Database.CompileQuery[TResult](Expression query, Boolean async)
+   at Microsoft.EntityFrameworkCore.Query.Internal.QueryCompiler.CompileQueryCore[TResult](IDatabase database, Expression query, IModel model, Boolean async)
+   at Microsoft.EntityFrameworkCore.Query.Internal.QueryCompiler.<>c__DisplayClass11_0`1.<ExecuteCore>b__0()
+   at Microsoft.EntityFrameworkCore.Query.Internal.CompiledQueryCache.GetOrAddQuery[TResult](Object cacheKey, Func`1 compiler)
+   at Microsoft.EntityFrameworkCore.Query.Internal.QueryCompiler.ExecuteCore[TResult](Expression query, Boolean async, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.QueryCompiler.ExecuteAsync[TResult](Expression query, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.EntityQueryProvider.ExecuteAsync[TResult](Expression expression, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.EntityFrameworkQueryableExtensions.ExecuteAsync[TSource,TResult](MethodInfo operatorMethodInfo, IQueryable`1 source, Expression expression, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.EntityFrameworkQueryableExtensions.ExecuteAsync[TSource,TResult](MethodInfo operatorMethodInfo, IQueryable`1 source, LambdaExpression expression, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.EntityFrameworkQueryableExtensions.FirstOrDefaultAsync[TSource](IQueryable`1 source, Expression`1 predicate, CancellationToken cancellationToken)
+   at BeerStore.Infrastructure.Repository.Auth.Read.RRefreshTokenRepository.FindTokenAsync(CancellationToken token, String tokenHash, Nullable`1 userId, String deviceId) in C:\Code\Project\Beer_Store\BE\Src\Core\BeerStore.Infrastructure\Repository\Auth\Read\RRefreshTokenRepository.cs:line 18
+   at BeerStore.Application.Modules.Auth.Authentication.Command.Login.LoginCHandler.Handle(LoginCommand command, CancellationToken token) in C:\Code\Project\Beer_Store\BE\Src\Core\BeerStore.Application\Modules\Auth\Authentication\Command\Login\LoginCHandler.cs:line 101
+   at BeerStore.Application.Modules.Auth.Authentication.Command.Login.LoginCHandler.Handle(LoginCommand command, CancellationToken token) in C:\Code\Project\Beer_Store\BE\Src\Core\BeerStore.Application\Modules\Auth\Authentication\Command\Login\LoginCHandler.cs:line 142
+   at BeerStore.Api.Controllers.Auth.AuthenticationController.Login(LoginRequest request, String deviceId, String deviceName, CancellationToken token) in C:\Code\Project\Beer_Store\BE\Src\Core\BeerStore.Api\Controllers\Auth\AuthenticationController.cs:line 36
+   at lambda_method6(Closure, Object)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.AwaitableObjectResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Api.Core.Middleware.ExceptionMiddleware.InvokeAsync(HttpContext context) in C:\Code\Project\Beer_Store\BE\Src\Shared\Api.Core\Middleware\ExceptionMiddleware.cs:line 25
+[2026-01-16 21:23:59.509 +07:00] [INF] [6ec91a51bd5d346acc0b37c234aad1b8] [Diagnostics] [Request finished HTTP/1.1 POST https://localhost:7124/api/authentication/login - 500 null application/problem+json 7019.007ms]
+[2026-01-16 21:50:09.778 +07:00] [INF] [a37872bb6eaa9544028c33abb6496c3c] [Diagnostics] [Request starting HTTP/1.1 POST https://localhost:7124/api/authentication/login - application/json 66]
+[2026-01-16 21:50:14.637 +07:00] [ERR] [a37872bb6eaa9544028c33abb6496c3c] [LoginCHandler] [Failed to login. Email: admin@beerstore.com]
+System.InvalidOperationException: The LINQ expression 'DbSet<RefreshToken>()
+    .Where(r => r.UserId == __userId_0 && r.DeviceId.Value == __deviceId_1 && (int)r.TokenStatus.Value == 0 && r.ExpiresAt > DateTimeOffset.UtcNow)' could not be translated. Either rewrite the query in a form that can be translated, or switch to client evaluation explicitly by inserting a call to 'AsEnumerable', 'AsAsyncEnumerable', 'ToList', or 'ToListAsync'. See https://go.microsoft.com/fwlink/?linkid=2101038 for more information.
+   at Microsoft.EntityFrameworkCore.Query.QueryableMethodTranslatingExpressionVisitor.Translate(Expression expression)
+   at Microsoft.EntityFrameworkCore.Query.QueryCompilationContext.CreateQueryExecutorExpression[TResult](Expression query)
+   at Microsoft.EntityFrameworkCore.Query.QueryCompilationContext.CreateQueryExecutor[TResult](Expression query)
+   at Microsoft.EntityFrameworkCore.Storage.Database.CompileQuery[TResult](Expression query, Boolean async)
+   at Microsoft.EntityFrameworkCore.Query.Internal.QueryCompiler.CompileQueryCore[TResult](IDatabase database, Expression query, IModel model, Boolean async)
+   at Microsoft.EntityFrameworkCore.Query.Internal.QueryCompiler.<>c__DisplayClass11_0`1.<ExecuteCore>b__0()
+   at Microsoft.EntityFrameworkCore.Query.Internal.CompiledQueryCache.GetOrAddQuery[TResult](Object cacheKey, Func`1 compiler)
+   at Microsoft.EntityFrameworkCore.Query.Internal.QueryCompiler.ExecuteCore[TResult](Expression query, Boolean async, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.QueryCompiler.ExecuteAsync[TResult](Expression query, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.EntityQueryProvider.ExecuteAsync[TResult](Expression expression, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.EntityFrameworkQueryableExtensions.ExecuteAsync[TSource,TResult](MethodInfo operatorMethodInfo, IQueryable`1 source, Expression expression, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.EntityFrameworkQueryableExtensions.ExecuteAsync[TSource,TResult](MethodInfo operatorMethodInfo, IQueryable`1 source, LambdaExpression expression, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.EntityFrameworkQueryableExtensions.FirstOrDefaultAsync[TSource](IQueryable`1 source, Expression`1 predicate, CancellationToken cancellationToken)
+   at BeerStore.Infrastructure.Repository.Auth.Read.RRefreshTokenRepository.GetByUserIdAndDeviceIdAsync(Guid userId, String deviceId, CancellationToken token) in C:\Code\Project\Beer_Store\BE\Src\Core\BeerStore.Infrastructure\Repository\Auth\Read\RRefreshTokenRepository.cs:line 39
+   at BeerStore.Application.Modules.Auth.Authentication.Command.Login.LoginCHandler.Handle(LoginCommand command, CancellationToken token) in C:\Code\Project\Beer_Store\BE\Src\Core\BeerStore.Application\Modules\Auth\Authentication\Command\Login\LoginCHandler.cs:line 101
+[2026-01-16 21:50:15.045 +07:00] [ERR] [a37872bb6eaa9544028c33abb6496c3c] [ExceptionMiddleware] [Unhandled exception]
+System.InvalidOperationException: The LINQ expression 'DbSet<RefreshToken>()
+    .Where(r => r.UserId == __userId_0 && r.DeviceId.Value == __deviceId_1 && (int)r.TokenStatus.Value == 0 && r.ExpiresAt > DateTimeOffset.UtcNow)' could not be translated. Either rewrite the query in a form that can be translated, or switch to client evaluation explicitly by inserting a call to 'AsEnumerable', 'AsAsyncEnumerable', 'ToList', or 'ToListAsync'. See https://go.microsoft.com/fwlink/?linkid=2101038 for more information.
+   at Microsoft.EntityFrameworkCore.Query.QueryableMethodTranslatingExpressionVisitor.Translate(Expression expression)
+   at Microsoft.EntityFrameworkCore.Query.QueryCompilationContext.CreateQueryExecutorExpression[TResult](Expression query)
+   at Microsoft.EntityFrameworkCore.Query.QueryCompilationContext.CreateQueryExecutor[TResult](Expression query)
+   at Microsoft.EntityFrameworkCore.Storage.Database.CompileQuery[TResult](Expression query, Boolean async)
+   at Microsoft.EntityFrameworkCore.Query.Internal.QueryCompiler.CompileQueryCore[TResult](IDatabase database, Expression query, IModel model, Boolean async)
+   at Microsoft.EntityFrameworkCore.Query.Internal.QueryCompiler.<>c__DisplayClass11_0`1.<ExecuteCore>b__0()
+   at Microsoft.EntityFrameworkCore.Query.Internal.CompiledQueryCache.GetOrAddQuery[TResult](Object cacheKey, Func`1 compiler)
+   at Microsoft.EntityFrameworkCore.Query.Internal.QueryCompiler.ExecuteCore[TResult](Expression query, Boolean async, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.QueryCompiler.ExecuteAsync[TResult](Expression query, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.EntityQueryProvider.ExecuteAsync[TResult](Expression expression, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.EntityFrameworkQueryableExtensions.ExecuteAsync[TSource,TResult](MethodInfo operatorMethodInfo, IQueryable`1 source, Expression expression, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.EntityFrameworkQueryableExtensions.ExecuteAsync[TSource,TResult](MethodInfo operatorMethodInfo, IQueryable`1 source, LambdaExpression expression, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.EntityFrameworkQueryableExtensions.FirstOrDefaultAsync[TSource](IQueryable`1 source, Expression`1 predicate, CancellationToken cancellationToken)
+   at BeerStore.Infrastructure.Repository.Auth.Read.RRefreshTokenRepository.GetByUserIdAndDeviceIdAsync(Guid userId, String deviceId, CancellationToken token) in C:\Code\Project\Beer_Store\BE\Src\Core\BeerStore.Infrastructure\Repository\Auth\Read\RRefreshTokenRepository.cs:line 39
+   at BeerStore.Application.Modules.Auth.Authentication.Command.Login.LoginCHandler.Handle(LoginCommand command, CancellationToken token) in C:\Code\Project\Beer_Store\BE\Src\Core\BeerStore.Application\Modules\Auth\Authentication\Command\Login\LoginCHandler.cs:line 101
+   at BeerStore.Application.Modules.Auth.Authentication.Command.Login.LoginCHandler.Handle(LoginCommand command, CancellationToken token) in C:\Code\Project\Beer_Store\BE\Src\Core\BeerStore.Application\Modules\Auth\Authentication\Command\Login\LoginCHandler.cs:line 142
+   at BeerStore.Api.Controllers.Auth.AuthenticationController.Login(LoginRequest request, String deviceId, String deviceName, CancellationToken token) in C:\Code\Project\Beer_Store\BE\Src\Core\BeerStore.Api\Controllers\Auth\AuthenticationController.cs:line 36
+   at lambda_method6(Closure, Object)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.AwaitableObjectResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Api.Core.Middleware.ExceptionMiddleware.InvokeAsync(HttpContext context) in C:\Code\Project\Beer_Store\BE\Src\Shared\Api.Core\Middleware\ExceptionMiddleware.cs:line 25
+[2026-01-16 21:50:15.102 +07:00] [INF] [a37872bb6eaa9544028c33abb6496c3c] [Diagnostics] [Request finished HTTP/1.1 POST https://localhost:7124/api/authentication/login - 500 null application/problem+json 5334.9827ms]
+[2026-01-16 21:56:50.026 +07:00] [INF] [69b8dcd8a9bcf6b183253ab7f7cdb563] [Diagnostics] [Request starting HTTP/1.1 POST https://localhost:7124/api/authentication/login - application/json 66]
+[2026-01-16 21:56:54.784 +07:00] [ERR] [69b8dcd8a9bcf6b183253ab7f7cdb563] [LoginCHandler] [Failed to login. Email: admin@beerstore.com]
+System.InvalidOperationException: The LINQ expression 'DbSet<RefreshToken>()
+    .Where(r => r.UserId == __userId_0 && (string)r.DeviceId == __deviceId_1 && (int)r.TokenStatus.Value == 0 && r.ExpiresAt > DateTimeOffset.UtcNow)' could not be translated. Either rewrite the query in a form that can be translated, or switch to client evaluation explicitly by inserting a call to 'AsEnumerable', 'AsAsyncEnumerable', 'ToList', or 'ToListAsync'. See https://go.microsoft.com/fwlink/?linkid=2101038 for more information.
+   at Microsoft.EntityFrameworkCore.Query.QueryableMethodTranslatingExpressionVisitor.Translate(Expression expression)
+   at Microsoft.EntityFrameworkCore.Query.QueryCompilationContext.CreateQueryExecutorExpression[TResult](Expression query)
+   at Microsoft.EntityFrameworkCore.Query.QueryCompilationContext.CreateQueryExecutor[TResult](Expression query)
+   at Microsoft.EntityFrameworkCore.Storage.Database.CompileQuery[TResult](Expression query, Boolean async)
+   at Microsoft.EntityFrameworkCore.Query.Internal.QueryCompiler.CompileQueryCore[TResult](IDatabase database, Expression query, IModel model, Boolean async)
+   at Microsoft.EntityFrameworkCore.Query.Internal.QueryCompiler.<>c__DisplayClass11_0`1.<ExecuteCore>b__0()
+   at Microsoft.EntityFrameworkCore.Query.Internal.CompiledQueryCache.GetOrAddQuery[TResult](Object cacheKey, Func`1 compiler)
+   at Microsoft.EntityFrameworkCore.Query.Internal.QueryCompiler.ExecuteCore[TResult](Expression query, Boolean async, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.QueryCompiler.ExecuteAsync[TResult](Expression query, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.EntityQueryProvider.ExecuteAsync[TResult](Expression expression, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.EntityFrameworkQueryableExtensions.ExecuteAsync[TSource,TResult](MethodInfo operatorMethodInfo, IQueryable`1 source, Expression expression, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.EntityFrameworkQueryableExtensions.ExecuteAsync[TSource,TResult](MethodInfo operatorMethodInfo, IQueryable`1 source, LambdaExpression expression, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.EntityFrameworkQueryableExtensions.FirstOrDefaultAsync[TSource](IQueryable`1 source, Expression`1 predicate, CancellationToken cancellationToken)
+   at BeerStore.Infrastructure.Repository.Auth.Read.RRefreshTokenRepository.GetByUserIdAndDeviceIdAsync(Guid userId, String deviceId, CancellationToken token) in C:\Code\Project\Beer_Store\BE\Src\Core\BeerStore.Infrastructure\Repository\Auth\Read\RRefreshTokenRepository.cs:line 39
+   at BeerStore.Application.Modules.Auth.Authentication.Command.Login.LoginCHandler.Handle(LoginCommand command, CancellationToken token) in C:\Code\Project\Beer_Store\BE\Src\Core\BeerStore.Application\Modules\Auth\Authentication\Command\Login\LoginCHandler.cs:line 101
+[2026-01-16 21:56:55.220 +07:00] [ERR] [69b8dcd8a9bcf6b183253ab7f7cdb563] [ExceptionMiddleware] [Unhandled exception]
+System.InvalidOperationException: The LINQ expression 'DbSet<RefreshToken>()
+    .Where(r => r.UserId == __userId_0 && (string)r.DeviceId == __deviceId_1 && (int)r.TokenStatus.Value == 0 && r.ExpiresAt > DateTimeOffset.UtcNow)' could not be translated. Either rewrite the query in a form that can be translated, or switch to client evaluation explicitly by inserting a call to 'AsEnumerable', 'AsAsyncEnumerable', 'ToList', or 'ToListAsync'. See https://go.microsoft.com/fwlink/?linkid=2101038 for more information.
+   at Microsoft.EntityFrameworkCore.Query.QueryableMethodTranslatingExpressionVisitor.Translate(Expression expression)
+   at Microsoft.EntityFrameworkCore.Query.QueryCompilationContext.CreateQueryExecutorExpression[TResult](Expression query)
+   at Microsoft.EntityFrameworkCore.Query.QueryCompilationContext.CreateQueryExecutor[TResult](Expression query)
+   at Microsoft.EntityFrameworkCore.Storage.Database.CompileQuery[TResult](Expression query, Boolean async)
+   at Microsoft.EntityFrameworkCore.Query.Internal.QueryCompiler.CompileQueryCore[TResult](IDatabase database, Expression query, IModel model, Boolean async)
+   at Microsoft.EntityFrameworkCore.Query.Internal.QueryCompiler.<>c__DisplayClass11_0`1.<ExecuteCore>b__0()
+   at Microsoft.EntityFrameworkCore.Query.Internal.CompiledQueryCache.GetOrAddQuery[TResult](Object cacheKey, Func`1 compiler)
+   at Microsoft.EntityFrameworkCore.Query.Internal.QueryCompiler.ExecuteCore[TResult](Expression query, Boolean async, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.QueryCompiler.ExecuteAsync[TResult](Expression query, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.EntityQueryProvider.ExecuteAsync[TResult](Expression expression, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.EntityFrameworkQueryableExtensions.ExecuteAsync[TSource,TResult](MethodInfo operatorMethodInfo, IQueryable`1 source, Expression expression, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.EntityFrameworkQueryableExtensions.ExecuteAsync[TSource,TResult](MethodInfo operatorMethodInfo, IQueryable`1 source, LambdaExpression expression, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.EntityFrameworkQueryableExtensions.FirstOrDefaultAsync[TSource](IQueryable`1 source, Expression`1 predicate, CancellationToken cancellationToken)
+   at BeerStore.Infrastructure.Repository.Auth.Read.RRefreshTokenRepository.GetByUserIdAndDeviceIdAsync(Guid userId, String deviceId, CancellationToken token) in C:\Code\Project\Beer_Store\BE\Src\Core\BeerStore.Infrastructure\Repository\Auth\Read\RRefreshTokenRepository.cs:line 39
+   at BeerStore.Application.Modules.Auth.Authentication.Command.Login.LoginCHandler.Handle(LoginCommand command, CancellationToken token) in C:\Code\Project\Beer_Store\BE\Src\Core\BeerStore.Application\Modules\Auth\Authentication\Command\Login\LoginCHandler.cs:line 101
+   at BeerStore.Application.Modules.Auth.Authentication.Command.Login.LoginCHandler.Handle(LoginCommand command, CancellationToken token) in C:\Code\Project\Beer_Store\BE\Src\Core\BeerStore.Application\Modules\Auth\Authentication\Command\Login\LoginCHandler.cs:line 142
+   at BeerStore.Api.Controllers.Auth.AuthenticationController.Login(LoginRequest request, String deviceId, String deviceName, CancellationToken token) in C:\Code\Project\Beer_Store\BE\Src\Core\BeerStore.Api\Controllers\Auth\AuthenticationController.cs:line 36
+   at lambda_method6(Closure, Object)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.AwaitableObjectResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Api.Core.Middleware.ExceptionMiddleware.InvokeAsync(HttpContext context) in C:\Code\Project\Beer_Store\BE\Src\Shared\Api.Core\Middleware\ExceptionMiddleware.cs:line 25
+[2026-01-16 21:56:55.274 +07:00] [INF] [69b8dcd8a9bcf6b183253ab7f7cdb563] [Diagnostics] [Request finished HTTP/1.1 POST https://localhost:7124/api/authentication/login - 500 null application/problem+json 5260.1612ms]
+[2026-01-16 21:59:48.803 +07:00] [INF] [0a06659fb6b289e3acb496d60c15a83a] [Diagnostics] [Request starting HTTP/1.1 POST https://localhost:7124/api/authentication/login - application/json 66]
+[2026-01-16 21:59:53.871 +07:00] [ERR] [0a06659fb6b289e3acb496d60c15a83a] [Command] [Failed executing DbCommand (27ms) [Parameters=[@__userId_0='?' (DbType = Guid), @__deviceId_1='?' (Size = 4000), @__Active_2='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [r].[IdRefreshToken], [r].[CreatedAt], [r].[CreatedBy], [r].[DeviceId], [r].[DeviceName], [r].[ExpiresAt], [r].[IpAddress], [r].[TokenHash], [r].[TokenStatus], [r].[UpdatedAt], [r].[UpdatedBy], [r].[UserId]
+FROM [RefreshTokens] AS [r]
+WHERE [r].[UserId] = @__userId_0 AND CAST([r].[DeviceId] AS nvarchar(max)) = @__deviceId_1 AND [r].[TokenStatus] = @__Active_2 AND [r].[ExpiresAt] > CAST(SYSUTCDATETIME() AS datetimeoffset)]
+[2026-01-16 21:59:53.916 +07:00] [ERR] [0a06659fb6b289e3acb496d60c15a83a] [Query] [An exception occurred while iterating over the results of a query for context type 'BeerStore.Infrastructure.Persistence.Db.AuthDbContext'.
+Microsoft.Data.SqlClient.SqlException (0x80131904): Invalid object name 'RefreshTokens'.
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__211_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+ClientConnectionId:5b12c5eb-a2ef-44e3-8eb7-d427fdcc486e
+Error Number:208,State:1,Class:16]
+Microsoft.Data.SqlClient.SqlException (0x80131904): Invalid object name 'RefreshTokens'.
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__211_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+ClientConnectionId:5b12c5eb-a2ef-44e3-8eb7-d427fdcc486e
+Error Number:208,State:1,Class:16
+[2026-01-16 21:59:54.198 +07:00] [ERR] [0a06659fb6b289e3acb496d60c15a83a] [LoginCHandler] [Failed to login. Email: admin@beerstore.com]
+Microsoft.Data.SqlClient.SqlException (0x80131904): Invalid object name 'RefreshTokens'.
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__211_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+   at Microsoft.EntityFrameworkCore.Query.ShapedQueryCompilingExpressionVisitor.SingleOrDefaultAsync[TSource](IAsyncEnumerable`1 asyncEnumerable, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.ShapedQueryCompilingExpressionVisitor.SingleOrDefaultAsync[TSource](IAsyncEnumerable`1 asyncEnumerable, CancellationToken cancellationToken)
+   at BeerStore.Infrastructure.Repository.Auth.Read.RRefreshTokenRepository.GetByUserIdAndDeviceIdAsync(Guid userId, String deviceId, CancellationToken token) in C:\Code\Project\Beer_Store\BE\Src\Core\BeerStore.Infrastructure\Repository\Auth\Read\RRefreshTokenRepository.cs:line 39
+   at BeerStore.Application.Modules.Auth.Authentication.Command.Login.LoginCHandler.Handle(LoginCommand command, CancellationToken token) in C:\Code\Project\Beer_Store\BE\Src\Core\BeerStore.Application\Modules\Auth\Authentication\Command\Login\LoginCHandler.cs:line 101
+ClientConnectionId:5b12c5eb-a2ef-44e3-8eb7-d427fdcc486e
+Error Number:208,State:1,Class:16
+[2026-01-16 21:59:54.818 +07:00] [ERR] [0a06659fb6b289e3acb496d60c15a83a] [ExceptionMiddleware] [Unhandled exception]
+Microsoft.Data.SqlClient.SqlException (0x80131904): Invalid object name 'RefreshTokens'.
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__211_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+   at Microsoft.EntityFrameworkCore.Query.ShapedQueryCompilingExpressionVisitor.SingleOrDefaultAsync[TSource](IAsyncEnumerable`1 asyncEnumerable, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.ShapedQueryCompilingExpressionVisitor.SingleOrDefaultAsync[TSource](IAsyncEnumerable`1 asyncEnumerable, CancellationToken cancellationToken)
+   at BeerStore.Infrastructure.Repository.Auth.Read.RRefreshTokenRepository.GetByUserIdAndDeviceIdAsync(Guid userId, String deviceId, CancellationToken token) in C:\Code\Project\Beer_Store\BE\Src\Core\BeerStore.Infrastructure\Repository\Auth\Read\RRefreshTokenRepository.cs:line 39
+   at BeerStore.Application.Modules.Auth.Authentication.Command.Login.LoginCHandler.Handle(LoginCommand command, CancellationToken token) in C:\Code\Project\Beer_Store\BE\Src\Core\BeerStore.Application\Modules\Auth\Authentication\Command\Login\LoginCHandler.cs:line 101
+   at BeerStore.Application.Modules.Auth.Authentication.Command.Login.LoginCHandler.Handle(LoginCommand command, CancellationToken token) in C:\Code\Project\Beer_Store\BE\Src\Core\BeerStore.Application\Modules\Auth\Authentication\Command\Login\LoginCHandler.cs:line 142
+   at BeerStore.Api.Controllers.Auth.AuthenticationController.Login(LoginRequest request, String deviceId, String deviceName, CancellationToken token) in C:\Code\Project\Beer_Store\BE\Src\Core\BeerStore.Api\Controllers\Auth\AuthenticationController.cs:line 36
+   at lambda_method6(Closure, Object)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.AwaitableObjectResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Api.Core.Middleware.ExceptionMiddleware.InvokeAsync(HttpContext context) in C:\Code\Project\Beer_Store\BE\Src\Shared\Api.Core\Middleware\ExceptionMiddleware.cs:line 25
+ClientConnectionId:5b12c5eb-a2ef-44e3-8eb7-d427fdcc486e
+Error Number:208,State:1,Class:16
+[2026-01-16 21:59:54.890 +07:00] [INF] [0a06659fb6b289e3acb496d60c15a83a] [Diagnostics] [Request finished HTTP/1.1 POST https://localhost:7124/api/authentication/login - 500 null application/problem+json 6100.626ms]
+[2026-01-16 22:11:45.154 +07:00] [INF] [0a10d4f3c19dc7c6427e05957a49b66d] [Diagnostics] [Request starting HTTP/1.1 POST https://localhost:7124/api/authentication/login - application/json 66]
+[2026-01-16 22:11:50.300 +07:00] [INF] [0a10d4f3c19dc7c6427e05957a49b66d] [Diagnostics] [Request finished HTTP/1.1 POST https://localhost:7124/api/authentication/login - 200 null application/json; charset=utf-8 5158.8678ms]
+[2026-01-16 22:12:16.522 +07:00] [INF] [fc6c72011ff32a25e65c9866ab3b7650] [Diagnostics] [Request starting HTTP/1.1 GET https://localhost:7124/api/Permission - null null]
+[2026-01-16 22:12:21.985 +07:00] [ERR] [fc6c72011ff32a25e65c9866ab3b7650] [Query] [An exception occurred while iterating over the results of a query for context type 'BeerStore.Infrastructure.Persistence.Db.AuthDbContext'.
+Domain.Core.RuleException.MultiRuleException: Exception of type 'Domain.Core.RuleException.MultiRuleException' was thrown.
+   at Domain.Core.Rule.RuleValidator.CheckRules[TField](IEnumerable`1 rules) in C:\Code\Project\Beer_Store\BE\Src\Shared\Domain.Core\Rule\RuleValidator.cs:line 20
+   at BeerStore.Domain.ValueObjects.Auth.Permission.Enums.Module.Create(ModuleEnum value) in C:\Code\Project\Beer_Store\BE\Src\Core\BeerStore.Domain\ValueObjects\Auth\Permission\Module.cs:line 18
+   at lambda_method284(Closure, QueryContext, DbDataReader, ResultContext, SingleQueryResultCoordinator)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()]
+Domain.Core.RuleException.MultiRuleException: Exception of type 'Domain.Core.RuleException.MultiRuleException' was thrown.
+   at Domain.Core.Rule.RuleValidator.CheckRules[TField](IEnumerable`1 rules) in C:\Code\Project\Beer_Store\BE\Src\Shared\Domain.Core\Rule\RuleValidator.cs:line 20
+   at BeerStore.Domain.ValueObjects.Auth.Permission.Enums.Module.Create(ModuleEnum value) in C:\Code\Project\Beer_Store\BE\Src\Core\BeerStore.Domain\ValueObjects\Auth\Permission\Module.cs:line 18
+   at lambda_method284(Closure, QueryContext, DbDataReader, ResultContext, SingleQueryResultCoordinator)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+[2026-01-16 22:12:26.101 +07:00] [WRN] [fc6c72011ff32a25e65c9866ab3b7650] [ExceptionMiddleware] [Multiple business rule violations]
+Domain.Core.RuleException.MultiRuleException: Exception of type 'Domain.Core.RuleException.MultiRuleException' was thrown.
+   at Domain.Core.Rule.RuleValidator.CheckRules[TField](IEnumerable`1 rules) in C:\Code\Project\Beer_Store\BE\Src\Shared\Domain.Core\Rule\RuleValidator.cs:line 20
+   at BeerStore.Domain.ValueObjects.Auth.Permission.Enums.Module.Create(ModuleEnum value) in C:\Code\Project\Beer_Store\BE\Src\Core\BeerStore.Domain\ValueObjects\Auth\Permission\Module.cs:line 18
+   at lambda_method284(Closure, QueryContext, DbDataReader, ResultContext, SingleQueryResultCoordinator)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+   at Microsoft.EntityFrameworkCore.EntityFrameworkQueryableExtensions.ToListAsync[TSource](IQueryable`1 source, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.EntityFrameworkQueryableExtensions.ToListAsync[TSource](IQueryable`1 source, CancellationToken cancellationToken)
+   at Infrastructure.Core.Repository.ReadRepositoryGeneric`1.GetAllAsync(CancellationToken token) in C:\Code\Project\Beer_Store\BE\Src\Shared\Infrastructure.Core\Repository\ReadRepositoryGeneric.cs:line 22
+   at BeerStore.Application.Modules.Auth.Permissions.Queries.GetAllPermission.GetAllPermissionQHandler.Handle(GetAllPermissionQuery query, CancellationToken token) in C:\Code\Project\Beer_Store\BE\Src\Core\BeerStore.Application\Modules\Auth\Permissions\Queries\GetAllPermission\GetAllPermissionQHandler.cs:line 19
+   at BeerStore.Api.Controllers.Auth.PermissionController.GetAll(CancellationToken token) in C:\Code\Project\Beer_Store\BE\Src\Core\BeerStore.Api\Controllers\Auth\PermissionController.cs:line 33
+   at lambda_method265(Closure, Object)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.AwaitableObjectResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Api.Core.Middleware.ExceptionMiddleware.InvokeAsync(HttpContext context) in C:\Code\Project\Beer_Store\BE\Src\Shared\Api.Core\Middleware\ExceptionMiddleware.cs:line 25
+[2026-01-16 22:12:26.136 +07:00] [INF] [fc6c72011ff32a25e65c9866ab3b7650] [Diagnostics] [Request finished HTTP/1.1 GET https://localhost:7124/api/Permission - 400 null application/problem+json 9614.9736ms]
+[2026-01-16 22:28:04.324 +07:00] [INF] [6eaa1da79e93c44b61b27286ec8ba37d] [Diagnostics] [Request starting HTTP/1.1 GET https://localhost:7124/api/Permission - null null]
+[2026-01-16 22:28:07.951 +07:00] [INF] [6eaa1da79e93c44b61b27286ec8ba37d] [Diagnostics] [Request finished HTTP/1.1 GET https://localhost:7124/api/Permission - 200 null application/json; charset=utf-8 3647.1228ms]

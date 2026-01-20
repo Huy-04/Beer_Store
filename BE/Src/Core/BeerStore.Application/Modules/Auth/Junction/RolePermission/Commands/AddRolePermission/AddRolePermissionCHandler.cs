@@ -1,5 +1,6 @@
 using BeerStore.Application.DTOs.Auth.Junction.RolePermission.Responses;
 using BeerStore.Application.Interface.IUnitOfWork.Auth;
+using BeerStore.Application.Interface.Services.Authorization;
 using BeerStore.Application.Mapping.Auth.JunctionMap.RolePermissionMap;
 using BeerStore.Domain.Entities.Auth.Junction;
 using BeerStore.Domain.Enums.Messages;
@@ -16,15 +17,19 @@ namespace BeerStore.Application.Modules.Auth.Junction.RolePermission.Commands.Ad
     {
         private readonly IAuthUnitOfWork _auow;
         private readonly ILogger<AddRolePermissionCHandler> _logger;
+        private readonly IAuthAuthorizationService _authService;
 
-        public AddRolePermissionCHandler(IAuthUnitOfWork auow, ILogger<AddRolePermissionCHandler> logger)
+        public AddRolePermissionCHandler(IAuthUnitOfWork auow, ILogger<AddRolePermissionCHandler> logger, IAuthAuthorizationService authService)
         {
             _auow = auow;
             _logger = logger;
+            _authService = authService;
         }
 
         public async Task<RolePermissionResponse> Handle(AddRolePermissionCommand command, CancellationToken token)
         {
+            _authService.EnsureCanAddRolePermission();
+
             await _auow.BeginTransactionAsync(token);
 
             try
@@ -70,3 +75,4 @@ namespace BeerStore.Application.Modules.Auth.Junction.RolePermission.Commands.Ad
         }
     }
 }
+

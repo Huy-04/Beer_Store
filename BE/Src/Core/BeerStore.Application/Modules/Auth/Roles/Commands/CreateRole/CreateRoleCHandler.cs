@@ -1,5 +1,6 @@
 using BeerStore.Application.DTOs.Auth.Role.Responses;
 using BeerStore.Application.Interface.IUnitOfWork.Auth;
+using BeerStore.Application.Interface.Services.Authorization;
 using BeerStore.Application.Mapping.Auth.RoleMap;
 using BeerStore.Domain.Enums.Messages;
 using Domain.Core.Enums;
@@ -14,15 +15,19 @@ namespace BeerStore.Application.Modules.Auth.Roles.Commands.CreateRole
     {
         private readonly IAuthUnitOfWork _auow;
         private readonly ILogger<CreateRoleCHandler> _logger;
+        private readonly IAuthAuthorizationService _authService;
 
-        public CreateRoleCHandler(IAuthUnitOfWork auow, ILogger<CreateRoleCHandler> logger)
+        public CreateRoleCHandler(IAuthUnitOfWork auow, ILogger<CreateRoleCHandler> logger, IAuthAuthorizationService authService)
         {
             _auow = auow;
             _logger = logger;
+            _authService = authService;
         }
 
         public async Task<RoleResponse> Handle(CreateRoleCommand command, CancellationToken token)
         {
+            _authService.EnsureCanCreateRole();
+
             await _auow.BeginTransactionAsync(token);
 
             try
@@ -58,3 +63,4 @@ namespace BeerStore.Application.Modules.Auth.Roles.Commands.CreateRole
         }
     }
 }
+

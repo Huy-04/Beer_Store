@@ -145,22 +145,32 @@
     ]
   },
   {
-    "ContainingType": "BeerStore.Api.Controllers.Auth.AuthController",
+    "ContainingType": "BeerStore.Api.Controllers.Auth.AuthenticationController",
     "Method": "Login",
-    "RelativePath": "api/Auth/login",
+    "RelativePath": "api/Authentication/login",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
         "Name": "request",
-        "Type": "BeerStore.Application.DTOs.Auth.User.Requests.Login.LoginRequest",
+        "Type": "BeerStore.Application.DTOs.Auth.Authentication.Requests.Login.LoginRequest",
         "IsRequired": true
+      },
+      {
+        "Name": "X-Device-Id",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "X-Device-Name",
+        "Type": "System.String",
+        "IsRequired": false
       }
     ],
     "ReturnTypes": [
       {
-        "Type": "BeerStore.Application.DTOs.Auth.User.Responses.Login.LoginResponse",
+        "Type": "BeerStore.Application.DTOs.Auth.Authentication.Responses.Login.LoginResponse",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -171,9 +181,56 @@
     ]
   },
   {
-    "ContainingType": "BeerStore.Api.Controllers.Auth.AuthController",
+    "ContainingType": "BeerStore.Api.Controllers.Auth.AuthenticationController",
+    "Method": "Logout",
+    "RelativePath": "api/Authentication/logout",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "X-Device-Id",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "BeerStore.Api.Controllers.Auth.AuthenticationController",
+    "Method": "RefreshToken",
+    "RelativePath": "api/Authentication/refresh-accesstoken",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "BeerStore.Application.DTOs.Auth.Authentication.Requests.RefreshAccessToken.RefreshAccessTokenRequest",
+        "IsRequired": true
+      },
+      {
+        "Name": "X-Device-Id",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "BeerStore.Application.DTOs.Auth.Authentication.Responses.Login.LoginResponse",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "BeerStore.Api.Controllers.Auth.AuthenticationController",
     "Method": "Register",
-    "RelativePath": "api/Auth/register",
+    "RelativePath": "api/Authentication/register",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
@@ -186,7 +243,7 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "BeerStore.Application.DTOs.Auth.User.Responses.Register.RegisterResponse",
+        "Type": "BeerStore.Application.DTOs.Auth.Authentication.Responses.Register.RegisterResponse",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -342,6 +399,100 @@
     ]
   },
   {
+    "ContainingType": "BeerStore.Api.Controllers.Auth.RefreshTokenController",
+    "Method": "GetAll",
+    "RelativePath": "api/RefreshToken",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[BeerStore.Application.DTOs.Auth.RefreshToken.Responses.SessionResponse, BeerStore.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "BeerStore.Api.Controllers.Auth.RefreshTokenController",
+    "Method": "RevokeAll",
+    "RelativePath": "api/RefreshToken/revoke-all/user/{id}",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "BeerStore.Api.Controllers.Auth.RefreshTokenController",
+    "Method": "RevokeUserDevice",
+    "RelativePath": "api/RefreshToken/revoke-device",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "BeerStore.Application.DTOs.Auth.RefreshToken.Requests.RevokeUserDeviceRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "BeerStore.Api.Controllers.Auth.RefreshTokenController",
+    "Method": "Revoke",
+    "RelativePath": "api/RefreshToken/revoke/{tokenRaw}",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "tokenRaw",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "BeerStore.Api.Controllers.Auth.RefreshTokenController",
+    "Method": "GetByUserId",
+    "RelativePath": "api/RefreshToken/user/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[BeerStore.Application.DTOs.Auth.RefreshToken.Responses.SessionResponse, BeerStore.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
     "ContainingType": "BeerStore.Api.Controllers.Auth.RoleController",
     "Method": "GetAll",
     "RelativePath": "api/Role",
@@ -461,7 +612,7 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "BeerStore.Api.Controllers.Auth.RolePermissionController",
+    "ContainingType": "BeerStore.Api.Controllers.Auth.Junction.RolePermissionController",
     "Method": "GetAll",
     "RelativePath": "api/RolePermission",
     "HttpMethod": "GET",
@@ -481,7 +632,7 @@
     ]
   },
   {
-    "ContainingType": "BeerStore.Api.Controllers.Auth.RolePermissionController",
+    "ContainingType": "BeerStore.Api.Controllers.Auth.Junction.RolePermissionController",
     "Method": "Add",
     "RelativePath": "api/RolePermission",
     "HttpMethod": "POST",
@@ -507,7 +658,7 @@
     ]
   },
   {
-    "ContainingType": "BeerStore.Api.Controllers.Auth.RolePermissionController",
+    "ContainingType": "BeerStore.Api.Controllers.Auth.Junction.RolePermissionController",
     "Method": "Remove",
     "RelativePath": "api/RolePermission/{id}",
     "HttpMethod": "DELETE",
@@ -523,7 +674,7 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "BeerStore.Api.Controllers.Auth.RolePermissionController",
+    "ContainingType": "BeerStore.Api.Controllers.Auth.Junction.RolePermissionController",
     "Method": "GetByRoleId",
     "RelativePath": "api/RolePermission/role/{roleId}",
     "HttpMethod": "GET",
@@ -669,6 +820,32 @@
   },
   {
     "ContainingType": "BeerStore.Api.Controllers.Auth.UserController",
+    "Method": "GetByEmailStatus",
+    "RelativePath": "api/User/email-status/{status}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "status",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[BeerStore.Application.DTOs.Auth.User.Responses.UserResponse, BeerStore.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "BeerStore.Api.Controllers.Auth.UserController",
     "Method": "GetByEmail",
     "RelativePath": "api/User/email/{email}",
     "HttpMethod": "GET",
@@ -695,8 +872,8 @@
   },
   {
     "ContainingType": "BeerStore.Api.Controllers.Auth.UserController",
-    "Method": "GetByEmailStatus",
-    "RelativePath": "api/User/emailstatus/{status}",
+    "Method": "GetByPhoneStatus",
+    "RelativePath": "api/User/phone-status/{status}",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -747,8 +924,8 @@
   },
   {
     "ContainingType": "BeerStore.Api.Controllers.Auth.UserController",
-    "Method": "GetByPhoneStatus",
-    "RelativePath": "api/User/phonestatus/{status}",
+    "Method": "GetByUserStatus",
+    "RelativePath": "api/User/user-status/{status}",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -798,121 +975,7 @@
     ]
   },
   {
-    "ContainingType": "BeerStore.Api.Controllers.Auth.UserController",
-    "Method": "GetByUserStatus",
-    "RelativePath": "api/User/userstatus/{status}",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "status",
-        "Type": "System.String",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": [
-      {
-        "Type": "System.Collections.Generic.IEnumerable\u00601[[BeerStore.Application.DTOs.Auth.User.Responses.UserResponse, BeerStore.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
-        "MediaTypes": [
-          "text/plain",
-          "application/json",
-          "text/json"
-        ],
-        "StatusCode": 200
-      }
-    ]
-  },
-  {
-    "ContainingType": "BeerStore.Api.Controllers.Auth.UserAddressController",
-    "Method": "GetAll",
-    "RelativePath": "api/UserAddress",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [],
-    "ReturnTypes": [
-      {
-        "Type": "System.Collections.Generic.IEnumerable\u00601[[BeerStore.Application.DTOs.Auth.Junction.UserAddress.Responses.UserAddressResponse, BeerStore.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
-        "MediaTypes": [
-          "text/plain",
-          "application/json",
-          "text/json"
-        ],
-        "StatusCode": 200
-      }
-    ]
-  },
-  {
-    "ContainingType": "BeerStore.Api.Controllers.Auth.UserAddressController",
-    "Method": "Add",
-    "RelativePath": "api/UserAddress",
-    "HttpMethod": "POST",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "request",
-        "Type": "BeerStore.Application.DTOs.Auth.Junction.UserAddress.Requests.AddUserAddressRequest",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": [
-      {
-        "Type": "BeerStore.Application.DTOs.Auth.Junction.UserAddress.Responses.UserAddressResponse",
-        "MediaTypes": [
-          "text/plain",
-          "application/json",
-          "text/json"
-        ],
-        "StatusCode": 200
-      }
-    ]
-  },
-  {
-    "ContainingType": "BeerStore.Api.Controllers.Auth.UserAddressController",
-    "Method": "Remove",
-    "RelativePath": "api/UserAddress/{id}",
-    "HttpMethod": "DELETE",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "id",
-        "Type": "System.Guid",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "BeerStore.Api.Controllers.Auth.UserAddressController",
-    "Method": "GetByUserId",
-    "RelativePath": "api/UserAddress/user/{userId}",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "userId",
-        "Type": "System.Guid",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": [
-      {
-        "Type": "System.Collections.Generic.IEnumerable\u00601[[BeerStore.Application.DTOs.Auth.Junction.UserAddress.Responses.UserAddressResponse, BeerStore.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
-        "MediaTypes": [
-          "text/plain",
-          "application/json",
-          "text/json"
-        ],
-        "StatusCode": 200
-      }
-    ]
-  },
-  {
-    "ContainingType": "BeerStore.Api.Controllers.Auth.UserRoleController",
+    "ContainingType": "BeerStore.Api.Controllers.Auth.Junction.UserRoleController",
     "Method": "GetAll",
     "RelativePath": "api/UserRole",
     "HttpMethod": "GET",
@@ -932,7 +995,7 @@
     ]
   },
   {
-    "ContainingType": "BeerStore.Api.Controllers.Auth.UserRoleController",
+    "ContainingType": "BeerStore.Api.Controllers.Auth.Junction.UserRoleController",
     "Method": "Add",
     "RelativePath": "api/UserRole",
     "HttpMethod": "POST",
@@ -958,7 +1021,7 @@
     ]
   },
   {
-    "ContainingType": "BeerStore.Api.Controllers.Auth.UserRoleController",
+    "ContainingType": "BeerStore.Api.Controllers.Auth.Junction.UserRoleController",
     "Method": "Remove",
     "RelativePath": "api/UserRole/{id}",
     "HttpMethod": "DELETE",
@@ -974,7 +1037,7 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "BeerStore.Api.Controllers.Auth.UserRoleController",
+    "ContainingType": "BeerStore.Api.Controllers.Auth.Junction.UserRoleController",
     "Method": "GetByUserId",
     "RelativePath": "api/UserRole/user/{userId}",
     "HttpMethod": "GET",

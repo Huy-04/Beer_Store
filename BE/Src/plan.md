@@ -149,3 +149,33 @@ Modules/Catalog/
 ### Phase 5: Shipping & Notification
 - [ ] Shipping Module
 - [ ] Notification Module
+
+
+
+new setup User Secrets
+
+new Retry Policy
+
+---
+
+## 🔮 Future Improvements (từ Code Review)
+
+### Security (Khi deploy Production)
+- [ ] Setup User Secrets cho local development
+- [ ] Move JWT SecretKey sang Azure Key Vault (production)
+- [ ] Role-based Authorization (`[Authorize(Roles = "Admin")]`)
+- [ ] Rate Limiting cho auth endpoints
+- [ ] Restrict CORS policy theo environment
+- [ ] Account lockout (track failed login attempts)
+
+### Infrastructure (Khi cần)
+- [ ] Retry Policy cho database operations (khi deploy cloud)
+- [ ] Caching Layer (khi có performance issues)
+
+### API (Tùy chọn)
+- [ ] API Versioning (khi có external clients)
+- [ ] POST Create trả về 201 thay vì 200
+- [ ] Pagination cho list endpoints
+
+### Database
+- [ ] Run migration: `dotnet ef migrations add AddUserIndexes`

@@ -1,4 +1,5 @@
 using BeerStore.Application.Interface.IUnitOfWork.Auth;
+using BeerStore.Application.Interface.Services.Authorization;
 using BeerStore.Domain.Enums.Messages;
 using Domain.Core.Enums;
 using Domain.Core.Enums.Messages;
@@ -12,15 +13,19 @@ namespace BeerStore.Application.Modules.Auth.Addresses.Commands.RemoveAddress
     {
         private readonly IAuthUnitOfWork _auow;
         private readonly ILogger<RemoveAddressCHandler> _logger;
+        private readonly IAuthAuthorizationService _authService;
 
-        public RemoveAddressCHandler(IAuthUnitOfWork auow, ILogger<RemoveAddressCHandler> logger)
+        public RemoveAddressCHandler(IAuthUnitOfWork auow, ILogger<RemoveAddressCHandler> logger, IAuthAuthorizationService authService)
         {
             _auow = auow;
             _logger = logger;
+            _authService = authService;
         }
 
         public async Task<bool> Handle(RemoveAddressCommand command, CancellationToken token)
         {
+            await _authService.EnsureCanRemoveAddress(command.IdAddress);
+
             await _auow.BeginTransactionAsync(token);
 
             try
@@ -56,3 +61,4 @@ namespace BeerStore.Application.Modules.Auth.Addresses.Commands.RemoveAddress
         }
     }
 }
+

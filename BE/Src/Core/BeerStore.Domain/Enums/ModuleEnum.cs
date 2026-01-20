@@ -8,6 +8,7 @@ namespace BeerStore.Domain.Enums
         user = 0,
         roles = 1,
         permissions = 2,
-        address = 3
+        address = 3,
+        refreshtoken = 4
     }
 }

@@ -43,5 +43,12 @@
         TokenExpired,
         TokenRevoked,
 
+        // Password Strength
+        PasswordMissingUppercase,
+        PasswordMissingLowercase,
+        PasswordMissingDigit,
+
+        // Authorization
+        AccessDenied,
     }
 }

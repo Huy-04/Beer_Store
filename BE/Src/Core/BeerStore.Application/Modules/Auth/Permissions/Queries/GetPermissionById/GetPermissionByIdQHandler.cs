@@ -1,5 +1,6 @@
 using BeerStore.Application.DTOs.Auth.Permission.Responses;
 using BeerStore.Application.Interface.IUnitOfWork.Auth;
+using BeerStore.Application.Interface.Services.Authorization;
 using BeerStore.Application.Mapping.Auth.PermissionMap;
 using BeerStore.Domain.Enums.Messages;
 using Domain.Core.Enums;
@@ -14,15 +15,19 @@ namespace BeerStore.Application.Modules.Auth.Permissions.Queries.GetPermissionBy
     {
         private readonly IAuthUnitOfWork _auow;
         private readonly ILogger<GetPermissionByIdQHandler> _logger;
+        private readonly IAuthAuthorizationService _authService;
 
-        public GetPermissionByIdQHandler(IAuthUnitOfWork auow, ILogger<GetPermissionByIdQHandler> logger)
+        public GetPermissionByIdQHandler(IAuthUnitOfWork auow, ILogger<GetPermissionByIdQHandler> logger, IAuthAuthorizationService authService)
         {
             _auow = auow;
             _logger = logger;
+            _authService = authService;
         }
 
         public async Task<PermissionResponse> Handle(GetPermissionByIdQuery query, CancellationToken token)
         {
+            _authService.EnsureCanReadPermission();
+
             var permission = await _auow.RPermissionRepository.GetByIdAsync(query.IdPermission, token);
 
             if (permission == null)
@@ -42,3 +47,4 @@ namespace BeerStore.Application.Modules.Auth.Permissions.Queries.GetPermissionBy
         }
     }
 }
+

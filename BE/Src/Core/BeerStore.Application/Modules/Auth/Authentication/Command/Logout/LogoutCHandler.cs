@@ -40,8 +40,8 @@ namespace BeerStore.Application.Modules.Auth.Authentication.Command.Logout
                         });
                 }
 
-                var existingToken = await _auow.RRefreshTokenRepository.FindTokenAsync(
-                    token, userId: command.UserId, deviceId: command.DeviceId);
+                var existingToken = await _auow.RRefreshTokenRepository.
+                    GetByUserIdAndDeviceIdAsync(command.UserId, command.DeviceId, token);
 
                 if (existingToken == null)
                 {

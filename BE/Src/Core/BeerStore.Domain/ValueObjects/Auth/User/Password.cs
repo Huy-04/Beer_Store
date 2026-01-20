@@ -8,6 +8,9 @@ namespace BeerStore.Domain.ValueObjects.Auth.User
 {
     public class Password : StringBase
     {
+        public const int MinLength = 8;
+        public const int MaxLength = 255;
+
         private Password(string value) : base(value)
         {
         }
@@ -16,11 +19,15 @@ namespace BeerStore.Domain.ValueObjects.Auth.User
         {
             RuleValidator.CheckRules<UserField>(new IBusinessRule<UserField>[]
             {
-                new StringMaxLength<UserField>(value,255,UserField.Password),
-                new StringNotEmpty<UserField>(value,UserField.Password),
-                new StringMinimum<UserField>(value,5,UserField.Password),
+                new StringNotEmpty<UserField>(value, UserField.Password),
+                new StringMinimum<UserField>(value, MinLength, UserField.Password),
+                new StringMaxLength<UserField>(value, MaxLength, UserField.Password),
+                new StringContainsUppercase<UserField>(value, UserField.Password),
+                new StringContainsLowercase<UserField>(value, UserField.Password),
+                new StringContainsDigit<UserField>(value, UserField.Password),
             });
             return new Password(value);
         }
     }
 }
+

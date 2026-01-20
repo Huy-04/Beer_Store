@@ -1,4 +1,5 @@
 using BeerStore.Application.Interface.IUnitOfWork.Auth;
+using BeerStore.Application.Interface.Services.Authorization;
 using BeerStore.Domain.Enums.Messages;
 using Domain.Core.Enums;
 using Domain.Core.Enums.Messages;
@@ -12,15 +13,19 @@ namespace BeerStore.Application.Modules.Auth.Users.Commands.RemoveUser
     {
         private readonly IAuthUnitOfWork _auow;
         private readonly ILogger<RemoveUserCHandler> _logger;
+        private readonly IAuthAuthorizationService _authService;
 
-        public RemoveUserCHandler(IAuthUnitOfWork auow, ILogger<RemoveUserCHandler> logger)
+        public RemoveUserCHandler(IAuthUnitOfWork auow, ILogger<RemoveUserCHandler> logger, IAuthAuthorizationService authService)
         {
             _auow = auow;
             _logger = logger;
+            _authService = authService;
         }
 
         public async Task<bool> Handle(RemoveUserCommand command, CancellationToken token)
         {
+            _authService.EnsureCanRemoveUser();
+
             await _auow.BeginTransactionAsync(token);
 
             try
@@ -57,3 +62,4 @@ namespace BeerStore.Application.Modules.Auth.Users.Commands.RemoveUser
         }
     }
 }
+

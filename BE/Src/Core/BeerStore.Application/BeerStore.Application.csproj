@@ -22,6 +22,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Interface\IAuthorization\" />
     <Folder Include="Modules\Auth\Junction\RolePermission\" />
     <Folder Include="Modules\Auth\Junction\UserAddress\" />
     <Folder Include="Modules\Auth\Junction\UserRole\" />

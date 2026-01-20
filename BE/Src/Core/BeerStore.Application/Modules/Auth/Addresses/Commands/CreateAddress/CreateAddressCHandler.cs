@@ -1,10 +1,7 @@
 using BeerStore.Application.DTOs.Auth.Address.Responses;
 using BeerStore.Application.Interface.IUnitOfWork.Auth;
+using BeerStore.Application.Interface.Services.Authorization;
 using BeerStore.Application.Mapping.Auth.AddressMap;
-using BeerStore.Domain.Enums.Messages;
-using Domain.Core.Enums;
-using Domain.Core.Enums.Messages;
-using Domain.Core.RuleException;
 using MediatR;
 using Microsoft.Extensions.Logging;
 
@@ -14,15 +11,19 @@ namespace BeerStore.Application.Modules.Auth.Addresses.Commands.CreateAddress
     {
         private readonly IAuthUnitOfWork _auow;
         private readonly ILogger<CreateAddressCHandler> _logger;
+        private readonly IAuthAuthorizationService _authService;
 
-        public CreateAddressCHandler(IAuthUnitOfWork auow, ILogger<CreateAddressCHandler> logger)
+        public CreateAddressCHandler(IAuthUnitOfWork auow, ILogger<CreateAddressCHandler> logger, IAuthAuthorizationService authService)
         {
             _auow = auow;
             _logger = logger;
+            _authService = authService;
         }
 
         public async Task<AddressResponse> Handle(CreateAddressCommand command, CancellationToken token)
         {
+            _authService.EnsureCanCreateAddress(command.UserId);
+
             await _auow.BeginTransactionAsync(token);
 
             try
@@ -46,3 +47,4 @@ namespace BeerStore.Application.Modules.Auth.Addresses.Commands.CreateAddress
         }
     }
 }
+

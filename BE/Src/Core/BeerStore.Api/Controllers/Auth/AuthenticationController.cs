@@ -41,7 +41,7 @@ namespace BeerStore.Api.Controllers.Auth
         public async Task<ActionResult<RegisterResponse>> Register(
             [FromBody] CreateUserRequest request,
             CancellationToken token)
-        {
+        {   
             var result = await _mediator.Send(new RegisterCommand(request), token);
             return Ok(result);
         }

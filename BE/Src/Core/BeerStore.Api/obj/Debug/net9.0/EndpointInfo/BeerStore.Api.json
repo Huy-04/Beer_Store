@@ -261,10 +261,26 @@
         }
       }
     },
-    "/api/Auth/login": {
+    "/api/Authentication/login": {
       "post": {
         "tags": [
-          "Auth"
+          "Authentication"
+        ],
+        "parameters": [
+          {
+            "name": "X-Device-Id",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "X-Device-Name",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            }
+          }
         ],
         "requestBody": {
           "content": {
@@ -309,10 +325,10 @@
         }
       }
     },
-    "/api/Auth/register": {
+    "/api/Authentication/register": {
       "post": {
         "tags": [
-          "Auth"
+          "Authentication"
         ],
         "requestBody": {
           "content": {
@@ -350,6 +366,84 @@
               "text/json": {
                 "schema": {
                   "$ref": "#/components/schemas/RegisterResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Authentication/logout": {
+      "post": {
+        "tags": [
+          "Authentication"
+        ],
+        "parameters": [
+          {
+            "name": "X-Device-Id",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Authentication/refresh-accesstoken": {
+      "post": {
+        "tags": [
+          "Authentication"
+        ],
+        "parameters": [
+          {
+            "name": "X-Device-Id",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RefreshAccessTokenRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RefreshAccessTokenRequest"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/RefreshAccessTokenRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/LoginResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LoginResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LoginResponse"
                 }
               }
             }
@@ -603,6 +697,169 @@
                 }
               }
             }
+          }
+        }
+      }
+    },
+    "/api/RefreshToken": {
+      "get": {
+        "tags": [
+          "RefreshToken"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/SessionResponse"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/SessionResponse"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/SessionResponse"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/RefreshToken/user/{id}": {
+      "get": {
+        "tags": [
+          "RefreshToken"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/SessionResponse"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/SessionResponse"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/SessionResponse"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/RefreshToken/revoke/{tokenRaw}": {
+      "post": {
+        "tags": [
+          "RefreshToken"
+        ],
+        "parameters": [
+          {
+            "name": "tokenRaw",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/RefreshToken/revoke-all/user/{id}": {
+      "post": {
+        "tags": [
+          "RefreshToken"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/RefreshToken/revoke-device": {
+      "post": {
+        "tags": [
+          "RefreshToken"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RevokeUserDeviceRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RevokeUserDeviceRequest"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/RevokeUserDeviceRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
           }
         }
       }
@@ -1284,7 +1541,7 @@
         }
       }
     },
-    "/api/User/emailstatus/{status}": {
+    "/api/User/email-status/{status}": {
       "get": {
         "tags": [
           "User"
@@ -1332,7 +1589,7 @@
         }
       }
     },
-    "/api/User/phonestatus/{status}": {
+    "/api/User/phone-status/{status}": {
       "get": {
         "tags": [
           "User"
@@ -1380,7 +1637,7 @@
         }
       }
     },
-    "/api/User/userstatus/{status}": {
+    "/api/User/user-status/{status}": {
       "get": {
         "tags": [
           "User"
@@ -1424,162 +1681,6 @@
                 }
               }
             }
-          }
-        }
-      }
-    },
-    "/api/UserAddress": {
-      "get": {
-        "tags": [
-          "UserAddress"
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/UserAddressResponse"
-                  }
-                }
-              },
-              "application/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/UserAddressResponse"
-                  }
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/UserAddressResponse"
-                  }
-                }
-              }
-            }
-          }
-        }
-      },
-      "post": {
-        "tags": [
-          "UserAddress"
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/AddUserAddressRequest"
-              }
-            },
-            "text/json": {
-              "schema": {
-                "$ref": "#/components/schemas/AddUserAddressRequest"
-              }
-            },
-            "application/*+json": {
-              "schema": {
-                "$ref": "#/components/schemas/AddUserAddressRequest"
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "$ref": "#/components/schemas/UserAddressResponse"
-                }
-              },
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/UserAddressResponse"
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/UserAddressResponse"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/api/UserAddress/user/{userId}": {
-      "get": {
-        "tags": [
-          "UserAddress"
-        ],
-        "parameters": [
-          {
-            "name": "userId",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "format": "uuid"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/UserAddressResponse"
-                  }
-                }
-              },
-              "application/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/UserAddressResponse"
-                  }
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/UserAddressResponse"
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/api/UserAddress/{id}": {
-      "delete": {
-        "tags": [
-          "UserAddress"
-        ],
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "format": "uuid"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
           }
         }
       }
@@ -1751,20 +1852,6 @@
             "format": "uuid"
           },
           "permissionId": {
-            "type": "string",
-            "format": "uuid"
-          }
-        },
-        "additionalProperties": false
-      },
-      "AddUserAddressRequest": {
-        "type": "object",
-        "properties": {
-          "userId": {
-            "type": "string",
-            "format": "uuid"
-          },
-          "addressId": {
             "type": "string",
             "format": "uuid"
           }
@@ -1949,6 +2036,14 @@
               "type": "string"
             },
             "nullable": true
+          },
+          "refreshToken": {
+            "type": "string",
+            "nullable": true
+          },
+          "expiresAt": {
+            "type": "string",
+            "format": "date-time"
           }
         },
         "additionalProperties": false
@@ -1957,7 +2052,9 @@
         "enum": [
           "user",
           "roles",
-          "permissions"
+          "permissions",
+          "address",
+          "refreshtoken"
         ],
         "type": "string"
       },
@@ -2030,6 +2127,16 @@
         },
         "additionalProperties": false
       },
+      "RefreshAccessTokenRequest": {
+        "type": "object",
+        "properties": {
+          "refreshToken": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
       "RegisterResponse": {
         "type": "object",
         "properties": {
@@ -2052,8 +2159,18 @@
           "createdAt": {
             "type": "string",
             "format": "date-time"
+          }
+        },
+        "additionalProperties": false
+      },
+      "RevokeUserDeviceRequest": {
+        "type": "object",
+        "properties": {
+          "userId": {
+            "type": "string",
+            "format": "uuid"
           },
-          "message": {
+          "deviceId": {
             "type": "string",
             "nullable": true
           }
@@ -2126,6 +2243,39 @@
         },
         "additionalProperties": false
       },
+      "SessionResponse": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "deviceId": {
+            "type": "string",
+            "nullable": true
+          },
+          "deviceName": {
+            "type": "string",
+            "nullable": true
+          },
+          "ipAddress": {
+            "type": "string",
+            "nullable": true
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "expiresAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "tokenStatus": {
+            "$ref": "#/components/schemas/StatusEnum"
+          }
+        },
+        "additionalProperties": false
+      },
       "StatusEnum": {
         "enum": [
           "Active",
@@ -2164,24 +2314,6 @@
           },
           "phoneStatus": {
             "$ref": "#/components/schemas/StatusEnum"
-          }
-        },
-        "additionalProperties": false
-      },
-      "UserAddressResponse": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "string",
-            "format": "uuid"
-          },
-          "userId": {
-            "type": "string",
-            "format": "uuid"
-          },
-          "addressId": {
-            "type": "string",
-            "format": "uuid"
           }
         },
         "additionalProperties": false

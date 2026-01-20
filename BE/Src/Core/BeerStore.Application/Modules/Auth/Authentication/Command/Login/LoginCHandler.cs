@@ -97,9 +97,13 @@ namespace BeerStore.Application.Modules.Auth.Authentication.Command.Login
                 var rolesEntities = await _auow.RRoleRepository.GetRolesByIdsAsync(roleIds, token);
                 var roles = rolesEntities.Select(r => r.RoleName.Value).ToList();
 
+                // Get permissions for roles
+                var permissions = (await _auow.RPermissionRepository
+                    .GetPermissionNamesByRoleIdsAsync(roleIds, token)).ToList();
+
                 // Revoke existing token on same device (if exists)
-                var existingToken = await _auow.RRefreshTokenRepository.FindTokenAsync(
-                    token, userId: user.Id, deviceId: command.DeviceId);
+                var existingToken = await _auow.RRefreshTokenRepository.
+                    GetByUserIdAndDeviceIdAsync(user.Id, command.DeviceId, token);
                 if (existingToken != null)
                 {
                     existingToken.ApplyRefreshToke(userSystem.Id);
@@ -107,7 +111,7 @@ namespace BeerStore.Application.Modules.Auth.Authentication.Command.Login
                 }
 
                 // Generate JWT token
-                var jwtToken = _jwtService.GenerateToken(user.Id, user.Email, roles);
+                var jwtToken = _jwtService.GenerateToken(user.Id, user.Email, roles, permissions);
 
                 // Generate Refresh Token
                 var rawRefreshToken = _jwtService.GenerateRefreshToken();

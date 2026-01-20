@@ -66,6 +66,7 @@ namespace BeerStore.Domain.Entities.Auth
         public RolePermission AddPermission(Guid roleId, Guid permissionId)
         {
             var rolePermission = RolePermission.Create(roleId, permissionId);
+            _rolePermission.Add(rolePermission);
             Touch();
             return rolePermission;
         }

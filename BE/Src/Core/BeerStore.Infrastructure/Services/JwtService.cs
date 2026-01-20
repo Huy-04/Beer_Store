@@ -1,6 +1,7 @@
+using Application.Core.Constants;
+using Application.Core.Interface.ISettings;
 using BeerStore.Application.Interface.Services;
 using BeerStore.Domain.ValueObjects.Auth.User;
-using Infrastructure.Core.Settings;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
@@ -11,14 +12,14 @@ namespace BeerStore.Infrastructure.Services
 {
     public class JwtService : IJwtService
     {
-        private readonly JwtSettings _jwtSettings;
+        private readonly IJwtSettings _jwtSettings;
 
-        public JwtService(JwtSettings jwtSettings)
+        public JwtService(IJwtSettings jwtSettings)
         {
             _jwtSettings = jwtSettings;
         }
 
-        public string GenerateToken(Guid userId, Email email, List<string> roles)
+        public string GenerateToken(Guid userId, Email email, List<string> roles, List<string> permissions)
         {
             var secretKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_jwtSettings.SecretKey));
             var credentials = new SigningCredentials(secretKey, SecurityAlgorithms.HmacSha256);
@@ -33,6 +34,12 @@ namespace BeerStore.Infrastructure.Services
             foreach (var role in roles)
             {
                 claims.Add(new Claim(ClaimTypes.Role, role));
+            }
+
+            // Add permissions as claims
+            foreach (var permission in permissions)
+            {
+                claims.Add(new Claim(CustomClaimTypes.Permission, permission));
             }
 
             var token = new JwtSecurityToken(

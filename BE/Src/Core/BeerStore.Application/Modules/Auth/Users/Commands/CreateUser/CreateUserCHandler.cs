@@ -1,6 +1,7 @@
 using BeerStore.Application.DTOs.Auth.User.Responses;
 using BeerStore.Application.Interface.IUnitOfWork.Auth;
 using BeerStore.Application.Interface.Services;
+using BeerStore.Application.Interface.Services.Authorization;
 using BeerStore.Application.Mapping.Auth.UserMap;
 using BeerStore.Domain.Enums.Messages;
 using Domain.Core.Enums;
@@ -16,16 +17,20 @@ namespace BeerStore.Application.Modules.Auth.Users.Commands.CreateUser
         private readonly IAuthUnitOfWork _auow;
         private readonly ILogger<CreateUserCHandler> _logger;
         private readonly IPasswordHasher _passwordHasher;
+        private readonly IAuthAuthorizationService _authService;
 
-        public CreateUserCHandler(IAuthUnitOfWork auow, ILogger<CreateUserCHandler> logger, IPasswordHasher passwordHasher)
+        public CreateUserCHandler(IAuthUnitOfWork auow, ILogger<CreateUserCHandler> logger, IPasswordHasher passwordHasher, IAuthAuthorizationService authService)
         {
             _auow = auow;
             _logger = logger;
             _passwordHasher = passwordHasher;
+            _authService = authService;
         }
 
         public async Task<UserResponse> Handle(CreateUserCommand command, CancellationToken token)
         {
+            _authService.EnsureCanCreateUser();
+
             await _auow.BeginTransactionAsync(token);
 
             try
@@ -79,3 +84,4 @@ namespace BeerStore.Application.Modules.Auth.Users.Commands.CreateUser
         }
     }
 }
+

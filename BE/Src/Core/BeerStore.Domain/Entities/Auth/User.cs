@@ -103,16 +103,14 @@ namespace BeerStore.Domain.Entities.Auth
             Touch();
         }
 
-        public void UserMaskAsActive(UserStatus status)
+        public void UserMaskAsActive()
         {
             UpdateUserStatus(UserStatus.Create(StatusEnum.Active));
-            Touch();
         }
 
-        public void UserMaskAsInactive(UserStatus status)
+        public void UserMaskAsInactive()
         {
-            UpdateEmailStatus(EmailStatus.Create(StatusEnum.Inactive));
-            Touch();
+            UpdateUserStatus(UserStatus.Create(StatusEnum.Inactive));
         }
 
         public void UpdateEmailStatus(EmailStatus status)

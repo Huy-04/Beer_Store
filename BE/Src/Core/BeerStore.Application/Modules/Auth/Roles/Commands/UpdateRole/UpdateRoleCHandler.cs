@@ -1,5 +1,6 @@
 using BeerStore.Application.DTOs.Auth.Role.Responses;
 using BeerStore.Application.Interface.IUnitOfWork.Auth;
+using BeerStore.Application.Interface.Services.Authorization;
 using BeerStore.Application.Mapping.Auth.RoleMap;
 using BeerStore.Domain.Enums.Messages;
 using BeerStore.Domain.ValueObjects.Auth.Role;
@@ -15,15 +16,19 @@ namespace BeerStore.Application.Modules.Auth.Roles.Commands.UpdateRole
     {
         private readonly IAuthUnitOfWork _auow;
         private readonly ILogger<UpdateRoleCHandler> _logger;
+        private readonly IAuthAuthorizationService _authService;
 
-        public UpdateRoleCHandler(IAuthUnitOfWork auow, ILogger<UpdateRoleCHandler> logger)
+        public UpdateRoleCHandler(IAuthUnitOfWork auow, ILogger<UpdateRoleCHandler> logger, IAuthAuthorizationService authService)
         {
             _auow = auow;
             _logger = logger;
+            _authService = authService;
         }
 
         public async Task<RoleResponse> Handle(UpdateRoleCommand command, CancellationToken token)
         {
+            _authService.EnsureCanUpdateRole();
+
             await _auow.BeginTransactionAsync(token);
 
             try
@@ -74,3 +79,4 @@ namespace BeerStore.Application.Modules.Auth.Roles.Commands.UpdateRole
         }
     }
 }
+

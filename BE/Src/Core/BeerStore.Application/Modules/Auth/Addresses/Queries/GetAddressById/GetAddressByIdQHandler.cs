@@ -1,5 +1,6 @@
 using BeerStore.Application.DTOs.Auth.Address.Responses;
 using BeerStore.Application.Interface.IUnitOfWork.Auth;
+using BeerStore.Application.Interface.Services.Authorization;
 using BeerStore.Application.Mapping.Auth.AddressMap;
 using BeerStore.Domain.Enums.Messages;
 using Domain.Core.Enums;
@@ -14,15 +15,19 @@ namespace BeerStore.Application.Modules.Auth.Addresses.Queries.GetAddressById
     {
         private readonly IAuthUnitOfWork _auow;
         private readonly ILogger<GetAddressByIdQHandler> _logger;
+        private readonly IAuthAuthorizationService _authService;
 
-        public GetAddressByIdQHandler(IAuthUnitOfWork auow, ILogger<GetAddressByIdQHandler> logger)
+        public GetAddressByIdQHandler(IAuthUnitOfWork auow, ILogger<GetAddressByIdQHandler> logger, IAuthAuthorizationService authService)
         {
             _auow = auow;
             _logger = logger;
+            _authService = authService;
         }
 
         public async Task<AddressResponse> Handle(GetAddressByIdQuery query, CancellationToken token)
         {
+            await _authService.EnsureCanReadAddress(query.IdAddress);
+
             var address = await _auow.RAddressRepository.GetByIdAsync(query.IdAddress, token);
 
             if (address == null)
@@ -42,3 +47,4 @@ namespace BeerStore.Application.Modules.Auth.Addresses.Queries.GetAddressById
         }
     }
 }
+

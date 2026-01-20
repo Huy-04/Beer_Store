@@ -1,6 +1,7 @@
 using Application.Core.Interface.ISettings;
 using BeerStore.Application.Interface.IUnitOfWork.Auth;
 using BeerStore.Application.Interface.Services;
+using BeerStore.Application.Interface.Services.Authorization;
 using BeerStore.Domain.IRepository.Auth.Read;
 using BeerStore.Domain.IRepository.Auth.Read.Junction;
 using BeerStore.Domain.IRepository.Auth.Write;
@@ -11,6 +12,7 @@ using BeerStore.Infrastructure.Repository.Auth.Read.Junction;
 using BeerStore.Infrastructure.Repository.Auth.Write;
 using BeerStore.Infrastructure.Repository.Auth.Write.Junction;
 using BeerStore.Infrastructure.Services;
+using BeerStore.Infrastructure.Services.Authorization;
 using BeerStore.Infrastructure.UnitOfWork;
 using Infrastructure.Core.Settings;
 using Microsoft.EntityFrameworkCore;
@@ -67,6 +69,13 @@ namespace BeerStore.Infrastructure
 
             // Password Hasher
             services.AddScoped<IPasswordHasher, PasswordHasher>();
+
+            // Current User Context
+            services.AddHttpContextAccessor();
+            services.AddScoped<ICurrentUserContext, CurrentUserContext>();
+
+            // Authorization Services
+            services.AddScoped<IAuthAuthorizationService, AuthAuthorizationService>();
 
             return services;
         }

@@ -1,5 +1,6 @@
 using BeerStore.Application.DTOs.Auth.Address.Responses;
 using BeerStore.Application.Interface.IUnitOfWork.Auth;
+using BeerStore.Application.Interface.Services.Authorization;
 using BeerStore.Application.Mapping.Auth.AddressMap;
 using BeerStore.Domain.Enums.Messages;
 using Domain.Core.Enums;
@@ -14,15 +15,19 @@ namespace BeerStore.Application.Modules.Auth.Addresses.Commands.UpdateAddress
     {
         private readonly IAuthUnitOfWork _auow;
         private readonly ILogger<UpdateAddressCHandler> _logger;
+        private readonly IAuthAuthorizationService _authService;
 
-        public UpdateAddressCHandler(IAuthUnitOfWork auow, ILogger<UpdateAddressCHandler> logger)
+        public UpdateAddressCHandler(IAuthUnitOfWork auow, ILogger<UpdateAddressCHandler> logger, IAuthAuthorizationService authService)
         {
             _auow = auow;
             _logger = logger;
+            _authService = authService;
         }
 
         public async Task<AddressResponse> Handle(UpdateAddressCommand command, CancellationToken token)
         {
+            await _authService.EnsureCanUpdateAddress(command.IdAddress);
+
             await _auow.BeginTransactionAsync(token);
 
             try
@@ -60,3 +65,4 @@ namespace BeerStore.Application.Modules.Auth.Addresses.Commands.UpdateAddress
         }
     }
 }
+
