@@ -43,10 +43,5 @@ namespace BeerStore.Application.Interface.IUnitOfWork.Auth
         IRRolePermissionRepository RRolePermissionRepository { get; }
 
         IWRolePermissionRepository WRolePermissionRepository { get; }
-
-        // UserPermission
-        IRUserPermissionRepository RUserPermissionRepository { get; }
-
-        IWUserPermissionRepository WUserPermissionRepository { get; }
     }
 }

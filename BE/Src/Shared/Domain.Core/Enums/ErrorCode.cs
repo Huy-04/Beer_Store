@@ -16,7 +16,6 @@
         NameMinimum,
         NameAlreadyExists,
 
-        // Value Objects
         // User
         PhoneAlreadyExists,
         EmailAlreadyExists,

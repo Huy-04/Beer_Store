@@ -25,9 +25,7 @@ namespace BeerStore.Infrastructure.UnitOfWork
             IRUserRoleRepository rUserRoleRepo,
             IWUserRoleRepository wUserRoleRepo,
             IRRolePermissionRepository rRolePermissionRepo,
-            IWRolePermissionRepository wRolePermissionRepo,
-            IRUserPermissionRepository rUserPermissionRepo,
-            IWUserPermissionRepository wUserPermissionRepo) : base(context)
+            IWRolePermissionRepository wRolePermissionRepo) : base(context)
         {
             RUserRepository = rUserRepo;
             WUserRepository = wUserRepo;
@@ -49,9 +47,6 @@ namespace BeerStore.Infrastructure.UnitOfWork
 
             RRolePermissionRepository = rRolePermissionRepo;
             WRolePermissionRepository = wRolePermissionRepo;
-
-            RUserPermissionRepository = rUserPermissionRepo;
-            WUserPermissionRepository = wUserPermissionRepo;
         }
 
         // User
@@ -88,10 +83,5 @@ namespace BeerStore.Infrastructure.UnitOfWork
         public IRRolePermissionRepository RRolePermissionRepository { get; }
 
         public IWRolePermissionRepository WRolePermissionRepository { get; }
-
-        // UserPermission
-        public IRUserPermissionRepository RUserPermissionRepository { get; }
-
-        public IWUserPermissionRepository WUserPermissionRepository { get; }
     }
 }

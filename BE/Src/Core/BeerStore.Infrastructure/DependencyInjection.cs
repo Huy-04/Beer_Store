@@ -60,10 +60,6 @@ namespace BeerStore.Infrastructure
             services.AddScoped<IRRolePermissionRepository, RRolePermissionRepository>();
             services.AddScoped<IWRolePermissionRepository, WRolePermissionRepository>();
 
-            // UserPermission
-            services.AddScoped<IRUserPermissionRepository, RUserPermissionRepository>();
-            services.AddScoped<IWUserPermissionRepository, WUserPermissionRepository>();
-
             // Auth Unit Of Work
             services.AddScoped<IAuthUnitOfWork, AuthUnitOfWork>();
 

@@ -57,7 +57,7 @@ namespace BeerStore.Infrastructure.Services.Authorization
             ThrowForbidden(UserField.IdUser);
         }
 
-        #endregion
+        #endregion User
 
         #region Role
 
@@ -89,7 +89,7 @@ namespace BeerStore.Infrastructure.Services.Authorization
             ThrowForbidden(RoleField.IdRole);
         }
 
-        #endregion
+        #endregion Role
 
         #region Permission
 
@@ -121,7 +121,7 @@ namespace BeerStore.Infrastructure.Services.Authorization
             ThrowForbidden(PermissionField.IdPermission);
         }
 
-        #endregion
+        #endregion Permission
 
         #region Address
 
@@ -179,7 +179,7 @@ namespace BeerStore.Infrastructure.Services.Authorization
             ThrowForbidden(UserAddressField.IdAddress);
         }
 
-        #endregion
+        #endregion Address
 
         #region RefreshToken
 
@@ -214,7 +214,7 @@ namespace BeerStore.Infrastructure.Services.Authorization
             ThrowForbidden(RefreshTokenField.IdRefreshToken);
         }
 
-        #endregion
+        #endregion RefreshToken
 
         #region UserRole (Junction)
 
@@ -239,7 +239,7 @@ namespace BeerStore.Infrastructure.Services.Authorization
             ThrowForbidden(UserRoleField.UserId);
         }
 
-        #endregion
+        #endregion UserRole (Junction)
 
         #region RolePermission (Junction)
 
@@ -264,40 +264,6 @@ namespace BeerStore.Infrastructure.Services.Authorization
             ThrowForbidden(RolePermissionField.RoleId);
         }
 
-        #endregion
-
-        #region UserPermission (Junction)
-
-        public void EnsureCanReadUserPermission()
-        {
-            if (_currentUser.HasPermission("UserPermission.Read.All")) return;
-
-            ThrowForbidden(UserPermissionField.UserId);
-        }
-
-        public void EnsureCanAddUserPermission()
-        {
-            if (_currentUser.HasPermission("UserPermission.Create.All")) return;
-
-            ThrowForbidden(UserPermissionField.UserId);
-        }
-
-        public void EnsureCanUpdateUserPermission()
-        {
-            if (_currentUser.HasPermission("UserPermission.Update.All")) return;
-
-            ThrowForbidden(UserPermissionField.UserId);
-        }
-
-        public void EnsureCanRemoveUserPermission()
-        {
-            if (_currentUser.HasPermission("UserPermission.Remove.All")) return;
-
-            ThrowForbidden(UserPermissionField.UserId);
-        }
-
-        #endregion
+        #endregion RolePermission (Junction)
     }
 }
-
-

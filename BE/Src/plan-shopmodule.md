@@ -12,12 +12,12 @@ User ──owns──► Shop ──has──► ShopAddress (1:N)
   │              │
   │              └──has──► Product ──has──► Variant ──► Inventory
   │
-  └──► Address (User's addresses - separate from Shop)
+  └──► UserAddress (User's addresses - separate from Shop)
 
 Domain.Core/ValueObjects/Address/  ◄── Shared VOs (Province, District, Ward, Street)
          ▲                    ▲
          │                    │
-   Address (Auth)      ShopAddress (Shop)
+   UserAddress (Auth)    ShopAddress (Shop)
 ```
 
 ---
@@ -27,7 +27,7 @@ Domain.Core/ValueObjects/Address/  ◄── Shared VOs (Province, District, War
 ```csharp
 public class Shop : AggregateRoot
 {
-    public Guid OwnerId { get; }               // User owns this shop
+    public Guid OwnerId { get; }               // User owns this shop (no FK - microservice ready)
     public ShopName Name { get; }
     public Slug Slug { get; }
     public ImageUrl? Logo { get; }
@@ -35,9 +35,6 @@ public class Shop : AggregateRoot
     public Description? Description { get; }
     public ShopType Type { get; }              // OfficialStore | Reseller
     public ShopStatus Status { get; }          // Pending | Approved | Rejected | Suspended
-    
-    // Navigation
-    public ICollection<ShopAddress> Addresses { get; }
     
     // Computed
     public bool IsOfficial => Type == ShopType.OfficialStore 
@@ -50,7 +47,7 @@ public class Shop : AggregateRoot
 ## ShopAddress Entity
 
 ```csharp
-public class ShopAddress : Entity
+public class ShopAddress : AggregateRoot
 {
     public Guid ShopId { get; }
     
@@ -90,10 +87,10 @@ Move từ `BeerStore.Domain/ValueObjects/Auth/Address/` → `Domain.Core/ValueOb
 
 | ValueObject | Used By |
 |-------------|---------|
-| `Province` | Address, ShopAddress |
-| `District` | Address, ShopAddress |
-| `Ward` | Address, ShopAddress |
-| `Street` | Address, ShopAddress |
+| `Province` | UserAddress, ShopAddress |
+| `District` | UserAddress, ShopAddress |
+| `Ward` | UserAddress, ShopAddress |
+| `Street` | UserAddress, ShopAddress |
 
 > **DDD Pattern**: Shared Kernel - share ValueObjects, không share Entity
 
@@ -121,14 +118,14 @@ public enum ShopStatus
 
 ## Value Objects (Shop-specific)
 
-| Name | Validation |
-|------|------------|
-| `ShopName` | max 100, not empty |
-| `Slug` | lowercase, alphanumeric + hyphen, unique |
+| Name | Validation | Scope |
+|------|------------|-------|
+| `ShopName` | max 100, not empty | - |
+| `Slug` | lowercase, alphanumeric + hyphen | **Global unique** (DB unique index) |
 
 ---
 
-## Registration Flow
+## Registration Flow & State Machine
 
 ```
 User Register Shop (chọn Type) → Status = Pending
@@ -138,8 +135,22 @@ User Register Shop (chọn Type) → Status = Pending
                     ┌─────────────────┼─────────────────┐
                     ▼                 ▼                 ▼
                Approved           Rejected          (vi phạm)
-                                 (đăng ký lại)      Suspended
+                  │              (đăng ký lại)      Suspended
+                  │                   │                 │
+                  ▼                   ▼                 ▼
+              Suspended ◄──────── Pending ◄──────── Approved
+              (vi phạm)          (resubmit)        (reactivate)
 ```
+
+### State Transition Rules
+
+| From | To | Action |
+|------|----|--------|
+| `Pending` | `Approved` | Admin approve |
+| `Pending` | `Rejected` | Admin reject |
+| `Rejected` | `Pending` | Owner resubmit |
+| `Approved` | `Suspended` | Admin suspend (vi phạm) |
+| `Suspended` | `Approved` | Admin reactivate |
 
 ---
 
@@ -222,12 +233,14 @@ BeerStore.Api/
 
 ## Key Decisions
 
-1. **ShopAddress entity riêng** - Không dùng Address của User (scalability, independence)
+1. **ShopAddress entity riêng** - Aggregate Root riêng biệt, tương tự UserAddress (scalability, independence)
 2. **Shared ValueObjects** - Province, District, Ward, Street move xuống Domain.Core (DDD Shared Kernel pattern)
 3. **Shop 1:N ShopAddress** - Hỗ trợ multi-warehouse, multi-pickup points
 4. **ShopAddressType enum** - Business, Warehouse, Pickup, Return
 5. **ShopType** - OfficialStore (chính hãng) vs Reseller (nhà phân phối)
-6. **Registration flow** - Pending → Admin review → Approved/Rejected
+6. **Registration flow** - Pending → Admin review → Approved/Rejected với State Machine
+7. **OwnerId - No FK (Option A)** - Chỉ lưu Guid, không có navigation property, sẵn sàng cho microservice
+8. **Slug Global Unique** - Unique index trên DB, mỗi shop có slug duy nhất toàn hệ thống
 
 ---
 
@@ -239,8 +252,8 @@ Before implementing Shop module:
 - [ ] Move `District.cs` → `Domain.Core/ValueObjects/Address/`
 - [ ] Move `Ward.cs` → `Domain.Core/ValueObjects/Address/`
 - [ ] Move `Street.cs` → `Domain.Core/ValueObjects/Address/`
-- [ ] Update `Address.cs` to use VOs from Core
-- [ ] Update `AddressConfiguration.cs` converter imports
+- [ ] Update `UserAddress.cs` to use VOs from Core
+- [ ] Update `UserAddressConfiguration.cs` converter imports
 
 ---
 
@@ -249,8 +262,9 @@ Before implementing Shop module:
 ### Shop Entity
 - [ ] Shop entity + Value Objects (ShopName, Slug)
 - [ ] ShopType, ShopStatus enums
+- [ ] State machine methods (Approve, Reject, Suspend, Reactivate, Resubmit)
 - [ ] IRShopRepository, IWShopRepository
-- [ ] ShopConfiguration
+- [ ] ShopConfiguration + Slug unique index
 
 ### ShopAddress Entity
 - [ ] ShopAddress entity
@@ -270,4 +284,10 @@ Before implementing Shop module:
 - [ ] Permissions (Shop + ShopAddress)
 - [ ] ShopController
 - [ ] ShopAddressController
-- [ ] ShopManagementController
+- [ ] ShopManagementController (Admin actions)
+
+### Infrastructure Setup
+- [ ] DI Registration (IShopUnitOfWork, repositories)
+- [ ] DbContext: Add DbSet<Shop>, DbSet<ShopAddress>
+- [ ] Migration script
+- [ ] Seed permissions data

@@ -8,6 +8,7 @@ namespace BeerStore.Domain.IRepository.Auth.Read
     public interface IRPermissionRepository : IReadRepositoryGeneric<Permission>
     {
         Task<bool> ExistsByNameAsync(PermissionName permissionName, CancellationToken token = default, Guid? idPermission = null);
+
         Task<IEnumerable<string>> GetPermissionNamesByRoleIdsAsync(IEnumerable<Guid> roleIds, CancellationToken token = default);
     }
 }

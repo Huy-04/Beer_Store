@@ -43,12 +43,6 @@ namespace BeerStore.Application.Interface.Services.Authorization
         void EnsureCanReadRolePermission();
         void EnsureCanAddRolePermission();
         void EnsureCanRemoveRolePermission();
-
-        // UserPermission (Junction)
-        void EnsureCanReadUserPermission();
-        void EnsureCanAddUserPermission();
-        void EnsureCanUpdateUserPermission();
-        void EnsureCanRemoveUserPermission();
     }
 }
 

@@ -27,7 +27,7 @@ Permission-based authorization implemented in Application layer handlers.
 
 | Part | Values | Example |
 |------|--------|---------|
-| Entity | User, Role, Permission, Address, RefreshToken, UserRole, RolePermission | `User` |
+| Entity | User, Role, Permission, UserAddress, RefreshToken, UserRole, RolePermission | `User` |
 | Operation | Read, Create, Update, Remove, Revoke | `Read` |
 | Scope | All (global), Self (own resources) | `All` |
 
@@ -67,7 +67,6 @@ public class GetUserByIdQHandler : IRequestHandler<GetUserByIdQuery, UserRespons
 | `EnsureCanRemovePermission()` | Permission.Remove.All |
 | `EnsureCanRemoveUserAddress(id)` | UserAddress.Remove.All OR (UserAddress.Remove.Self + owner) |
 | `EnsureCanRevokeRefreshToken(userId)` | RefreshToken.Revoke.All OR (RefreshToken.Revoke.Self + owner) |
-| `EnsureCanRemoveUserPermission()` | UserPermission.Remove.All |
 
 ## Handlers Without Authorization
 

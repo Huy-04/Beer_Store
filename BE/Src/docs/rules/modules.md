@@ -29,7 +29,7 @@ BeerStore.Domain/
 │   ├── Role.cs
 │   ├── Permission.cs
 │   ├── RefreshToken.cs
-│   ├── Address.cs
+│   ├── UserAddress.cs
 │   └── Junction/
 │       ├── UserRole.cs
 │       ├── RolePermission.cs
@@ -42,7 +42,7 @@ BeerStore.Domain/
 │   ├── Role/ (RoleName.cs)
 │   ├── Permission/ (PermissionName.cs, PermissionCode.cs)
 │   ├── RefreshToken/ (TokenHash.cs, DeviceId.cs, ...)
-│   └── Address/ (Street.cs, City.cs, ...)
+│   └── UserAddress/ (Street.cs, Province.cs, District.cs, Ward.cs, ...)
 └── IRepository/Auth/
     ├── Read/  (IRUserRepository, IRRoleRepository, ...)
     └── Write/ (IWUserRepository, IWRoleRepository, ...)
@@ -61,7 +61,7 @@ BeerStore.Application/
 │   │   └── Queries/  (GetAllRole, GetRoleById, ...)
 │   ├── Permissions/
 │   ├── RefreshTokens/
-│   ├── Addresses/
+│   ├── UserAddresses/
 │   ├── Authentication/ (Login, Logout, RefreshToken)
 │   └── Junction/ (UserRole, RolePermission)
 ├── DTOs/Auth/
@@ -100,7 +100,7 @@ BeerStore.Api/
     ├── RoleController.cs
     ├── PermissionController.cs
     ├── RefreshTokenController.cs
-    ├── AddressController.cs
+    ├── UserAddressController.cs
     ├── AuthenticationController.cs
     └── Junction/
         ├── UserRoleController.cs

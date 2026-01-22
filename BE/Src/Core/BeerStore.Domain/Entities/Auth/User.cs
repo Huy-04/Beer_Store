@@ -175,27 +175,6 @@ namespace BeerStore.Domain.Entities.Auth
             Touch();
         }
 
-        // Permission Management
-        private readonly List<UserPermission> _userPermissions = new List<UserPermission>();
-
-        public IReadOnlyCollection<UserPermission> UserPermissions => _userPermissions.AsReadOnly();
-
-        public UserPermission AddPermission(Guid userId, Guid permissionId, StatusEnum status)
-        {
-            var userPermission = UserPermission.Create(userId, permissionId, status);
-            _userPermissions.Add(userPermission);
-            Touch();
-            return userPermission;
-        }
-
-        public void RemovePermission(Guid userPermissionId)
-        {
-            var userPermission = _userPermissions.FirstOrDefault(up => up.Id == userPermissionId);
-            if (userPermission == null) return;
-            _userPermissions.Remove(userPermission);
-            Touch();
-        }
-
         // Extension
         public void Touch()
         {
