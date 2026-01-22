@@ -18,7 +18,7 @@ namespace BeerStore.Infrastructure.Persistence.Db
 
         public DbSet<Permission> Permissions => Set<Permission>();
 
-        public DbSet<Address> Addresses => Set<Address>();
+        public DbSet<UserAddress> Addresses => Set<UserAddress>();
 
         public DbSet<RefreshToken> RefreshTokens => Set<RefreshToken>();
 

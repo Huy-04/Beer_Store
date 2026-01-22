@@ -9,7 +9,7 @@ using Microsoft.Extensions.Logging;
 
 namespace BeerStore.Application.Modules.Auth.Permissions.Commands.RemovePermission
 {
-    public class RemovePermissionCHandler : IRequestHandler<RemovePermissionCommand, bool>
+    public class RemovePermissionCHandler : IRequestHandler<RemovePermissionCommand>
     {
         private readonly IAuthUnitOfWork _auow;
         private readonly ILogger<RemovePermissionCHandler> _logger;
@@ -22,7 +22,7 @@ namespace BeerStore.Application.Modules.Auth.Permissions.Commands.RemovePermissi
             _authService = authService;
         }
 
-        public async Task<bool> Handle(RemovePermissionCommand command, CancellationToken token)
+        public async Task Handle(RemovePermissionCommand command, CancellationToken token)
         {
             _authService.EnsureCanRemovePermission();
 
@@ -46,7 +46,6 @@ namespace BeerStore.Application.Modules.Auth.Permissions.Commands.RemovePermissi
 
                 _auow.WPermissionRepository.Remove(permission);
                 await _auow.CommitTransactionAsync(token);
-                return true;
             }
             catch (Exception ex)
             {

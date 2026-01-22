@@ -32,7 +32,8 @@ BeerStore.Domain/
 │   ├── Address.cs
 │   └── Junction/
 │       ├── UserRole.cs
-│       └── RolePermission.cs
+│       ├── RolePermission.cs
+│       └── UserPermission.cs
 ├── ValueObjects/Auth/
 │   ├── User/
 │   │   ├── Email.cs, Phone.cs, FullName.cs
@@ -103,7 +104,8 @@ BeerStore.Api/
     ├── AuthenticationController.cs
     └── Junction/
         ├── UserRoleController.cs
-        └── RolePermissionController.cs
+        ├── RolePermissionController.cs
+        └── UserPermissionController.cs
 ```
 
 ---

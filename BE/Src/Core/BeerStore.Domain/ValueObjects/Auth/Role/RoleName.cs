@@ -2,7 +2,7 @@ using BeerStore.Domain.Enums.Messages;
 using Domain.Core.Interface.Rule;
 using Domain.Core.Rule;
 using Domain.Core.Rule.StringRule;
-using Domain.Core.ValueObjects;
+using Domain.Core.ValueObjects.Base;
 
 namespace BeerStore.Domain.ValueObjects.Auth.Role
 {

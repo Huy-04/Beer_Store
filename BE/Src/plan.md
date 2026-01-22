@@ -125,36 +125,37 @@ Modules/Catalog/
 ---
 
 
-## 🚀 Roadmap Implementation
+## 🚀 Roadmap Implementation (Marketplace)
 
-### Phase 1: Core (Đã hoàn thành ✅)
-- [x] Auth Module (User, Role, Permission, RefreshToken)
-- [x] Authentication (Login, Register, Refresh)
+### Phase 1: Core (✅ Hoàn thành)
+- [x] Auth Module (User, Role, Permission, RefreshToken, Address)
+- [x] Authentication (Login, Register, Refresh, Logout)
+- [x] Authorization (Permission-based, 43 handlers, JWT claims)
 
-### Phase 2: Product
-- [ ] Catalog Module
-  - [ ] Products CRUD
-  - [ ] Categories CRUD
-  - [ ] Brands CRUD
-  - [ ] Inventory
+### Phase 2: Shop Module (🔄 Current)
+- [ ] Shop entity (OfficialStore | Reseller)
+- [ ] ShopAddress entity
+- [ ] Registration flow: Register → Pending → Approved/Rejected
+- [ ] Admin: Approve, Reject, Suspend
 
-### Phase 3: Shopping
-- [ ] Basket Module
-- [ ] Ordering Module
+### Phase 3: Catalog Module
+- [ ] Category (nested, global)
+- [ ] Tag (global)
+- [ ] Product (belongs to Shop)
+- [ ] ProductVariant, ProductOption, ProductImage
+- [ ] Inventory
 
-### Phase 4: Payment & Billing
+### Phase 4: Ordering
+- [ ] Cart, CartItem
+- [ ] Order, OrderItem (multi-shop)
+
+### Phase 5: Payment & Shipping
 - [ ] Payment Module
-- [ ] Billing Module
-
-### Phase 5: Shipping & Notification
 - [ ] Shipping Module
-- [ ] Notification Module
 
+---
 
-
-new setup User Secrets
-
-new Retry Policy
+> 📋 **Chi tiết implementation**: Xem `implementation_plan.md` trong brain folder
 
 ---
 
@@ -163,7 +164,7 @@ new Retry Policy
 ### Security (Khi deploy Production)
 - [ ] Setup User Secrets cho local development
 - [ ] Move JWT SecretKey sang Azure Key Vault (production)
-- [ ] Role-based Authorization (`[Authorize(Roles = "Admin")]`)
+- [x] Permission-based Authorization (đã implement trong handlers)
 - [ ] Rate Limiting cho auth endpoints
 - [ ] Restrict CORS policy theo environment
 - [ ] Account lockout (track failed login attempts)

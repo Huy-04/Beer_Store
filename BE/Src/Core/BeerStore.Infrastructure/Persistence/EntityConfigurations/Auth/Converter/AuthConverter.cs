@@ -71,8 +71,8 @@ namespace BeerStore.Infrastructure.Persistence.EntityConfigurations.Auth.Convert
         public static readonly ValueConverter<IsDefault, int>
             IsDefaultConverter = new(v => (int)v.Value, v => IsDefault.Create((StatusEnum)v));
 
-        public static readonly ValueConverter<AddressType, int>
-            AddressTypeConverter = new(v => (int)v.Value, v => AddressType.Create((AddressTypeEnum)v));
+        public static readonly ValueConverter<UserAddressType, int>
+            AddressTypeConverter = new(v => (int)v.Value, v => UserAddressType.Create((AddressTypeEnum)v));
 
         // RefreshToken
         public static readonly ValueConverter<TokenHash, string>

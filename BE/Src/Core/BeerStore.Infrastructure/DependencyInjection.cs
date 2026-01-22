@@ -44,9 +44,9 @@ namespace BeerStore.Infrastructure
             services.AddScoped<IRPermissionRepository, RPermissionRepository>();
             services.AddScoped<IWPermissionRepository, WPermissionRepository>();
 
-            // Address
-            services.AddScoped<IRAddressRepository, RAddressRepository>();
-            services.AddScoped<IWAddressRepository, WAddressRepository>();
+            // UserAddress
+            services.AddScoped<IRUserAddressRepository, RUserAddressRepository>();
+            services.AddScoped<IWUserAddressRepository, WUserAddressRepository>();
 
             // RefreshToken
             services.AddScoped<IRRefreshTokenRepository, RRefreshTokenRepository>();
@@ -59,6 +59,10 @@ namespace BeerStore.Infrastructure
             // RolePermission
             services.AddScoped<IRRolePermissionRepository, RRolePermissionRepository>();
             services.AddScoped<IWRolePermissionRepository, WRolePermissionRepository>();
+
+            // UserPermission
+            services.AddScoped<IRUserPermissionRepository, RUserPermissionRepository>();
+            services.AddScoped<IWUserPermissionRepository, WUserPermissionRepository>();
 
             // Auth Unit Of Work
             services.AddScoped<IAuthUnitOfWork, AuthUnitOfWork>();

@@ -1,12 +1,16 @@
 using BeerStore.Application.Interface.IUnitOfWork.Auth;
 using BeerStore.Application.Interface.Services.Authorization;
 using BeerStore.Application.Mapping.Auth.RefreshTokenMap;
+using BeerStore.Domain.Enums.Messages;
+using Domain.Core.Enums;
+using Domain.Core.Enums.Messages;
+using Domain.Core.RuleException;
 using MediatR;
 using Microsoft.Extensions.Logging;
 
 namespace BeerStore.Application.Modules.Auth.RefreshTokens.Commands.RevokeByUserAndDevice
 {
-    public class RevokeByUserAndDeviceCHandler : IRequestHandler<RevokeByUserAndDeviceCommand, bool>
+    public class RevokeByUserAndDeviceCHandler : IRequestHandler<RevokeByUserAndDeviceCommand>
     {
         private readonly IAuthUnitOfWork _auow;
         private readonly ILogger<RevokeByUserAndDeviceCHandler> _logger;
@@ -19,7 +23,7 @@ namespace BeerStore.Application.Modules.Auth.RefreshTokens.Commands.RevokeByUser
             _authService = authService;
         }
 
-        public async Task<bool> Handle(RevokeByUserAndDeviceCommand command, CancellationToken token)
+        public async Task Handle(RevokeByUserAndDeviceCommand command, CancellationToken token)
         {
             _authService.EnsureCanRevokeRefreshToken(command.UserId);
 
@@ -27,7 +31,14 @@ namespace BeerStore.Application.Modules.Auth.RefreshTokens.Commands.RevokeByUser
 
             if (refreshToken == null)
             {
-                return false;
+                 throw new BusinessRuleException<RefreshTokenField>(
+                    ErrorCategory.NotFound,
+                    RefreshTokenField.DeviceId,
+                    ErrorCode.TokenNotFound,
+                    new Dictionary<object, object>
+                    {
+                        { ParamField.Value, command.DeviceId }
+                    });
             }
 
             await _auow.BeginTransactionAsync(token);
@@ -37,8 +48,6 @@ namespace BeerStore.Application.Modules.Auth.RefreshTokens.Commands.RevokeByUser
                 refreshToken.ApplyRefreshToke(command.UpdatedBy);
                 _auow.WRefreshTokenRepository.Update(refreshToken);
                 await _auow.CommitTransactionAsync(token);
-
-                return true;
             }
             catch (Exception ex)
             {

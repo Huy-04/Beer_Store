@@ -1,6 +1,6 @@
 using BeerStore.Application.Interface.IUnitOfWork.Auth;
 using BeerStore.Application.Interface.Services.Authorization;
-using BeerStore.Domain.Enums.Messages;
+using BeerStore.Domain.Enums.Messages.Junction;
 using Domain.Core.Enums;
 using Domain.Core.Enums.Messages;
 using Domain.Core.RuleException;
@@ -9,7 +9,7 @@ using Microsoft.Extensions.Logging;
 
 namespace BeerStore.Application.Modules.Auth.Junction.UserRole.Commands.RemoveUserRole
 {
-    public class RemoveUserRoleCHandler : IRequestHandler<RemoveUserRoleCommand, Unit>
+    public class RemoveUserRoleCHandler : IRequestHandler<RemoveUserRoleCommand>
     {
         private readonly IAuthUnitOfWork _auow;
         private readonly ILogger<RemoveUserRoleCHandler> _logger;
@@ -22,7 +22,7 @@ namespace BeerStore.Application.Modules.Auth.Junction.UserRole.Commands.RemoveUs
             _authService = authService;
         }
 
-        public async Task<Unit> Handle(RemoveUserRoleCommand command, CancellationToken token)
+        public async Task Handle(RemoveUserRoleCommand command, CancellationToken token)
         {
             _authService.EnsureCanRemoveUserRole();
 
@@ -44,8 +44,6 @@ namespace BeerStore.Application.Modules.Auth.Junction.UserRole.Commands.RemoveUs
 
                 _auow.WUserRoleRepository.Remove(userRole);
                 await _auow.CommitTransactionAsync(token);
-
-                return Unit.Value;
             }
             catch (Exception ex)
             {

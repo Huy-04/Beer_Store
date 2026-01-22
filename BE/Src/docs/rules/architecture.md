@@ -48,6 +48,10 @@ IWriteRepositoryGeneric<TEntity>  // Add, Update, Remove
 IR{Entity}Repository : IReadRepositoryGeneric<{Entity}>  // Custom read methods
 IW{Entity}Repository : IWriteRepositoryGeneric<{Entity}> // Custom write methods
 
+// Junction/Composite Key Pattern
+IR{Junction}Repository 
+    Task<bool> ExistsAsync(Guid id1, Guid id2, CancellationToken token);
+
 // Implementations (BeerStore.Infrastructure)
 R{Entity}Repository : ReadRepositoryGeneric<{Entity}>, IR{Entity}Repository
 ```
@@ -83,7 +87,18 @@ throw new BusinessRuleException<UserField>(
     ErrorCategory.Conflict,
     UserField.Email,
     ErrorCode.EmailAlreadyExists,
+    ErrorCode.EmailAlreadyExists,
     parameters);
+
+// Junction Validation (Pre-check Exists)
+if (await _auow.RUserRoleRepository.ExistsAsync(userId, roleId, token))
+{
+    throw new BusinessRuleException<UserRoleField>(
+        ErrorCategory.Conflict,
+        UserRoleField.UserId,
+        ErrorCode.DuplicateEntry,
+        ...);
+}
 ```
 
 ## Value Objects

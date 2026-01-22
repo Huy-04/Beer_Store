@@ -37,6 +37,15 @@ Modules/{Module}/{Feature}/
 | Request DTO | `{Action}{Entity}Request` | `CreateUserRequest` |
 | Response DTO | `{Entity}Response` | `UserResponse` |
 
+### Command Return Types
+
+| Pattern | Interface | Handler Return | Use Case |
+|---------|-----------|----------------|----------|
+| **Standard** | `IRequest<TResponse>` | `Task<TResponse>` | Create/Update returning DTO/ID |
+| **Void** | `IRequest` | `Task` | Delete/Update/Action returning nothing |
+| **Legacy** | `IRequest<bool>` | `Task<bool>` | ⛔ Do NOT use (Use Void instead) |
+| **Legacy** | `IRequest<Unit>` | `Task<Unit>` | ⛔ Do NOT use (Use Void instead) |
+
 ## Entity Pattern
 
 ```csharp
@@ -113,6 +122,44 @@ public class CreateUserCHandler : IRequestHandler<CreateUserCommand, UserRespons
         catch
         {
             await _auow.RollbackTransactionAsync(token);
+            throw;
+        }
+    }
+}
+```
+
+#### Void Handler Pattern (Remove/Action)
+
+```csharp
+public class RemoveUserCHandler : IRequestHandler<RemoveUserCommand>
+{
+    // ... Constructor ...
+
+    public async Task Handle(RemoveUserCommand command, CancellationToken token)
+    {
+        _authService.EnsureCanRemoveUser();
+        
+        await _auow.BeginTransactionAsync(token);
+        try
+        {
+            var user = await _auow.RUserRepository.GetByIdAsync(command.IdUser, token);
+            if (user == null)
+            {
+                throw new BusinessRuleException<UserField>(
+                    ErrorCategory.NotFound,
+                    UserField.IdUser,
+                    ErrorCode.IdNotFound,
+                    ...);
+            }
+            
+            _auow.WUserRepository.Remove(user);
+            await _auow.CommitTransactionAsync(token);
+            // Result: Task (Void), no return value
+        }
+        catch (Exception ex)
+        {
+            await _auow.RollbackTransactionAsync(token);
+            _logger.LogError(ex, ...);
             throw;
         }
     }

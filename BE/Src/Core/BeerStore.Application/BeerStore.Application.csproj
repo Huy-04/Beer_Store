@@ -4,12 +4,15 @@
     <Compile Remove="DTOs\Auth\a\**" />
     <Compile Remove="Features\**" />
     <Compile Remove="Modules\Auth\Address\**" />
+    <Compile Remove="Modules\Auth\Junction\UserAddress\**" />
     <EmbeddedResource Remove="DTOs\Auth\a\**" />
     <EmbeddedResource Remove="Features\**" />
     <EmbeddedResource Remove="Modules\Auth\Address\**" />
+    <EmbeddedResource Remove="Modules\Auth\Junction\UserAddress\**" />
     <None Remove="DTOs\Auth\a\**" />
     <None Remove="Features\**" />
     <None Remove="Modules\Auth\Address\**" />
+    <None Remove="Modules\Auth\Junction\UserAddress\**" />
   </ItemGroup>
 
   <ItemGroup>
@@ -24,7 +27,6 @@
   <ItemGroup>
     <Folder Include="Interface\IAuthorization\" />
     <Folder Include="Modules\Auth\Junction\RolePermission\" />
-    <Folder Include="Modules\Auth\Junction\UserAddress\" />
     <Folder Include="Modules\Auth\Junction\UserRole\" />
   </ItemGroup>
 

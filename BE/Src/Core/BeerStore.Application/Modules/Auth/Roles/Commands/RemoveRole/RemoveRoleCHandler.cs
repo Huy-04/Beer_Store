@@ -9,7 +9,7 @@ using Microsoft.Extensions.Logging;
 
 namespace BeerStore.Application.Modules.Auth.Roles.Commands.RemoveRole
 {
-    public class RemoveRoleCHandler : IRequestHandler<RemoveRoleCommand, bool>
+    public class RemoveRoleCHandler : IRequestHandler<RemoveRoleCommand>
     {
         private readonly IAuthUnitOfWork _auow;
         private readonly ILogger<RemoveRoleCHandler> _logger;
@@ -22,7 +22,7 @@ namespace BeerStore.Application.Modules.Auth.Roles.Commands.RemoveRole
             _authService = authService;
         }
 
-        public async Task<bool> Handle(RemoveRoleCommand command, CancellationToken token)
+        public async Task Handle(RemoveRoleCommand command, CancellationToken token)
         {
             _authService.EnsureCanRemoveRole();
 
@@ -46,8 +46,6 @@ namespace BeerStore.Application.Modules.Auth.Roles.Commands.RemoveRole
 
                 _auow.WRoleRepository.Remove(role);
                 await _auow.CommitTransactionAsync(token);
-
-                return true;
             }
             catch (Exception ex)
             {

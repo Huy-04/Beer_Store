@@ -2,6 +2,7 @@ using BeerStore.Application.Interface.IUnitOfWork.Auth;
 using BeerStore.Application.Interface.Services;
 using BeerStore.Application.Interface.Services.Authorization;
 using BeerStore.Domain.Enums.Messages;
+using BeerStore.Domain.Enums.Messages.Junction;
 using static Domain.Core.Helpers.AuthorizationHelper;
 
 namespace BeerStore.Infrastructure.Services.Authorization
@@ -128,7 +129,7 @@ namespace BeerStore.Infrastructure.Services.Authorization
         {
             if (_currentUser.HasPermission("Address.Read.All")) return;
 
-            ThrowForbidden(AddressField.IdAddress);
+            ThrowForbidden(UserAddressField.IdAddress);
         }
 
         public async Task EnsureCanReadAddress(Guid addressId)
@@ -137,11 +138,11 @@ namespace BeerStore.Infrastructure.Services.Authorization
 
             if (_currentUser.HasPermission("Address.Read.Self"))
             {
-                var address = await _auow.RAddressRepository.GetByIdAsync(addressId);
+                var address = await _auow.RUserAddressRepository.GetByIdAsync(addressId);
                 if (address?.UserId == _currentUser.UserId) return;
             }
 
-            ThrowForbidden(AddressField.IdAddress);
+            ThrowForbidden(UserAddressField.IdAddress);
         }
 
         public void EnsureCanCreateAddress(Guid targetUserId)
@@ -149,7 +150,7 @@ namespace BeerStore.Infrastructure.Services.Authorization
             if (_currentUser.HasPermission("Address.Create.All")) return;
             if (_currentUser.HasPermission("Address.Create.Self") && _currentUser.UserId == targetUserId) return;
 
-            ThrowForbidden(AddressField.IdAddress);
+            ThrowForbidden(UserAddressField.IdAddress);
         }
 
         public async Task EnsureCanUpdateAddress(Guid addressId)
@@ -158,11 +159,11 @@ namespace BeerStore.Infrastructure.Services.Authorization
 
             if (_currentUser.HasPermission("Address.Update.Self"))
             {
-                var address = await _auow.RAddressRepository.GetByIdAsync(addressId);
+                var address = await _auow.RUserAddressRepository.GetByIdAsync(addressId);
                 if (address?.UserId == _currentUser.UserId) return;
             }
 
-            ThrowForbidden(AddressField.IdAddress);
+            ThrowForbidden(UserAddressField.IdAddress);
         }
 
         public async Task EnsureCanRemoveAddress(Guid addressId)
@@ -171,11 +172,11 @@ namespace BeerStore.Infrastructure.Services.Authorization
 
             if (_currentUser.HasPermission("Address.Remove.Self"))
             {
-                var address = await _auow.RAddressRepository.GetByIdAsync(addressId);
+                var address = await _auow.RUserAddressRepository.GetByIdAsync(addressId);
                 if (address?.UserId == _currentUser.UserId) return;
             }
 
-            ThrowForbidden(AddressField.IdAddress);
+            ThrowForbidden(UserAddressField.IdAddress);
         }
 
         #endregion
@@ -261,6 +262,38 @@ namespace BeerStore.Infrastructure.Services.Authorization
             if (_currentUser.HasPermission("RolePermission.Remove.All")) return;
 
             ThrowForbidden(RolePermissionField.RoleId);
+        }
+
+        #endregion
+
+        #region UserPermission (Junction)
+
+        public void EnsureCanReadUserPermission()
+        {
+            if (_currentUser.HasPermission("UserPermission.Read.All")) return;
+
+            ThrowForbidden(UserPermissionField.UserId);
+        }
+
+        public void EnsureCanAddUserPermission()
+        {
+            if (_currentUser.HasPermission("UserPermission.Create.All")) return;
+
+            ThrowForbidden(UserPermissionField.UserId);
+        }
+
+        public void EnsureCanUpdateUserPermission()
+        {
+            if (_currentUser.HasPermission("UserPermission.Update.All")) return;
+
+            ThrowForbidden(UserPermissionField.UserId);
+        }
+
+        public void EnsureCanRemoveUserPermission()
+        {
+            if (_currentUser.HasPermission("UserPermission.Remove.All")) return;
+
+            ThrowForbidden(UserPermissionField.UserId);
         }
 
         #endregion

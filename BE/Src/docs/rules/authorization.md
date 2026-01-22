@@ -64,6 +64,10 @@ public class GetUserByIdQHandler : IRequestHandler<GetUserByIdQuery, UserRespons
 | `EnsureCanCreateUser()` | User.Create.All |
 | `EnsureCanUpdateUser(userId)` | User.Update.All OR (User.Update.Self + owner) |
 | `EnsureCanRemoveUser()` | User.Remove.All |
+| `EnsureCanRemovePermission()` | Permission.Remove.All |
+| `EnsureCanRemoveUserAddress(id)` | UserAddress.Remove.All OR (UserAddress.Remove.Self + owner) |
+| `EnsureCanRevokeRefreshToken(userId)` | RefreshToken.Revoke.All OR (RefreshToken.Revoke.Self + owner) |
+| `EnsureCanRemoveUserPermission()` | UserPermission.Remove.All |
 
 ## Handlers Without Authorization
 

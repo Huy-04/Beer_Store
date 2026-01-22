@@ -9,7 +9,7 @@ using Microsoft.Extensions.Logging;
 
 namespace BeerStore.Application.Modules.Auth.Users.Commands.RemoveUser
 {
-    public class RemoveUserCHandler : IRequestHandler<RemoveUserCommand, bool>
+    public class RemoveUserCHandler : IRequestHandler<RemoveUserCommand>
     {
         private readonly IAuthUnitOfWork _auow;
         private readonly ILogger<RemoveUserCHandler> _logger;
@@ -22,7 +22,7 @@ namespace BeerStore.Application.Modules.Auth.Users.Commands.RemoveUser
             _authService = authService;
         }
 
-        public async Task<bool> Handle(RemoveUserCommand command, CancellationToken token)
+        public async Task Handle(RemoveUserCommand command, CancellationToken token)
         {
             _authService.EnsureCanRemoveUser();
 
@@ -47,14 +47,12 @@ namespace BeerStore.Application.Modules.Auth.Users.Commands.RemoveUser
 
                 _auow.WUserRepository.Remove(user);
                 await _auow.CommitTransactionAsync(token);
-
-                return true;
             }
             catch (Exception ex)
             {
                 await _auow.RollbackTransactionAsync(token);
                 _logger.LogError(ex,
-                    "Failed to remove User. Id: {Id}",
+                    "Failed to removing User. Id: {Id}",
                     command.IdUser
                 );
                 throw;

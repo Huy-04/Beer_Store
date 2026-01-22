@@ -6,7 +6,7 @@ using Microsoft.Extensions.Logging;
 
 namespace BeerStore.Application.Modules.Auth.RefreshTokens.Commands.RevokeAllUserRefreshTokens
 {
-    public class RevokeAllUserRefreshTokensCHandler : IRequestHandler<RevokeAllUserRefreshTokensCommand, bool>
+    public class RevokeAllUserRefreshTokensCHandler : IRequestHandler<RevokeAllUserRefreshTokensCommand>
     {
         private readonly IAuthUnitOfWork _auow;
         private readonly ILogger<RevokeAllUserRefreshTokensCHandler> _logger;
@@ -19,7 +19,7 @@ namespace BeerStore.Application.Modules.Auth.RefreshTokens.Commands.RevokeAllUse
             _authService = authService;
         }
 
-        public async Task<bool> Handle(RevokeAllUserRefreshTokensCommand command, CancellationToken token)
+        public async Task Handle(RevokeAllUserRefreshTokensCommand command, CancellationToken token)
         {
             _authService.EnsureCanRevokeRefreshToken(command.UserId);
 
@@ -36,8 +36,6 @@ namespace BeerStore.Application.Modules.Auth.RefreshTokens.Commands.RevokeAllUse
                 }
 
                 await _auow.CommitTransactionAsync(token);
-
-                return true;
             }
             catch (Exception ex)
             {

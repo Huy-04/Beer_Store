@@ -18,14 +18,16 @@ namespace BeerStore.Infrastructure.UnitOfWork
             IWRoleRepository wRoleRepo,
             IRPermissionRepository rPermissionRepo,
             IWPermissionRepository wPermissionRepo,
-            IRAddressRepository rAddressRepo,
-            IWAddressRepository wAddressRepo,
+            IRUserAddressRepository rUserAddressRepo,
+            IWUserAddressRepository wUserAddressRepo,
             IRRefreshTokenRepository rRefreshTokenRepo,
             IWRefreshTokenRepository wRefreshTokenRepo,
             IRUserRoleRepository rUserRoleRepo,
             IWUserRoleRepository wUserRoleRepo,
             IRRolePermissionRepository rRolePermissionRepo,
-            IWRolePermissionRepository wRolePermissionRepo) : base(context)
+            IWRolePermissionRepository wRolePermissionRepo,
+            IRUserPermissionRepository rUserPermissionRepo,
+            IWUserPermissionRepository wUserPermissionRepo) : base(context)
         {
             RUserRepository = rUserRepo;
             WUserRepository = wUserRepo;
@@ -36,8 +38,8 @@ namespace BeerStore.Infrastructure.UnitOfWork
             RPermissionRepository = rPermissionRepo;
             WPermissionRepository = wPermissionRepo;
 
-            RAddressRepository = rAddressRepo;
-            WAddressRepository = wAddressRepo;
+            RUserAddressRepository = rUserAddressRepo;
+            WUserAddressRepository = wUserAddressRepo;
 
             RRefreshTokenRepository = rRefreshTokenRepo;
             WRefreshTokenRepository = wRefreshTokenRepo;
@@ -47,6 +49,9 @@ namespace BeerStore.Infrastructure.UnitOfWork
 
             RRolePermissionRepository = rRolePermissionRepo;
             WRolePermissionRepository = wRolePermissionRepo;
+
+            RUserPermissionRepository = rUserPermissionRepo;
+            WUserPermissionRepository = wUserPermissionRepo;
         }
 
         // User
@@ -64,10 +69,10 @@ namespace BeerStore.Infrastructure.UnitOfWork
 
         public IWPermissionRepository WPermissionRepository { get; }
 
-        // Address
-        public IRAddressRepository RAddressRepository { get; }
+        // UserAddress
+        public IRUserAddressRepository RUserAddressRepository { get; }
 
-        public IWAddressRepository WAddressRepository { get; }
+        public IWUserAddressRepository WUserAddressRepository { get; }
 
         // RefreshToken
         public IRRefreshTokenRepository RRefreshTokenRepository { get; }
@@ -83,5 +88,10 @@ namespace BeerStore.Infrastructure.UnitOfWork
         public IRRolePermissionRepository RRolePermissionRepository { get; }
 
         public IWRolePermissionRepository WRolePermissionRepository { get; }
+
+        // UserPermission
+        public IRUserPermissionRepository RUserPermissionRepository { get; }
+
+        public IWUserPermissionRepository WUserPermissionRepository { get; }
     }
 }

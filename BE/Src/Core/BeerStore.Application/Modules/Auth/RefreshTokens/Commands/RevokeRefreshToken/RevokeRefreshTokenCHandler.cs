@@ -10,7 +10,7 @@ using Microsoft.Extensions.Logging;
 
 namespace BeerStore.Application.Modules.Auth.RefreshTokens.Commands.RevokeRefreshToken
 {
-    public class RevokeRefreshTokenCHandler : IRequestHandler<RevokeRefreshTokenCommand, bool>
+    public class RevokeRefreshTokenCHandler : IRequestHandler<RevokeRefreshTokenCommand>
     {
         private readonly IAuthUnitOfWork _auow;
         private readonly ILogger<RevokeRefreshTokenCHandler> _logger;
@@ -23,7 +23,7 @@ namespace BeerStore.Application.Modules.Auth.RefreshTokens.Commands.RevokeRefres
             _authService = authService;
         }
 
-        public async Task<bool> Handle(RevokeRefreshTokenCommand command, CancellationToken token)
+        public async Task Handle(RevokeRefreshTokenCommand command, CancellationToken token)
         {
             // Fetch first to get userId for authorization check
             var refreshToken = await _auow.RRefreshTokenRepository.GetByTokenHash(command.TokenHash, token);
@@ -47,8 +47,6 @@ namespace BeerStore.Application.Modules.Auth.RefreshTokens.Commands.RevokeRefres
                 refreshToken.ApplyRefreshToke(command.UpdatedBy);
                 _auow.WRefreshTokenRepository.Update(refreshToken);
                 await _auow.CommitTransactionAsync(token);
-
-                return true;
             }
             catch (Exception ex)
             {

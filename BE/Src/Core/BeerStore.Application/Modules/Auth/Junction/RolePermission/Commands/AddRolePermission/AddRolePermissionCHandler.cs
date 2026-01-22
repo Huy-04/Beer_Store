@@ -2,14 +2,13 @@ using BeerStore.Application.DTOs.Auth.Junction.RolePermission.Responses;
 using BeerStore.Application.Interface.IUnitOfWork.Auth;
 using BeerStore.Application.Interface.Services.Authorization;
 using BeerStore.Application.Mapping.Auth.JunctionMap.RolePermissionMap;
-using BeerStore.Domain.Entities.Auth.Junction;
-using BeerStore.Domain.Enums.Messages;
 using RolePermissionEntity = BeerStore.Domain.Entities.Auth.Junction.RolePermission;
 using Domain.Core.Enums;
 using Domain.Core.Enums.Messages;
 using Domain.Core.RuleException;
 using MediatR;
 using Microsoft.Extensions.Logging;
+using BeerStore.Domain.Enums.Messages.Junction;
 
 namespace BeerStore.Application.Modules.Auth.Junction.RolePermission.Commands.AddRolePermission
 {
@@ -56,6 +55,17 @@ namespace BeerStore.Application.Modules.Auth.Junction.RolePermission.Commands.Ad
                             { ParamField.Value, command.PermissionId }
                         });
 
+                // Check duplicate
+                if (await _auow.RRolePermissionRepository.ExistsAsync(command.RoleId, command.PermissionId, token))
+                    throw new BusinessRuleException<RolePermissionField>(
+                        ErrorCategory.Conflict,
+                        RolePermissionField.PermissionId,
+                        ErrorCode.DuplicateEntry,
+                        new Dictionary<object, object>
+                        {
+                            { ParamField.Value, command.PermissionId }
+                        });
+
                 var rolePermission = RolePermissionEntity.Create(command.RoleId, command.PermissionId);
 
                 await _auow.WRolePermissionRepository.AddAsync(rolePermission, token);
@@ -75,4 +85,3 @@ namespace BeerStore.Application.Modules.Auth.Junction.RolePermission.Commands.Ad
         }
     }
 }
-

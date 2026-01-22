@@ -3,7 +3,7 @@ using Domain.Core.Enums;
 using Domain.Core.Interface.Rule;
 using Domain.Core.Rule;
 using Domain.Core.Rule.EnumRule;
-using Domain.Core.ValueObjects;
+using Domain.Core.ValueObjects.Base;
 
 namespace BeerStore.Domain.ValueObjects.Auth.RefreshToken
 {

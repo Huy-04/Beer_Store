@@ -10,5 +10,10 @@ namespace BeerStore.Infrastructure.Repository.Auth.Read.Junction
         public RRolePermissionRepository(AuthDbContext context) : base(context)
         {
         }
+
+        public Task<bool> ExistsAsync(Guid roleId, Guid permissionId, CancellationToken token = default)
+        {
+            return AnyAsync(rp => rp.RoleId == roleId && rp.PermissionId == permissionId, token);
+        }
     }
 }

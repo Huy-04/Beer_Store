@@ -5,5 +5,6 @@ namespace BeerStore.Domain.IRepository.Auth.Read.Junction
 {
     public interface IRUserRoleRepository : IReadRepositoryGeneric<UserRole>
     {
+        Task<bool> ExistsAsync(Guid userId, Guid roleId, CancellationToken token = default);
     }
 }

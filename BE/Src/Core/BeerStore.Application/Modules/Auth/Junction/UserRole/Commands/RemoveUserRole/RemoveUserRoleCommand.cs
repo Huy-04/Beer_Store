@@ -3,5 +3,5 @@ using MediatR;
 
 namespace BeerStore.Application.Modules.Auth.Junction.UserRole.Commands.RemoveUserRole
 {
-    public record RemoveUserRoleCommand(Guid UserRoleId) : IRequest<Unit>;
+    public record RemoveUserRoleCommand(Guid UserRoleId) : IRequest;
 }

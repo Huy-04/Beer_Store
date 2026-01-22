@@ -1,6 +1,6 @@
 using BeerStore.Application.Interface.IUnitOfWork.Auth;
 using BeerStore.Application.Interface.Services.Authorization;
-using BeerStore.Domain.Enums.Messages;
+using BeerStore.Domain.Enums.Messages.Junction;
 using Domain.Core.Enums;
 using Domain.Core.Enums.Messages;
 using Domain.Core.RuleException;
@@ -9,7 +9,7 @@ using Microsoft.Extensions.Logging;
 
 namespace BeerStore.Application.Modules.Auth.Junction.RolePermission.Commands.RemoveRolePermission
 {
-    public class RemoveRolePermissionCHandler : IRequestHandler<RemoveRolePermissionCommand, Unit>
+    public class RemoveRolePermissionCHandler : IRequestHandler<RemoveRolePermissionCommand>
     {
         private readonly IAuthUnitOfWork _auow;
         private readonly ILogger<RemoveRolePermissionCHandler> _logger;
@@ -22,7 +22,7 @@ namespace BeerStore.Application.Modules.Auth.Junction.RolePermission.Commands.Re
             _authService = authService;
         }
 
-        public async Task<Unit> Handle(RemoveRolePermissionCommand command, CancellationToken token)
+        public async Task Handle(RemoveRolePermissionCommand command, CancellationToken token)
         {
             _authService.EnsureCanRemoveRolePermission();
 
@@ -44,8 +44,6 @@ namespace BeerStore.Application.Modules.Auth.Junction.RolePermission.Commands.Re
 
                 _auow.WRolePermissionRepository.Remove(rolePermission);
                 await _auow.CommitTransactionAsync(token);
-
-                return Unit.Value;
             }
             catch (Exception ex)
             {

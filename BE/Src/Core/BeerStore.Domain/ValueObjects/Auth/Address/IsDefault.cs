@@ -1,9 +1,10 @@
 using BeerStore.Domain.Enums.Messages;
 using Domain.Core.Enums;
+using Domain.Core.Enums.Messages;
 using Domain.Core.Interface.Rule;
 using Domain.Core.Rule;
 using Domain.Core.Rule.EnumRule;
-using Domain.Core.ValueObjects;
+using Domain.Core.ValueObjects.Base;
 
 namespace BeerStore.Domain.ValueObjects.Auth.Address
 {
@@ -15,10 +16,10 @@ namespace BeerStore.Domain.ValueObjects.Auth.Address
 
         public static IsDefault Create(StatusEnum value)
         {
-            RuleValidator.CheckRules<AddressField>(new IBusinessRule<AddressField>[]
+            RuleValidator.CheckRules<UserAddressField>(new IBusinessRule<UserAddressField>[]
             {
-                new EnumValidateRule<StatusEnum, AddressField>(value,
-                Enum.GetValues(typeof(StatusEnum)).Cast<StatusEnum>().ToList(),AddressField.IsDefault)
+                new EnumValidateRule<StatusEnum, UserAddressField>(value,
+                Enum.GetValues(typeof(StatusEnum)).Cast<StatusEnum>().ToList(),UserAddressField.IsDefault)
             });
             return new IsDefault(value);
         }

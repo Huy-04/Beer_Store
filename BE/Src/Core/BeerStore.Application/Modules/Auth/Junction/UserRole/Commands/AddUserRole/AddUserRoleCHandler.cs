@@ -3,13 +3,13 @@ using BeerStore.Application.Interface.IUnitOfWork.Auth;
 using BeerStore.Application.Interface.Services.Authorization;
 using BeerStore.Application.Mapping.Auth.JunctionMap.UserRoleMap;
 using BeerStore.Domain.Entities.Auth.Junction;
-using BeerStore.Domain.Enums.Messages;
 using UserRoleEntity = BeerStore.Domain.Entities.Auth.Junction.UserRole;
 using Domain.Core.Enums;
 using Domain.Core.Enums.Messages;
 using Domain.Core.RuleException;
 using MediatR;
 using Microsoft.Extensions.Logging;
+using BeerStore.Domain.Enums.Messages.Junction;
 
 namespace BeerStore.Application.Modules.Auth.Junction.UserRole.Commands.AddUserRole
 {
@@ -51,6 +51,18 @@ namespace BeerStore.Application.Modules.Auth.Junction.UserRole.Commands.AddUserR
                         ErrorCategory.NotFound,
                         UserRoleField.RoleId,
                         ErrorCode.IdNotFound,
+                        new Dictionary<object, object>
+                        {
+                            { ParamField.Value, command.RoleId }
+
+                        });
+
+                // Check duplicate
+                if (await _auow.RUserRoleRepository.ExistsAsync(command.UserId, command.RoleId, token))
+                    throw new BusinessRuleException<UserRoleField>(
+                        ErrorCategory.Conflict,
+                        UserRoleField.RoleId,
+                        ErrorCode.DuplicateEntry,
                         new Dictionary<object, object>
                         {
                             { ParamField.Value, command.RoleId }
