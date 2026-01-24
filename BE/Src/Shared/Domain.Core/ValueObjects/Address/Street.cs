@@ -4,7 +4,7 @@ using Domain.Core.Rule;
 using Domain.Core.Rule.StringRule;
 using Domain.Core.ValueObjects.Base;
 
-namespace BeerStore.Domain.ValueObjects.Auth.Address
+namespace Domain.Core.ValueObjects.Address
 {
     public class Street : StringBase
     {

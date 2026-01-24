@@ -2952,7 +2952,10 @@
         },
         "runtime": {
           "bin/placeholder/Infrastructure.Core.dll": {}
-        }
+        },
+        "frameworkReferences": [
+          "Microsoft.AspNetCore.App"
+        ]
       }
     }
   },

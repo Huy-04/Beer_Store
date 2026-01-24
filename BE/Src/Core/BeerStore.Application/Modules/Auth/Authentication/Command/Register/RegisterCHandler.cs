@@ -1,8 +1,9 @@
 using BeerStore.Application.DTOs.Auth.Authentication.Responses.Register;
 using BeerStore.Application.Interface.IUnitOfWork.Auth;
+using Application.Core.Interface.Services;
 using BeerStore.Application.Interface.Services;
 using BeerStore.Application.Mapping.Auth.UserMap;
-using BeerStore.Domain.Enums.Messages;
+using BeerStore.Domain.Enums.Auth.Messages;
 using BeerStore.Domain.ValueObjects.Auth.Role;
 using BeerStore.Domain.ValueObjects.Auth.User;
 using Domain.Core.Enums;

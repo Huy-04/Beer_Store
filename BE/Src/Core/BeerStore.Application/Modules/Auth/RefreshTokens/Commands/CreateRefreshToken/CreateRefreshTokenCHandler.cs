@@ -1,6 +1,7 @@
 using Application.Core.Interface.ISettings;
 using BeerStore.Application.DTOs.Auth.RefreshToken.Responses;
 using BeerStore.Application.Interface.IUnitOfWork.Auth;
+using Application.Core.Interface.Services;
 using BeerStore.Application.Interface.Services;
 using BeerStore.Application.Interface.Services.Authorization;
 using BeerStore.Application.Mapping.Auth.RefreshTokenMap;

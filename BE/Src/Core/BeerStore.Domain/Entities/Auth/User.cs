@@ -2,6 +2,7 @@ using BeerStore.Domain.Entities.Auth.Junction;
 using BeerStore.Domain.ValueObjects.Auth.User;
 using BeerStore.Domain.ValueObjects.Auth.User.Status;
 using Domain.Core.Enums;
+using Domain.Core.ValueObjects.Address;
 
 namespace BeerStore.Domain.Entities.Auth
 {

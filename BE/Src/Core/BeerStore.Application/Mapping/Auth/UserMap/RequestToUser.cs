@@ -1,8 +1,10 @@
 using BeerStore.Application.DTOs.Auth.User.Requests;
+using Application.Core.Interface.Services;
 using BeerStore.Application.Interface.Services;
 using BeerStore.Domain.Entities.Auth;
 using BeerStore.Domain.ValueObjects.Auth.User;
 using BeerStore.Domain.ValueObjects.Auth.User.Status;
+using Domain.Core.ValueObjects.Address;
 
 namespace BeerStore.Application.Mapping.Auth.UserMap
 {

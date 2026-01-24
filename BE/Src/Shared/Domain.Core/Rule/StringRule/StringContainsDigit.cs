@@ -14,7 +14,7 @@ namespace Domain.Core.Rule.StringRule
             _field = field;
         }
 
-        public bool IsSatisfied() => _value?.Any(char.IsDigit) ?? false;
+        public bool IsSatisfied() => string.IsNullOrEmpty(_value) || _value.Any(char.IsDigit);
 
         public TField Field => _field;
 

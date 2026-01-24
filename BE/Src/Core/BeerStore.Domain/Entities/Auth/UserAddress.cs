@@ -1,5 +1,5 @@
 using BeerStore.Domain.ValueObjects.Auth.Address;
-using BeerStore.Domain.ValueObjects.Auth.User;
+using Domain.Core.ValueObjects.Address;
 
 namespace BeerStore.Domain.Entities.Auth
 {
@@ -21,7 +21,7 @@ namespace BeerStore.Domain.Entities.Auth
 
         public IsDefault IsDefault { get; private set; }
 
-        public UserAddressType AddressType { get; private set; }
+        public UserAddressType UserAddressType { get; private set; }
 
         public Guid CreatedBy { get; private set; }
 
@@ -45,15 +45,15 @@ namespace BeerStore.Domain.Entities.Auth
             Ward = ward;
             Street = street;
             IsDefault = isDefault;
-            AddressType = addressType;
+            UserAddressType = addressType;
             CreatedBy = createdBy;
             UpdatedBy = updatedBy;
             CreatedAt = UpdatedAt = DateTimeOffset.UtcNow;
         }
 
-        public static UserAddress Create(Guid userId, Phone phone, FullName fullName, Province province, District district, Ward ward, Street street, IsDefault isDefault, UserAddressType addressType, Guid createdBy, Guid updatedBy)
+        public static UserAddress Create(Guid userId, Phone phone, FullName fullName, Province province, District district, Ward ward, Street street, IsDefault isDefault, UserAddressType userAddressType, Guid createdBy, Guid updatedBy)
         {
-            var address = new UserAddress(Guid.NewGuid(), userId, phone, fullName, province, district, ward, street, isDefault, addressType, createdBy, updatedBy);
+            var address = new UserAddress(Guid.NewGuid(), userId, phone, fullName, province, district, ward, street, isDefault, userAddressType, createdBy, updatedBy);
             return address;
         }
 
@@ -106,10 +106,10 @@ namespace BeerStore.Domain.Entities.Auth
             Touch();
         }
 
-        public void UpdateAddressType(UserAddressType addressType)
+        public void UpdateAddressType(UserAddressType userAddressType)
         {
-            if (AddressType == addressType) return;
-            AddressType = addressType;
+            if (UserAddressType == userAddressType) return;
+            UserAddressType = userAddressType;
             Touch();
         }
 

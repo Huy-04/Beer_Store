@@ -11,7 +11,6 @@ namespace BeerStore.Infrastructure.Persistence.Db
         {
         }
 
-        // Auth
         public DbSet<User> Users => Set<User>();
 
         public DbSet<Role> Roles => Set<Role>();
@@ -30,7 +29,7 @@ namespace BeerStore.Infrastructure.Persistence.Db
         {
             modelBuilder.ApplyConfigurationsFromAssembly(
                 Assembly.GetExecutingAssembly(),
-                a => a.Namespace!.Contains(".EntityConfigurations"));
+                a => a.Namespace!.Contains(".EntityConfigurations.Auth"));
         }
     }
 }

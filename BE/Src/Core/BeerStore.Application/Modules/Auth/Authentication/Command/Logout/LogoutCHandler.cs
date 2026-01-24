@@ -1,6 +1,6 @@
 ﻿using BeerStore.Application.Interface.IUnitOfWork.Auth;
 using BeerStore.Application.Mapping.Auth.RefreshTokenMap;
-using BeerStore.Domain.Enums.Messages;
+using BeerStore.Domain.Enums.Auth.Messages;
 using BeerStore.Domain.ValueObjects.Auth.User;
 using Domain.Core.Enums;
 using Domain.Core.Enums.Messages;

@@ -7,7 +7,7 @@ using BeerStore.Application.Modules.Auth.Permissions.Commands.UpdatePermission;
 using BeerStore.Application.Modules.Auth.Permissions.Queries.GetAllPermission;
 using BeerStore.Application.Modules.Auth.Permissions.Queries.GetPermissionById;
 using BeerStore.Application.Modules.Auth.Permissions.Queries.GetPermissionByModule;
-using BeerStore.Domain.Enums;
+using BeerStore.Domain.Enums.Auth;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;

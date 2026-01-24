@@ -17,7 +17,7 @@ namespace Domain.Core.Rule.StringRule
             _field = field;
         }
 
-        public bool IsSatisfied() => _value?.Trim().Length >= _minimum;
+        public bool IsSatisfied() => string.IsNullOrEmpty(_value) || _value.Trim().Length >= _minimum;
 
         public TField Field => _field;
 

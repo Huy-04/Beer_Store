@@ -1,5 +1,6 @@
 using BeerStore.Domain.Entities.Auth;
 using BeerStore.Infrastructure.Persistence.EntityConfigurations.Auth.Converter;
+using Infrastructure.Core.PropertyConverters;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
@@ -20,41 +21,41 @@ namespace BeerStore.Infrastructure.Persistence.EntityConfigurations.Auth
             entity.HasIndex(a => a.UserId);
 
             entity.Property(a => a.Phone)
-                .HasConversion(AuthConverter.PhoneConverter)
+                .HasConversion(AddressConverter.PhoneConverter)
                 .HasMaxLength(18)
                 .IsRequired();
 
             entity.Property(a => a.FullName)
-                .HasConversion(AuthConverter.FullNameConverter)
+                .HasConversion(AddressConverter.FullNameConverter)
                 .HasMaxLength(69)
                 .IsRequired();
 
             entity.Property(a => a.Province)
-                .HasConversion(AuthConverter.ProvinceConverter)
+                .HasConversion(AddressConverter.ProvinceConverter)
                 .HasMaxLength(69)
                 .IsRequired();
 
             entity.Property(a => a.District)
-                .HasConversion(AuthConverter.DistrictConverter)
+                .HasConversion(AddressConverter.DistrictConverter)
                 .HasMaxLength(69)
                 .IsRequired();
 
             entity.Property(a => a.Ward)
-                .HasConversion(AuthConverter.WardConverter)
+                .HasConversion(AddressConverter.WardConverter)
                 .HasMaxLength(69)
                 .IsRequired();
 
             entity.Property(a => a.Street)
-                .HasConversion(AuthConverter.StreetConverter)
+                .HasConversion(AddressConverter.StreetConverter)
                 .HasMaxLength(255)
                 .IsRequired();
 
             entity.Property(a => a.IsDefault)
-                .HasConversion(AuthConverter.IsDefaultConverter)
+                .HasConversion(AddressConverter.IsDefaultConverter)
                 .IsRequired();
 
-            entity.Property(a => a.AddressType)
-                .HasConversion(AuthConverter.AddressTypeConverter)
+            entity.Property(a => a.UserAddressType)
+                .HasConversion(AuthConverter.UserAddressTypeConverter)
                 .IsRequired();
 
             entity.Property(a => a.CreatedBy)

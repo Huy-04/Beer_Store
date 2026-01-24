@@ -1,6 +1,6 @@
 using BeerStore.Application.Interface.IUnitOfWork.Auth;
 using BeerStore.Application.Interface.Services.Authorization;
-using BeerStore.Domain.Enums.Messages;
+using BeerStore.Domain.Enums.Auth.Messages;
 using Domain.Core.Enums;
 using Domain.Core.Enums.Messages;
 using Domain.Core.RuleException;

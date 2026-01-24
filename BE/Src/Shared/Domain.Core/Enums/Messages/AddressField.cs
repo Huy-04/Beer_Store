@@ -5,6 +5,9 @@
         Province,
         Street,
         District,
-        Ward
+        Ward,
+        Phone,
+        FullName,
+        IsDefault
     }
 }

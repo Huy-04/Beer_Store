@@ -49,5 +49,11 @@
 
         // Authorization
         AccessDenied,
+
+        // Format
+        InvalidFormat,
+
+        // State Machine
+        InvalidStatusTransition,
     }
 }

@@ -3,16 +3,8 @@
   "WorkspaceRootPath": "C:\\Code\\Project\\Beer_Store\\BE\\Src\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{B3ADFB17-08A8-4B88-8345-7CC8FD9224AD}|Core\\BeerStore.Infrastructure\\BeerStore.Infrastructure.csproj|c:\\code\\project\\beer_store\\be\\src\\core\\beerstore.infrastructure\\services\\authorization\\authauthorizationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B3ADFB17-08A8-4B88-8345-7CC8FD9224AD}|Core\\BeerStore.Infrastructure\\BeerStore.Infrastructure.csproj|solutionrelative:core\\beerstore.infrastructure\\services\\authorization\\authauthorizationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B3ADFB17-08A8-4B88-8345-7CC8FD9224AD}|Core\\BeerStore.Infrastructure\\BeerStore.Infrastructure.csproj|c:\\code\\project\\beer_store\\be\\src\\core\\beerstore.infrastructure\\repository\\auth\\read\\rpermissionrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B3ADFB17-08A8-4B88-8345-7CC8FD9224AD}|Core\\BeerStore.Infrastructure\\BeerStore.Infrastructure.csproj|solutionrelative:core\\beerstore.infrastructure\\repository\\auth\\read\\rpermissionrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{FEA16E50-2619-4AD6-BC94-257186ECD969}|Core\\BeerStore.Domain\\BeerStore.Domain.csproj|c:\\code\\project\\beer_store\\be\\src\\core\\beerstore.domain\\irepository\\auth\\read\\irpermissionrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{FEA16E50-2619-4AD6-BC94-257186ECD969}|Core\\BeerStore.Domain\\BeerStore.Domain.csproj|solutionrelative:core\\beerstore.domain\\irepository\\auth\\read\\irpermissionrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{FEA16E50-2619-4AD6-BC94-257186ECD969}|Core\\BeerStore.Domain\\BeerStore.Domain.csproj|c:\\code\\project\\beer_store\\be\\src\\core\\beerstore.domain\\entities\\auth\\useraddress.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FEA16E50-2619-4AD6-BC94-257186ECD969}|Core\\BeerStore.Domain\\BeerStore.Domain.csproj|solutionrelative:core\\beerstore.domain\\entities\\auth\\useraddress.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -22,50 +14,24 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 1,
           "Children": [
             {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "IRPermissionRepository.cs",
-              "DocumentMoniker": "C:\\Code\\Project\\Beer_Store\\BE\\Src\\Core\\BeerStore.Domain\\IRepository\\Auth\\Read\\IRPermissionRepository.cs",
-              "RelativeDocumentMoniker": "Core\\BeerStore.Domain\\IRepository\\Auth\\Read\\IRPermissionRepository.cs",
-              "ToolTip": "C:\\Code\\Project\\Beer_Store\\BE\\Src\\Core\\BeerStore.Domain\\IRepository\\Auth\\Read\\IRPermissionRepository.cs",
-              "RelativeToolTip": "Core\\BeerStore.Domain\\IRepository\\Auth\\Read\\IRPermissionRepository.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAuwAwAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-22T13:07:06.992Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "RPermissionRepository.cs",
-              "DocumentMoniker": "C:\\Code\\Project\\Beer_Store\\BE\\Src\\Core\\BeerStore.Infrastructure\\Repository\\Auth\\Read\\RPermissionRepository.cs",
-              "RelativeDocumentMoniker": "Core\\BeerStore.Infrastructure\\Repository\\Auth\\Read\\RPermissionRepository.cs",
-              "ToolTip": "C:\\Code\\Project\\Beer_Store\\BE\\Src\\Core\\BeerStore.Infrastructure\\Repository\\Auth\\Read\\RPermissionRepository.cs",
-              "RelativeToolTip": "Core\\BeerStore.Infrastructure\\Repository\\Auth\\Read\\RPermissionRepository.cs",
-              "ViewState": "AgIAABMAAAAAAAAAAAAzwAoAAABMAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-22T13:05:13.407Z",
-              "EditorCaption": ""
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "AuthAuthorizationService.cs",
-              "DocumentMoniker": "C:\\Code\\Project\\Beer_Store\\BE\\Src\\Core\\BeerStore.Infrastructure\\Services\\Authorization\\AuthAuthorizationService.cs",
-              "RelativeDocumentMoniker": "Core\\BeerStore.Infrastructure\\Services\\Authorization\\AuthAuthorizationService.cs",
-              "ToolTip": "C:\\Code\\Project\\Beer_Store\\BE\\Src\\Core\\BeerStore.Infrastructure\\Services\\Authorization\\AuthAuthorizationService.cs",
-              "RelativeToolTip": "Core\\BeerStore.Infrastructure\\Services\\Authorization\\AuthAuthorizationService.cs",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAAABoAAAAtAAAAAAAAAA==",
+              "Title": "UserAddress.cs",
+              "DocumentMoniker": "C:\\Code\\Project\\Beer_Store\\BE\\Src\\Core\\BeerStore.Domain\\Entities\\Auth\\UserAddress.cs",
+              "RelativeDocumentMoniker": "Core\\BeerStore.Domain\\Entities\\Auth\\UserAddress.cs",
+              "ToolTip": "C:\\Code\\Project\\Beer_Store\\BE\\Src\\Core\\BeerStore.Domain\\Entities\\Auth\\UserAddress.cs",
+              "RelativeToolTip": "Core\\BeerStore.Domain\\Entities\\Auth\\UserAddress.cs",
+              "ViewState": "AgIAAAsAAAAAAAAAAAA3wCIAAAALAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-22T12:29:21.207Z",
+              "WhenOpened": "2026-01-24T03:52:47.286Z",
               "EditorCaption": ""
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
             }
           ]
         }

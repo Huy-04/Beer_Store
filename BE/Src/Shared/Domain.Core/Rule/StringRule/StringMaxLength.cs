@@ -17,7 +17,7 @@ namespace Domain.Core.Rule.StringRule
             _maxlength = maxlength;
         }
 
-        public bool IsSatisfied() => _value?.Trim().Length <= _maxlength;
+        public bool IsSatisfied() => string.IsNullOrEmpty(_value) || _value.Trim().Length <= _maxlength;
 
         public TField Field => _field;
 

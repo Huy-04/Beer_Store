@@ -1,10 +1,11 @@
 using Application.Core.Interface.ISettings;
 using BeerStore.Application.DTOs.Auth.Authentication.Responses.Login;
 using BeerStore.Application.Interface.IUnitOfWork.Auth;
+using Application.Core.Interface.Services;
 using BeerStore.Application.Interface.Services;
 using BeerStore.Application.Mapping.Auth.RefreshTokenMap;
 using BeerStore.Domain.Entities.Auth;
-using BeerStore.Domain.Enums.Messages;
+using BeerStore.Domain.Enums.Auth.Messages;
 using BeerStore.Domain.ValueObjects.Auth.RefreshToken;
 using BeerStore.Domain.ValueObjects.Auth.User;
 using Domain.Core.Enums;

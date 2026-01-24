@@ -2,7 +2,7 @@ using BeerStore.Application.DTOs.Auth.Permission.Responses;
 using BeerStore.Application.Interface.IUnitOfWork.Auth;
 using BeerStore.Application.Interface.Services.Authorization;
 using BeerStore.Application.Mapping.Auth.PermissionMap;
-using BeerStore.Domain.Enums.Messages;
+using BeerStore.Domain.Enums.Auth.Messages;
 using BeerStore.Domain.ValueObjects.Auth.Permission;
 using Domain.Core.Enums;
 using Domain.Core.Enums.Messages;

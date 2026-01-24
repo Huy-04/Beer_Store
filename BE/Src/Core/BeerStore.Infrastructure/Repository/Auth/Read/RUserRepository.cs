@@ -2,6 +2,7 @@ using BeerStore.Domain.Entities.Auth;
 using BeerStore.Domain.IRepository.Auth.Read;
 using BeerStore.Domain.ValueObjects.Auth.User;
 using BeerStore.Infrastructure.Persistence.Db;
+using Domain.Core.ValueObjects.Address;
 using Infrastructure.Core.Repository;
 using Microsoft.EntityFrameworkCore;
 

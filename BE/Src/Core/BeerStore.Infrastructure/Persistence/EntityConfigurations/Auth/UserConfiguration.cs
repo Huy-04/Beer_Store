@@ -1,6 +1,7 @@
 using BeerStore.Domain.Entities.Auth;
 using BeerStore.Domain.Entities.Auth.Junction;
 using BeerStore.Infrastructure.Persistence.EntityConfigurations.Auth.Converter;
+using Infrastructure.Core.PropertyConverters;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
@@ -24,12 +25,12 @@ namespace BeerStore.Infrastructure.Persistence.EntityConfigurations.Auth
                 .HasDatabaseName("IX_Users_Email");
 
             entity.Property(u => u.Phone)
-                .HasConversion(AuthConverter.PhoneConverter)
+                .HasConversion(AddressConverter.PhoneConverter)
                 .HasMaxLength(18)
                 .IsRequired();
 
             entity.Property(u => u.FullName)
-                .HasConversion(AuthConverter.FullNameConverter)
+                .HasConversion(AddressConverter.FullNameConverter)
                 .HasMaxLength(69)
                 .IsRequired();
 

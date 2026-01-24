@@ -59,7 +59,8 @@ builder.Services.AddSwaggerGen(c =>
 builder.Host.UseSharedSerilog(builder.Configuration);
 
 // Add Infrastructure Services (DbContext, Repositories, UnitOfWork, JWT Service, Password Hasher)
-builder.Services.AddInfrastructure(builder.Configuration);
+builder.Services.AddAuthInfrastructure(builder.Configuration);
+builder.Services.AddShopInfrastructure(builder.Configuration);
 
 // Config JWT Settings (Load JWT => appsettings.json)
 var jwtSettings = builder.Configuration.GetSection("JwtSettings").Get<JwtSettings>();

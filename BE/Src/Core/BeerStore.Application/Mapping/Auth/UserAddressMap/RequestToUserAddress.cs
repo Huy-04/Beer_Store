@@ -1,7 +1,7 @@
 using BeerStore.Application.DTOs.Auth.UserAddress.Requests;
 using BeerStore.Domain.Entities.Auth;
 using BeerStore.Domain.ValueObjects.Auth.Address;
-using BeerStore.Domain.ValueObjects.Auth.User;
+using Domain.Core.ValueObjects.Address;
 
 namespace BeerStore.Application.Mapping.Auth.UserAddressMap
 {

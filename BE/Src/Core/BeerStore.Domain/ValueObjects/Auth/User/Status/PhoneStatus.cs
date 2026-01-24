@@ -1,4 +1,4 @@
-using BeerStore.Domain.Enums.Messages;
+using BeerStore.Domain.Enums.Auth.Messages;
 using Domain.Core.Enums;
 using Domain.Core.Interface.Rule;
 using Domain.Core.Rule;

@@ -1,5 +1,4 @@
 ﻿using Domain.Core.Enums;
-using Domain.Core.Enums.Messages;
 using Domain.Core.Interface.Rule;
 
 namespace Domain.Core.Rule.StringRule

@@ -1,13 +1,15 @@
 using BeerStore.Application.DTOs.Auth.User.Responses;
 using BeerStore.Application.Interface.IUnitOfWork.Auth;
+using Application.Core.Interface.Services;
 using BeerStore.Application.Interface.Services;
 using BeerStore.Application.Interface.Services.Authorization;
 using BeerStore.Application.Mapping.Auth.UserMap;
-using BeerStore.Domain.Enums.Messages;
+using BeerStore.Domain.Enums.Auth.Messages;
 using BeerStore.Domain.ValueObjects.Auth.User;
 using Domain.Core.Enums;
 using Domain.Core.Enums.Messages;
 using Domain.Core.RuleException;
+using Domain.Core.ValueObjects.Address;
 using MediatR;
 using Microsoft.Extensions.Logging;
 

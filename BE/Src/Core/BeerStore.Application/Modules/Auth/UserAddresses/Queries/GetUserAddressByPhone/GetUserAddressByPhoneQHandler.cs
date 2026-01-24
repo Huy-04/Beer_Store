@@ -2,7 +2,7 @@ using BeerStore.Application.DTOs.Auth.UserAddress.Responses;
 using BeerStore.Application.Interface.IUnitOfWork.Auth;
 using BeerStore.Application.Interface.Services.Authorization;
 using BeerStore.Application.Mapping.Auth.UserAddressMap;
-using BeerStore.Domain.ValueObjects.Auth.User;
+using Domain.Core.ValueObjects.Address;
 using MediatR;
 
 namespace BeerStore.Application.Modules.Auth.UserAddresses.Queries.GetUserAddressByPhone

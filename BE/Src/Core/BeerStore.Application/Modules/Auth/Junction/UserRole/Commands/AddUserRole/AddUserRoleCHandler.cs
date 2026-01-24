@@ -9,7 +9,7 @@ using Domain.Core.Enums.Messages;
 using Domain.Core.RuleException;
 using MediatR;
 using Microsoft.Extensions.Logging;
-using BeerStore.Domain.Enums.Messages.Junction;
+using BeerStore.Domain.Enums.Auth.Messages.Junction;
 
 namespace BeerStore.Application.Modules.Auth.Junction.UserRole.Commands.AddUserRole
 {

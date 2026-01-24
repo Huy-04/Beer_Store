@@ -1,4 +1,5 @@
 using BeerStore.Domain.Enums;
+using BeerStore.Domain.Enums.Auth;
 using BeerStore.Domain.ValueObjects.Auth.Address;
 using BeerStore.Domain.ValueObjects.Auth.Permission;
 using BeerStore.Domain.ValueObjects.Auth.Permission.Enums;
@@ -8,21 +9,13 @@ using BeerStore.Domain.ValueObjects.Auth.User;
 using BeerStore.Domain.ValueObjects.Auth.User.Status;
 using Domain.Core.Enums;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using Microsoft.Identity.Client.Extensibility;
 
 namespace BeerStore.Infrastructure.Persistence.EntityConfigurations.Auth.Converter
 {
     public static class AuthConverter
     {
-        // Common
+        #region User
 
-        public static readonly ValueConverter<Phone, string>
-            PhoneConverter = new(v => v.Value, v => Phone.Create(v));
-
-        public static readonly ValueConverter<FullName, string>
-            FullNameConverter = new(v => v.Value, v => FullName.Create(v));
-
-        // User
         public static readonly ValueConverter<Email, string>
             EmailConverter = new(v => v.Value, v => Email.Create(v));
 
@@ -41,11 +34,17 @@ namespace BeerStore.Infrastructure.Persistence.EntityConfigurations.Auth.Convert
         public static readonly ValueConverter<EmailStatus, int>
             EmailStatusConverter = new(v => (int)v.Value, v => EmailStatus.Create((StatusEnum)v));
 
-        // Role
+        #endregion User
+
+        #region Role
+
         public static readonly ValueConverter<RoleName, string>
             RoleNameConverter = new(v => v.Value, v => RoleName.Create(v));
 
-        // Permission
+        #endregion Role
+
+        #region Permission
+
         public static readonly ValueConverter<PermissionName, string>
             PermissionNameConverter = new(v => v.Value, v => PermissionName.Create(v));
 
@@ -55,26 +54,17 @@ namespace BeerStore.Infrastructure.Persistence.EntityConfigurations.Auth.Convert
         public static readonly ValueConverter<Operation, int>
             OperationConverter = new(v => (int)v.Value, v => Operation.Create((OperationEnum)v));
 
-        // Address
-        public static readonly ValueConverter<Province, string>
-            ProvinceConverter = new(v => v.Value, v => Province.Create(v));
+        #endregion Permission
 
-        public static readonly ValueConverter<District, string>
-            DistrictConverter = new(v => v.Value, v => District.Create(v));
-
-        public static readonly ValueConverter<Ward, string>
-            WardConverter = new(v => v.Value, v => Ward.Create(v));
-
-        public static readonly ValueConverter<Street, string>
-            StreetConverter = new(v => v.Value, v => Street.Create(v));
-
-        public static readonly ValueConverter<IsDefault, int>
-            IsDefaultConverter = new(v => (int)v.Value, v => IsDefault.Create((StatusEnum)v));
+        #region UserAddress
 
         public static readonly ValueConverter<UserAddressType, int>
-            AddressTypeConverter = new(v => (int)v.Value, v => UserAddressType.Create((AddressTypeEnum)v));
+            UserAddressTypeConverter = new(v => (int)v.Value, v => UserAddressType.Create((AddressTypeEnum)v));
 
-        // RefreshToken
+        #endregion UserAddress
+
+        #region RefreshToken
+
         public static readonly ValueConverter<TokenHash, string>
             TokenHashConverter = new(v => v.Value, v => TokenHash.Create(v));
 
@@ -89,5 +79,7 @@ namespace BeerStore.Infrastructure.Persistence.EntityConfigurations.Auth.Convert
 
         public static readonly ValueConverter<TokenStatus, int>
             TokenStatusConverter = new(v => (int)v.Value, v => TokenStatus.Create((StatusEnum)v));
+
+        #endregion RefreshToken
     }
 }

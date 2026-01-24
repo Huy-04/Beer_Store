@@ -16,7 +16,7 @@ namespace BeerStore.Application.Mapping.Auth.UserAddressMap
                 address.Ward.Value,
                 address.Street.Value,
                 address.IsDefault.Value,
-                address.AddressType.Value,
+                address.UserAddressType.Value,
                 address.CreatedBy,
                 address.UpdatedBy,
                 address.CreatedAt,
