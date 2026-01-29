@@ -1,6 +1,8 @@
 using BeerStore.Domain.Entities.Auth;
 using BeerStore.Domain.ValueObjects.Auth.RefreshToken;
 using BeerStore.Infrastructure.Persistence.EntityConfigurations.Auth.Converter;
+using Infrastructure.Core.PropertyConverters;
+using Domain.Core.ValueObjects.Common;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
@@ -44,7 +46,7 @@ namespace BeerStore.Infrastructure.Persistence.EntityConfigurations.Auth
 
             // IpAddress
             entity.Property(rt => rt.IpAddress)
-                .HasConversion(AuthConverter.IpAddressConverter)
+                .HasConversion(CommonConverterExtension.IpAddressConverter)
                 .HasMaxLength(IpAddress.MaxLength)
                 .IsRequired();
 

@@ -1,4 +1,5 @@
 ﻿using BeerStore.Domain.Entities.Shop;
+using BeerStore.Domain.Entities.Shop.Junction;
 using BeerStore.Infrastructure.Persistence.EntityConfigurations.Shop;
 using Microsoft.EntityFrameworkCore;
 using System.Reflection;

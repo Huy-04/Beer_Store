@@ -35,7 +35,7 @@ namespace BeerStore.Application.Modules.Shop.Stores.Queries.GetAllStores
             if (!string.IsNullOrWhiteSpace(query.SearchTerm))
             {
                 filteredStores = filteredStores.Where(s => 
-                    s.Name.Value.Contains(query.SearchTerm, StringComparison.OrdinalIgnoreCase) ||
+                    s.StoreName.Value.Contains(query.SearchTerm, StringComparison.OrdinalIgnoreCase) ||
                     s.Slug.Value.Contains(query.SearchTerm, StringComparison.OrdinalIgnoreCase));
             }
 

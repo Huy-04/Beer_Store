@@ -2,6 +2,8 @@ using BeerStore.Domain.Entities.Auth.Junction;
 using BeerStore.Domain.ValueObjects.Auth.User;
 using BeerStore.Domain.ValueObjects.Auth.User.Status;
 using Domain.Core.Enums;
+using Domain.Core.ValueObjects.Common;
+using Domain.Core.ValueObjects.Base;
 using Domain.Core.ValueObjects.Address;
 
 namespace BeerStore.Domain.Entities.Auth
@@ -28,13 +30,10 @@ namespace BeerStore.Domain.Entities.Auth
 
         public IReadOnlyCollection<UserRole> UserRoles => _userRoles.AsReadOnly();
 
-        public Guid CreatedBy { get; private set; }
+        private readonly List<UserAddress> _userAddresses = new List<UserAddress>();
+        public IReadOnlyCollection<UserAddress> UserAddresses => _userAddresses.AsReadOnly();
 
-        public Guid UpdatedBy { get; private set; }
 
-        public DateTimeOffset CreatedAt { get; private set; }
-
-        public DateTimeOffset UpdatedAt { get; private set; }
 
         private User()
         {
@@ -51,9 +50,7 @@ namespace BeerStore.Domain.Entities.Auth
             UserStatus = userStatus;
             EmailStatus = emailStatus;
             PhoneStatus = phoneStatus;
-            CreatedBy = createdBy;
-            UpdatedBy = updatedBy;
-            CreatedAt = UpdatedAt = DateTimeOffset.UtcNow;
+            SetCreationAudit(createdBy, updatedBy);
         }
 
         public static User Create(Email email, Phone phone, FullName fullName, UserName userName, Password password, Guid createdBy, Guid updatedBy)
@@ -152,12 +149,7 @@ namespace BeerStore.Domain.Entities.Auth
             Touch();
         }
 
-        public void SetUpdatedBy(Guid updateBy)
-        {
-            if (UpdatedBy == updateBy) return;
-            UpdatedBy = updateBy;
-            Touch();
-        }
+
 
         // Role Management
         public UserRole AddRole(Guid userId, Guid roleId)
@@ -176,10 +168,21 @@ namespace BeerStore.Domain.Entities.Auth
             Touch();
         }
 
-        // Extension
-        public void Touch()
+        // Address Management
+        public void AddAddress(UserAddress address)
         {
-            UpdatedAt = DateTimeOffset.UtcNow;
+            _userAddresses.Add(address);
+            Touch();
         }
+
+        public void RemoveAddress(Guid addressId)
+        {
+            var address = _userAddresses.FirstOrDefault(a => a.Id == addressId);
+            if (address == null) return;
+            _userAddresses.Remove(address);
+            Touch();
+        }
+
+
     }
 }

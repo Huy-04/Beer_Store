@@ -8,6 +8,7 @@ using BeerStore.Domain.Entities.Auth;
 using BeerStore.Domain.Enums.Auth.Messages;
 using BeerStore.Domain.ValueObjects.Auth.RefreshToken;
 using BeerStore.Domain.ValueObjects.Auth.User;
+using Domain.Core.ValueObjects.Common;
 using Domain.Core.Enums;
 using Domain.Core.Enums.Messages;
 using Domain.Core.RuleException;
@@ -107,7 +108,7 @@ namespace BeerStore.Application.Modules.Auth.Authentication.Command.Login
                     GetByUserIdAndDeviceIdAsync(user.Id, command.DeviceId, token);
                 if (existingToken != null)
                 {
-                    existingToken.ApplyRefreshToke(userSystem.Id);
+                    existingToken.RevokeBy(userSystem.Id);
                     _auow.WRefreshTokenRepository.Update(existingToken);
                 }
 

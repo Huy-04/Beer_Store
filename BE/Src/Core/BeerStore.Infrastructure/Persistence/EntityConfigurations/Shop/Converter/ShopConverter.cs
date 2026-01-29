@@ -11,8 +11,7 @@ namespace BeerStore.Infrastructure.Persistence.EntityConfigurations.Shop.Convert
         public static readonly ValueConverter<StoreName, string>
             StoreNameConverter = new(v => v.Value, v => StoreName.Create(v));
 
-        public static readonly ValueConverter<Slug, string>
-            SlugConverter = new(v => v.Value, v => Slug.Create(v));
+
 
         public static readonly ValueConverter<StoreType, int>
             StoreTypeConverter = new(v => (int)v, v => (StoreType)v);

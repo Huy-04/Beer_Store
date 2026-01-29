@@ -52,7 +52,7 @@ namespace BeerStore.Application.Modules.Auth.Authentication.Command.Logout
                         new Dictionary<object, object>());
                 }
 
-                existingToken.ApplyRefreshToke(userSystem.Id);
+                existingToken.RevokeBy(userSystem.Id);
                 _auow.WRefreshTokenRepository.Update(existingToken);
 
                 await _auow.CommitTransactionAsync(token);

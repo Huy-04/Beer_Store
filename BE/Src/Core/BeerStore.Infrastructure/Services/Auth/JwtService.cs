@@ -3,6 +3,8 @@ using Application.Core.Interface.ISettings;
 using Application.Core.Interface.Services;
 using BeerStore.Application.Interface.Services;
 using BeerStore.Domain.ValueObjects.Auth.User;
+using Domain.Core.ValueObjects.Common;
+using Infrastructure.Core.Settings;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;

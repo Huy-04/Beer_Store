@@ -26,5 +26,13 @@ namespace BeerStore.Infrastructure.Repository.Shop.Read
         {
             return await AnyAsync(s => s.Slug.Value == slug, token);
         }
+
+        public async Task<Store?> GetByIdWithAddressesAsync(Guid storeId, CancellationToken token)
+        {
+            return await _entities
+                .AsNoTracking()
+                .Include(s => s.StoreAddresses)
+                .FirstOrDefaultAsync(s => s.Id == storeId, token);
+        }
     }
 }

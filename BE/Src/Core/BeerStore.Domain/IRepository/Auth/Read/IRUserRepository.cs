@@ -1,6 +1,7 @@
 using BeerStore.Domain.Entities.Auth;
 using BeerStore.Domain.ValueObjects.Auth.User;
 using Domain.Core.Interface.IRepository;
+using Domain.Core.ValueObjects.Common;
 using Domain.Core.ValueObjects.Address;
 
 namespace BeerStore.Domain.IRepository.Auth.Read
@@ -18,5 +19,7 @@ namespace BeerStore.Domain.IRepository.Auth.Read
         Task<User?> GetByEmailWithRolesAsync(Email email, CancellationToken token = default);
 
         Task<User?> GetByIdWithRolesAsync(Guid userId, CancellationToken token = default);
+
+        Task<User?> GetByIdWithAddressesAsync(Guid userId, CancellationToken token = default);
     }
 }

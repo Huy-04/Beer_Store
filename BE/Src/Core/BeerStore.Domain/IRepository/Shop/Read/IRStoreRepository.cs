@@ -10,5 +10,7 @@ namespace BeerStore.Domain.IRepository.Shop.Read
         Task<Store?> GetByOwnerIdAsync(Guid ownerId, CancellationToken token);
 
         Task<bool> ExistsBySlugAsync(string slug, CancellationToken token);
+
+        Task<Store?> GetByIdWithAddressesAsync(Guid storeId, CancellationToken token);
     }
 }

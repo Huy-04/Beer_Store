@@ -13,7 +13,5 @@ namespace BeerStore.Application.DTOs.Shop.StoreAddress.Responses
         string Ward,
         string Street,
         StoreAddressType Type,
-        StatusEnum IsDefault,
-        DateTimeOffset CreatedAt,
-        DateTimeOffset UpdatedAt);
+        StatusEnum IsDefault);
 }

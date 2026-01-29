@@ -1,5 +1,5 @@
 using BeerStore.Domain.ValueObjects.Product;
-using Domain.Core.ValueObjects;
+using Domain.Core.ValueObjects.Common;
 
 namespace BeerStore.Domain.Entities.Product
 {
@@ -17,14 +17,7 @@ namespace BeerStore.Domain.Entities.Product
 
         public bool IsVerified { get; private set; }
 
-        // Audit
-        public Guid CreatedBy { get; private set; }
 
-        public Guid UpdatedBy { get; private set; }
-
-        public DateTimeOffset CreatedAt { get; private set; }
-
-        public DateTimeOffset UpdatedAt { get; private set; }
 
         private Brand()
         { }
@@ -44,9 +37,7 @@ namespace BeerStore.Domain.Entities.Product
             Logo = logo;
             IsActive = true;
             IsVerified = false;
-            CreatedBy = createdBy;
-            UpdatedBy = updatedBy;
-            CreatedAt = UpdatedAt = DateTimeOffset.UtcNow;
+            SetCreationAudit(createdBy, updatedBy);
         }
 
         public static Brand Create(
@@ -93,11 +84,7 @@ namespace BeerStore.Domain.Entities.Product
             Touch();
         }
 
-        public void SetUpdatedBy(Guid updatedBy)
-        {
-            UpdatedBy = updatedBy;
-            Touch();
-        }
+
 
         public void Verify()
         {
@@ -127,6 +114,6 @@ namespace BeerStore.Domain.Entities.Product
             Touch();
         }
 
-        public void Touch() => UpdatedAt = DateTimeOffset.UtcNow;
+
     }
 }

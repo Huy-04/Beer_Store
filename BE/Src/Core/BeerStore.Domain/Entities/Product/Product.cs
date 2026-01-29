@@ -3,7 +3,8 @@ using BeerStore.Domain.Enums.Product.Messages;
 using BeerStore.Domain.ValueObjects.Product;
 using Domain.Core.Enums;
 using Domain.Core.RuleException;
-using Domain.Core.ValueObjects;
+using Domain.Core.ValueObjects.Common;
+using Domain.Core.ValueObjects.Product;
 
 namespace BeerStore.Domain.Entities.Product
 {
@@ -26,6 +27,8 @@ namespace BeerStore.Domain.Entities.Product
 
         public MetaDescription? MetaDescription { get; private set; }
 
+        public DateTimeOffset? PublishedAt { get; private set; }
+
         // Pricing
         public Money BasePrice { get; private set; }
 
@@ -36,16 +39,7 @@ namespace BeerStore.Domain.Entities.Product
 
         public bool IsDigital { get; private set; }
 
-        // Audit
-        public Guid CreatedBy { get; private set; }
 
-        public Guid UpdatedBy { get; private set; }
-
-        public DateTimeOffset CreatedAt { get; private set; }
-
-        public DateTimeOffset UpdatedAt { get; private set; }
-
-        public DateTimeOffset? PublishedAt { get; private set; }
 
         // Navigation
         private readonly List<ProductVariant> _variants = new();
@@ -88,9 +82,7 @@ namespace BeerStore.Domain.Entities.Product
             MetaTitle = metaTitle;
             MetaDescription = metaDescription;
             Status = ProductStatus.Draft;
-            CreatedBy = createdBy;
-            UpdatedBy = updatedBy;
-            CreatedAt = UpdatedAt = DateTimeOffset.UtcNow;
+            SetCreationAudit(createdBy, updatedBy);
         }
 
         public static Product Create(
@@ -124,63 +116,6 @@ namespace BeerStore.Domain.Entities.Product
                 createdBy,
                 updatedBy);
         }
-
-        #region Update Methods
-
-        public void UpdateName(ProductName name)
-        {
-            if (Name == name) return;
-            Name = name;
-            Touch();
-        }
-
-        public void UpdateSlug(ProductSlug slug)
-        {
-            if (Slug == slug) return;
-            Slug = slug;
-            Touch();
-        }
-
-        public void UpdateDescription(Description? description)
-        {
-            Description = description;
-            Touch();
-        }
-
-        public void UpdateBrand(Guid? brandId)
-        {
-            if (BrandId == brandId) return;
-            BrandId = brandId;
-            Touch();
-        }
-
-        public void UpdateBasePrice(Money basePrice)
-        {
-            if (BasePrice == basePrice) return;
-            BasePrice = basePrice;
-            Touch();
-        }
-
-        public void UpdateCompareAtPrice(Money? compareAtPrice)
-        {
-            CompareAtPrice = compareAtPrice;
-            Touch();
-        }
-
-        public void UpdateSeoInfo(MetaTitle? metaTitle, MetaDescription? metaDescription)
-        {
-            MetaTitle = metaTitle;
-            MetaDescription = metaDescription;
-            Touch();
-        }
-
-        public void SetUpdatedBy(Guid updatedBy)
-        {
-            UpdatedBy = updatedBy;
-            Touch();
-        }
-
-        #endregion Update Methods
 
         #region Status Methods
 
@@ -234,6 +169,6 @@ namespace BeerStore.Domain.Entities.Product
 
         #endregion Status Methods
 
-        public void Touch() => UpdatedAt = DateTimeOffset.UtcNow;
+
     }
 }

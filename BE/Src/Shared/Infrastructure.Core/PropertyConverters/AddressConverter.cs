@@ -1,5 +1,6 @@
 using Domain.Core.Enums;
 using Domain.Core.ValueObjects.Address;
+using Domain.Core.ValueObjects.Common;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Infrastructure.Core.PropertyConverters

@@ -3,6 +3,7 @@ using BeerStore.Domain.IRepository.Auth.Read;
 using BeerStore.Domain.ValueObjects.Auth.User;
 using BeerStore.Infrastructure.Persistence.Db;
 using Domain.Core.ValueObjects.Address;
+using Domain.Core.ValueObjects.Common;
 using Infrastructure.Core.Repository;
 using Microsoft.EntityFrameworkCore;
 
@@ -49,6 +50,14 @@ namespace BeerStore.Infrastructure.Repository.Auth.Read
             return await _entities
                 .AsNoTracking()
                 .Include(u => u.UserRoles)
+                .FirstOrDefaultAsync(u => u.Id == userId, token);
+        }
+
+        public async Task<User?> GetByIdWithAddressesAsync(Guid userId, CancellationToken token = default)
+        {
+            return await _entities
+                .AsNoTracking()
+                .Include(u => u.UserAddresses)
                 .FirstOrDefaultAsync(u => u.Id == userId, token);
         }
     }

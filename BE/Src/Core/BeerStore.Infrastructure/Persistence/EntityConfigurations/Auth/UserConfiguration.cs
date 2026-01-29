@@ -17,7 +17,7 @@ namespace BeerStore.Infrastructure.Persistence.EntityConfigurations.Auth
             entity.Property(u => u.Id).HasColumnName("IdUser");
 
             entity.Property(u => u.Email)
-                .HasConversion(AuthConverter.EmailConverter)
+                .HasConversion(CommonConverterExtension.EmailConverter)
                 .HasMaxLength(100)
                 .IsRequired();
             entity.HasIndex(u => u.Email)

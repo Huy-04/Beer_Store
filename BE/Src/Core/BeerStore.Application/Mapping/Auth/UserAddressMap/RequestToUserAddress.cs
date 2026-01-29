@@ -1,13 +1,14 @@
 using BeerStore.Application.DTOs.Auth.UserAddress.Requests;
-using BeerStore.Domain.Entities.Auth;
-using BeerStore.Domain.ValueObjects.Auth.Address;
+using BeerStore.Domain.Entities.Auth.Junction;
 using Domain.Core.ValueObjects.Address;
+using Domain.Core.ValueObjects.Common;
+using BeerStore.Domain.ValueObjects.Auth.UserAddress;
 
 namespace BeerStore.Application.Mapping.Auth.UserAddressMap
 {
     public static class RequestToUserAddress
     {
-        public static UserAddress ToUserAddress(this UserAddressRequest request, Guid userId, Guid createdBy, Guid updatedBy)
+        public static UserAddress ToUserAddress(this UserAddressRequest request, Guid userId)
         {
             return UserAddress.Create(
                 userId,
@@ -18,16 +19,14 @@ namespace BeerStore.Application.Mapping.Auth.UserAddressMap
                 Ward.Create(request.Ward),
                 Street.Create(request.Street),
                 IsDefault.Create(request.IsDefault),
-                UserAddressType.Create(request.AddressType),
-                createdBy,
-                updatedBy);
+                UserAddressType.Create(request.AddressType));
         }
 
-        public static void ApplyUserAddress(this UserAddress address, Guid updatedBy, UserAddressRequest request)
+        public static void ApplyUserAddress(this UserAddress address, UserAddressRequest request)
         {
             address.UpdatePhone(Phone.Create(request.Phone));
             address.UpdateFullName(FullName.Create(request.FullName));
-            address.UpdateProvice(Province.Create(request.Province));
+            address.UpdateProvince(Province.Create(request.Province));
             address.UpdateDistrict(District.Create(request.District));
             address.UpdateWard(Ward.Create(request.Ward));
             address.UpdateStreet(Street.Create(request.Street));

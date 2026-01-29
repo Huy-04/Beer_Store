@@ -1,4 +1,6 @@
 using BeerStore.Domain.ValueObjects.Auth.RefreshToken;
+using Domain.Core.ValueObjects.Common;
+using Domain.Core.ValueObjects.Base;
 using Domain.Core.Enums;
 
 namespace BeerStore.Domain.Entities.Auth
@@ -19,13 +21,7 @@ namespace BeerStore.Domain.Entities.Auth
 
         public TokenStatus TokenStatus { get; private set; }
 
-        public Guid CreatedBy { get; private set; }
 
-        public Guid UpdatedBy { get; private set; }
-
-        public DateTimeOffset CreatedAt { get; private set; }
-
-        public DateTimeOffset UpdatedAt { get; private set; }
 
         private RefreshToken()
         {
@@ -41,15 +37,21 @@ namespace BeerStore.Domain.Entities.Auth
             IpAddress = ipAddress;
             ExpiresAt = expiresAt;
             TokenStatus = tokenStatus;
-            CreatedBy = createdBy;
-            UpdatedBy = updatedBy;
-            CreatedAt = UpdatedAt = DateTimeOffset.UtcNow;
+            TokenStatus = tokenStatus;
+            SetCreationAudit(createdBy, updatedBy);
         }
 
         public static RefreshToken Create(Guid userId, TokenHash tokenHash, DeviceId deviceId, DeviceName deviceName, IpAddress ipAddress, DateTimeOffset expiresAt, Guid createdBy, Guid updatedBy)
         {
             var refreshToken = new RefreshToken(Guid.NewGuid(), userId, tokenHash, deviceId, deviceName, ipAddress, expiresAt, TokenStatus.Active, createdBy, updatedBy);
             return refreshToken;
+        }
+
+        public void RevokeBy(Guid updatedBy)
+        {
+            if (UpdatedBy == updatedBy) return;
+            Revoke();
+            UpdatedBy = updatedBy; 
         }
 
         public void Revoke()
@@ -59,16 +61,6 @@ namespace BeerStore.Domain.Entities.Auth
             Touch();
         }
 
-        public void SetUpdatedBy(Guid updatedBy)
-        {
-            if (UpdatedBy == updatedBy) return;
-            UpdatedBy = updatedBy;
-            Touch();
-        }
 
-        public void Touch()
-        {
-            UpdatedAt = DateTimeOffset.UtcNow;
-        }
     }
 }

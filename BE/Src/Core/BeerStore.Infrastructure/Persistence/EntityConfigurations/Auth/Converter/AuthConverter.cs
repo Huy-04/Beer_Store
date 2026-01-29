@@ -1,6 +1,3 @@
-using BeerStore.Domain.Enums;
-using BeerStore.Domain.Enums.Auth;
-using BeerStore.Domain.ValueObjects.Auth.Address;
 using BeerStore.Domain.ValueObjects.Auth.Permission;
 using BeerStore.Domain.ValueObjects.Auth.Permission.Enums;
 using BeerStore.Domain.ValueObjects.Auth.RefreshToken;
@@ -8,16 +5,16 @@ using BeerStore.Domain.ValueObjects.Auth.Role;
 using BeerStore.Domain.ValueObjects.Auth.User;
 using BeerStore.Domain.ValueObjects.Auth.User.Status;
 using Domain.Core.Enums;
+using BeerStore.Domain.Enums.Auth;
+using BeerStore.Domain.Enums;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
+using BeerStore.Domain.ValueObjects.Auth.UserAddress;
 
 namespace BeerStore.Infrastructure.Persistence.EntityConfigurations.Auth.Converter
 {
     public static class AuthConverter
     {
         #region User
-
-        public static readonly ValueConverter<Email, string>
-            EmailConverter = new(v => v.Value, v => Email.Create(v));
 
         public static readonly ValueConverter<UserName, string>
             UserNameConverter = new(v => v.Value, v => UserName.Create(v));
@@ -73,9 +70,6 @@ namespace BeerStore.Infrastructure.Persistence.EntityConfigurations.Auth.Convert
 
         public static readonly ValueConverter<DeviceName, string>
             DeviceNameConverter = new(v => v.Value, v => DeviceName.Create(v));
-
-        public static readonly ValueConverter<IpAddress, string>
-            IpAddressConverter = new(v => v.Value, v => IpAddress.Create(v));
 
         public static readonly ValueConverter<TokenStatus, int>
             TokenStatusConverter = new(v => (int)v.Value, v => TokenStatus.Create((StatusEnum)v));

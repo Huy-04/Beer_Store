@@ -1,6 +1,7 @@
 using Application.Core.Interface.IUnitOfWork;
 using BeerStore.Domain.IRepository.Shop.Read;
 using BeerStore.Domain.IRepository.Shop.Write;
+using BeerStore.Domain.IRepository.Shop.Read.Junction;
 
 namespace BeerStore.Application.Interface.IUnitOfWork.Shop
 {
@@ -13,7 +14,5 @@ namespace BeerStore.Application.Interface.IUnitOfWork.Shop
 
         // StoreAddress
         IRStoreAddressRepository RStoreAddressRepository { get; }
-
-        IWStoreAddressRepository WStoreAddressRepository { get; }
     }
 }

@@ -10,7 +10,7 @@ namespace BeerStore.Application.Mapping.Shop.StoreMap
             return new StoreResponse(
                 store.Id,
                 store.OwnerId,
-                store.Name.Value,
+                store.StoreName.Value,
                 store.Slug.Value,
                 store.Logo.Value,
                 store.Description.Value,
@@ -27,7 +27,7 @@ namespace BeerStore.Application.Mapping.Shop.StoreMap
         {
             return new StorePublicResponse(
                 store.Id,
-                store.Name.Value,
+                store.StoreName.Value,
                 store.Slug.Value,
                 store.Logo.Value,
                 store.Description.Value,

@@ -45,7 +45,7 @@ namespace BeerStore.Application.Modules.Auth.RefreshTokens.Commands.RevokeByUser
 
             try
             {
-                refreshToken.ApplyRefreshToke(command.UpdatedBy);
+                refreshToken.RevokeBy(command.UpdatedBy);
                 _auow.WRefreshTokenRepository.Update(refreshToken);
                 await _auow.CommitTransactionAsync(token);
             }

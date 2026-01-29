@@ -1,6 +1,6 @@
 using BeerStore.Domain.ValueObjects.Auth.Permission;
 using BeerStore.Domain.ValueObjects.Auth.Permission.Enums;
-using Domain.Core.ValueObjects;
+using Domain.Core.ValueObjects.Common;
 
 namespace BeerStore.Domain.Entities.Auth
 {
@@ -14,13 +14,7 @@ namespace BeerStore.Domain.Entities.Auth
 
         public Description Description { get; private set; }
 
-        public Guid CreatedBy { get; private set; }
 
-        public Guid UpdatedBy { get; private set; }
-
-        public DateTimeOffset CreatedAt { get; private set; }
-
-        public DateTimeOffset UpdatedAt { get; private set; }
 
         private Permission()
         { }
@@ -32,9 +26,7 @@ namespace BeerStore.Domain.Entities.Auth
             Module = module;
             Operation = operation;
             Description = description;
-            CreatedBy = createdBy;
-            UpdatedBy = updatedBy;
-            CreatedAt = UpdatedAt = DateTimeOffset.UtcNow;
+            SetCreationAudit(createdBy, updatedBy);
         }
 
         public static Permission Create(PermissionName permissionName, Module module, Operation operation, Description description, Guid createdBy, Guid updatedBy)
@@ -71,16 +63,6 @@ namespace BeerStore.Domain.Entities.Auth
             Touch();
         }
 
-        public void SetUpdatedBy(Guid updatedBy)
-        {
-            if (UpdatedBy == updatedBy) return;
-            UpdatedBy = updatedBy;
-            Touch();
-        }
 
-        public void Touch()
-        {
-            UpdatedAt = DateTimeOffset.UtcNow;
-        }
     }
 }

@@ -70,7 +70,9 @@ namespace BeerStore.Application.Modules.Auth.Junction.UserRole.Commands.AddUserR
 
                 var userRole = UserRoleEntity.Create(command.UserId, command.RoleId);
 
-                await _auow.WUserRoleRepository.AddAsync(userRole, token);
+   
+                user.AddRole(user.Id, command.RoleId);
+                _auow.WUserRepository.Update(user);
                 await _auow.CommitTransactionAsync(token);
 
                 return userRole.ToUserRoleResponse();

@@ -1,29 +1,33 @@
 ﻿using BeerStore.Application.Interface.IUnitOfWork.Shop;
 using BeerStore.Domain.IRepository.Shop.Read;
+using BeerStore.Domain.IRepository.Shop.Read.Junction;
 using BeerStore.Domain.IRepository.Shop.Write;
 using BeerStore.Infrastructure.Persistence.Db;
-using BeerStore.Infrastructure.Repository.Shop.Read;
-using BeerStore.Infrastructure.Repository.Shop.Write;
+
 using Infrastructure.Core.UnitOfWork;
 
 namespace BeerStore.Infrastructure.UnitOfWork
 {
     public class ShopUnitOfWork : UnitOfWorkGeneric, IShopUnitOfWork
     {
-        public ShopUnitOfWork(ShopDbContext context) : base(context)
+        public ShopUnitOfWork(
+            ShopDbContext context,
+            IRStoreRepository rStoreRepo,
+            IWStoreRepository wStoreRepo,
+            IRStoreAddressRepository rStoreAddressRepo) : base(context)
         {
-            // Store
-            RStoreRepository = new RStoreRepository(context);
-            WStoreRepository = new WStoreRepository(context);
+            RStoreRepository = rStoreRepo;
+            WStoreRepository = wStoreRepo;
 
-            // StoreAddress
-            RStoreAddressRepository = new RStoreAddressRepository(context);
-            WStoreAddressRepository = new WStoreAddressRepository(context);
+            RStoreAddressRepository = rStoreAddressRepo;
         }
 
+        // Store
         public IRStoreRepository RStoreRepository { get; }
+
         public IWStoreRepository WStoreRepository { get; }
+
+        // StoreAddress
         public IRStoreAddressRepository RStoreAddressRepository { get; }
-        public IWStoreAddressRepository WStoreAddressRepository { get; }
     }
 }

@@ -5,6 +5,9 @@ namespace Domain.Core.Enums.Messages
         Prices,
         Quantity,
         Img,
-        Description
+        Description,
+        Email,
+        IpAddress,
+        Slug
     }
 }

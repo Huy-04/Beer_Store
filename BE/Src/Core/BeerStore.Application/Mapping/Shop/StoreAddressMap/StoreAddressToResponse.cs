@@ -1,4 +1,5 @@
 using BeerStore.Application.DTOs.Shop.StoreAddress.Responses;
+using BeerStore.Domain.Entities.Shop.Junction;
 using BeerStore.Domain.Entities.Shop;
 
 namespace BeerStore.Application.Mapping.Shop.StoreAddressMap
@@ -16,10 +17,8 @@ namespace BeerStore.Application.Mapping.Shop.StoreAddressMap
                 address.District.Value,
                 address.Ward.Value,
                 address.Street.Value,
-                address.Type,
-                address.IsDefault.Value,
-                address.CreatedAt,
-                address.UpdatedAt);
+                address.StoreAddressType,
+                address.IsDefault.Value);
         }
 
         public static IEnumerable<StoreAddressResponse> ToStoreAddressResponses(this IEnumerable<StoreAddress> addresses)

@@ -19,13 +19,12 @@ namespace BeerStore.Infrastructure.UnitOfWork
             IRPermissionRepository rPermissionRepo,
             IWPermissionRepository wPermissionRepo,
             IRUserAddressRepository rUserAddressRepo,
-            IWUserAddressRepository wUserAddressRepo,
             IRRefreshTokenRepository rRefreshTokenRepo,
             IWRefreshTokenRepository wRefreshTokenRepo,
             IRUserRoleRepository rUserRoleRepo,
-            IWUserRoleRepository wUserRoleRepo,
             IRRolePermissionRepository rRolePermissionRepo,
-            IWRolePermissionRepository wRolePermissionRepo) : base(context)
+            IWRolePermissionRepository wRolePermissionRepo,
+            IRUserCredentialRepository rUserCredentialRepo) : base(context)
         {
             RUserRepository = rUserRepo;
             WUserRepository = wUserRepo;
@@ -37,16 +36,16 @@ namespace BeerStore.Infrastructure.UnitOfWork
             WPermissionRepository = wPermissionRepo;
 
             RUserAddressRepository = rUserAddressRepo;
-            WUserAddressRepository = wUserAddressRepo;
 
             RRefreshTokenRepository = rRefreshTokenRepo;
             WRefreshTokenRepository = wRefreshTokenRepo;
 
             RUserRoleRepository = rUserRoleRepo;
-            WUserRoleRepository = wUserRoleRepo;
 
             RRolePermissionRepository = rRolePermissionRepo;
             WRolePermissionRepository = wRolePermissionRepo;
+
+            RUserCredentialRepository = rUserCredentialRepo;
         }
 
         // User
@@ -67,8 +66,6 @@ namespace BeerStore.Infrastructure.UnitOfWork
         // UserAddress
         public IRUserAddressRepository RUserAddressRepository { get; }
 
-        public IWUserAddressRepository WUserAddressRepository { get; }
-
         // RefreshToken
         public IRRefreshTokenRepository RRefreshTokenRepository { get; }
 
@@ -77,11 +74,12 @@ namespace BeerStore.Infrastructure.UnitOfWork
         // UserRole
         public IRUserRoleRepository RUserRoleRepository { get; }
 
-        public IWUserRoleRepository WUserRoleRepository { get; }
-
         // RolePermission
         public IRRolePermissionRepository RRolePermissionRepository { get; }
 
         public IWRolePermissionRepository WRolePermissionRepository { get; }
+
+        // UserCredential
+        public IRUserCredentialRepository RUserCredentialRepository { get; }
     }
 }

@@ -5,6 +5,7 @@ using BeerStore.Domain.Entities.Auth;
 using BeerStore.Domain.ValueObjects.Auth.User;
 using BeerStore.Domain.ValueObjects.Auth.User.Status;
 using Domain.Core.ValueObjects.Address;
+using Domain.Core.ValueObjects.Common;
 
 namespace BeerStore.Application.Mapping.Auth.UserMap
 {

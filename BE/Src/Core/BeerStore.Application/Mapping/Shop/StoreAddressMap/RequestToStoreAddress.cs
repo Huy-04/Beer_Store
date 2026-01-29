@@ -1,13 +1,15 @@
 using BeerStore.Application.DTOs.Shop.StoreAddress.Requests;
 using BeerStore.Domain.Entities.Shop;
+using BeerStore.Domain.Entities.Shop.Junction;
 using BeerStore.Domain.Enums.Shop;
 using Domain.Core.ValueObjects.Address;
+using Domain.Core.ValueObjects.Common;
 
 namespace BeerStore.Application.Mapping.Shop.StoreAddressMap
 {
     public static class RequestToStoreAddress
     {
-        public static StoreAddress ToStoreAddress(this CreateStoreAddressRequest request, Guid storeId, Guid createdBy, Guid updatedBy)
+        public static StoreAddress ToStoreAddress(this CreateStoreAddressRequest request, Guid storeId)
         {
             return StoreAddress.Create(
                 storeId,
@@ -18,12 +20,10 @@ namespace BeerStore.Application.Mapping.Shop.StoreAddressMap
                 Ward.Create(request.Ward),
                 Street.Create(request.Street),
                 (StoreAddressType)request.Type,
-                IsDefault.Create(request.IsDefault),
-                createdBy,
-                updatedBy);
+                IsDefault.Create(request.IsDefault));
         }
 
-        public static void ApplyUpdate(this StoreAddress address, UpdateStoreAddressRequest request, Guid updatedBy)
+        public static void ApplyUpdate(this StoreAddress address, UpdateStoreAddressRequest request)
         {
             address.UpdatePhone(Phone.Create(request.Phone));
             address.UpdateContactName(FullName.Create(request.ContactName));
@@ -33,7 +33,6 @@ namespace BeerStore.Application.Mapping.Shop.StoreAddressMap
             address.UpdateStreet(Street.Create(request.Street));
             address.UpdateType((StoreAddressType)request.Type);
             address.UpdateIsDefault(IsDefault.Create(request.IsDefault));
-            address.SetUpdatedBy(updatedBy);
         }
     }
 }

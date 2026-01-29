@@ -2,7 +2,7 @@ using BeerStore.Application.DTOs.Shop.Store.Requests;
 using BeerStore.Domain.Entities.Shop;
 using BeerStore.Domain.Enums.Shop;
 using BeerStore.Domain.ValueObjects.Shop;
-using Domain.Core.ValueObjects;
+using Domain.Core.ValueObjects.Common;
 
 namespace BeerStore.Application.Mapping.Shop.StoreMap
 {

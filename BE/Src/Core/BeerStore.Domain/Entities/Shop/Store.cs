@@ -3,7 +3,8 @@ using BeerStore.Domain.Enums.Shop.Messages;
 using BeerStore.Domain.ValueObjects.Shop;
 using Domain.Core.Enums;
 using Domain.Core.RuleException;
-using Domain.Core.ValueObjects;
+using Domain.Core.ValueObjects.Common;
+using BeerStore.Domain.Entities.Shop.Junction;
 
 namespace BeerStore.Domain.Entities.Shop
 {
@@ -11,7 +12,7 @@ namespace BeerStore.Domain.Entities.Shop
     {
         public Guid OwnerId { get; private set; }
 
-        public StoreName Name { get; private set; }
+        public StoreName StoreName { get; private set; }
 
         public Slug Slug { get; private set; }
 
@@ -23,44 +24,52 @@ namespace BeerStore.Domain.Entities.Shop
 
         public StoreStatus StoreStatus { get; private set; }
 
-        public Guid CreatedBy { get; private set; }
-
-        public Guid UpdatedBy { get; private set; }
-
-        public DateTimeOffset CreatedAt { get; private set; }
-
-        public DateTimeOffset UpdatedAt { get; private set; }
+        private readonly List<StoreAddress> _storeAddresses = new List<StoreAddress>();
+        public IReadOnlyCollection<StoreAddress> StoreAddresses => _storeAddresses.AsReadOnly();
 
         public bool IsOfficial => StoreType == StoreType.OfficialStore && StoreStatus == StoreStatus.Approved;
 
         private Store()
         { }
 
-        private Store(Guid id, Guid ownerId, StoreName name, Slug slug, StoreType type, Img logo, Description description, Guid createdBy, Guid updatedBy)
+        private Store(Guid id, Guid ownerId, StoreName storeName, Slug slug, StoreType type, Img logo, Description description, Guid createdBy, Guid updatedBy)
             : base(id)
         {
             OwnerId = ownerId;
-            Name = name;
+            StoreName = storeName;
             Slug = slug;
             StoreType = type;
             Logo = logo;
             Description = description;
             StoreStatus = StoreStatus.Pending;
-            CreatedBy = createdBy;
-            UpdatedBy = updatedBy;
-            CreatedAt = UpdatedAt = DateTimeOffset.UtcNow;
+            SetCreationAudit(createdBy, updatedBy);
         }
 
-        public static Store Create(Guid ownerId, StoreName name, Slug slug, StoreType type, Img logo, Description description, Guid createdBy, Guid updatedBy)
+        public static Store Create(Guid ownerId, StoreName storeName, Slug slug, StoreType type, Img logo, Description description, Guid createdBy, Guid updatedBy)
         {
-            var shop = new Store(Guid.NewGuid(), ownerId, name, slug, type, logo, description, createdBy, updatedBy);
+            var shop = new Store(Guid.NewGuid(), ownerId, storeName, slug, type, logo, description, createdBy, updatedBy);
             return shop;
         }
 
-        public void UpdateName(StoreName name)
+        public void UpdateName(StoreName storeName)
         {
-            if (Name == name) return;
-            Name = name;
+            if (StoreName == storeName) return;
+            StoreName = storeName;
+            Touch();
+        }
+
+        // Address Management
+        public void AddAddress(StoreAddress address)
+        {
+            _storeAddresses.Add(address);
+            Touch();
+        }
+
+        public void RemoveAddress(Guid addressId)
+        {
+            var address = _storeAddresses.FirstOrDefault(a => a.Id == addressId);
+            if (address == null) return;
+            _storeAddresses.Remove(address);
             Touch();
         }
 
@@ -82,13 +91,6 @@ namespace BeerStore.Domain.Entities.Shop
         {
             if (Description == description) return;
             Description = description;
-            Touch();
-        }
-
-        public void SetUpdatedBy(Guid updatedBy)
-        {
-            if (UpdatedBy == updatedBy) return;
-            UpdatedBy = updatedBy;
             Touch();
         }
 
@@ -161,11 +163,6 @@ namespace BeerStore.Domain.Entities.Shop
                         { "TargetStatus", targetStatus }
                     });
             }
-        }
-
-        public void Touch()
-        {
-            UpdatedAt = DateTimeOffset.UtcNow;
         }
     }
 }

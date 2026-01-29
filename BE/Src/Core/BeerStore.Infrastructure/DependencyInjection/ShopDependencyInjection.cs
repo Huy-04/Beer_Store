@@ -1,9 +1,11 @@
 using BeerStore.Application.Interface.IUnitOfWork.Shop;
 using BeerStore.Application.Interface.Services.Authorization;
 using BeerStore.Domain.IRepository.Shop.Read;
+using BeerStore.Domain.IRepository.Shop.Read.Junction; // Added this
 using BeerStore.Domain.IRepository.Shop.Write;
 using BeerStore.Infrastructure.Persistence.Db;
 using BeerStore.Infrastructure.Repository.Shop.Read;
+using BeerStore.Infrastructure.Repository.Shop.Read.Junction;
 using BeerStore.Infrastructure.Repository.Shop.Write;
 using BeerStore.Infrastructure.Services.Shop.Authorization;
 using BeerStore.Infrastructure.UnitOfWork;
@@ -29,7 +31,6 @@ namespace BeerStore.Infrastructure
 
             // StoreAddress
             services.AddScoped<IRStoreAddressRepository, RStoreAddressRepository>();
-            services.AddScoped<IWStoreAddressRepository, WStoreAddressRepository>();
 
             // Shop Unit Of Work
             services.AddScoped<IShopUnitOfWork, ShopUnitOfWork>();

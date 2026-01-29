@@ -1,7 +1,7 @@
 using BeerStore.Application.DTOs.Auth.Role.Requests;
 using BeerStore.Domain.Entities.Auth;
 using BeerStore.Domain.ValueObjects.Auth.Role;
-using Domain.Core.ValueObjects;
+using Domain.Core.ValueObjects.Common;
 
 namespace BeerStore.Application.Mapping.Auth.RoleMap
 {
@@ -18,8 +18,8 @@ namespace BeerStore.Application.Mapping.Auth.RoleMap
 
         public static void ApplyRole(this Role role, RoleRequest request, Guid updatedBy)
         {
-            role.updateRoleName(RoleName.Create(request.RoleName));
-            role.updateDescription(Description.Create(request.Description));
+            role.UpdateRoleName(RoleName.Create(request.RoleName));
+            role.UpdateDescription(Description.Create(request.Description));
             role.SetUpdatedBy(updatedBy);
         }
     }

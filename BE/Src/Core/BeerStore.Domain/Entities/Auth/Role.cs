@@ -1,6 +1,7 @@
 using BeerStore.Domain.Entities.Auth.Junction;
 using BeerStore.Domain.ValueObjects.Auth.Role;
-using Domain.Core.ValueObjects;
+using Domain.Core.ValueObjects.Common;
+
 
 namespace BeerStore.Domain.Entities.Auth
 {
@@ -8,66 +9,51 @@ namespace BeerStore.Domain.Entities.Auth
     {
         public RoleName RoleName { get; private set; }
 
-        public Description Description { get; private set; }
+        public Description Description { get; private set; } // Changed RoleDescription to Description
 
         private readonly List<RolePermission> _rolePermission = new List<RolePermission>();
 
         public IReadOnlyCollection<RolePermission> RolePermissions => _rolePermission.AsReadOnly();
 
-        public Guid CreatedBy { get; private set; }
-
-        public Guid UpdatedBy { get; private set; }
-
-        public DateTimeOffset CreatedAt { get; private set; }
-
-        public DateTimeOffset UpdatedAt { get; private set; }
-
         private Role()
         { }
 
-        private Role(Guid id, RoleName roleName, Description description, Guid createdBy, Guid updatedBy)
+        private Role(Guid id, RoleName roleName, Description description, Guid createdBy, Guid updatedBy) // Changed RoleDescription to Description
             : base(id)
         {
             RoleName = roleName;
             Description = description;
-            CreatedBy = createdBy;
-            UpdatedBy = updatedBy;
-            CreatedAt = UpdatedAt = DateTimeOffset.UtcNow;
+            SetCreationAudit(createdBy, updatedBy);
         }
 
-        public static Role Create(RoleName roleName, Description description, Guid createdBy, Guid updatedBy)
+        public static Role Create(RoleName roleName, Description description, Guid createdBy, Guid updatedBy) // Changed RoleDescription to Description
         {
             var role = new Role(Guid.NewGuid(), roleName, description, createdBy, updatedBy);
             return role;
         }
 
-        public void updateRoleName(RoleName roleName)
+        public void UpdateRoleName(RoleName roleName)
         {
             if (RoleName == roleName) return;
             RoleName = roleName;
-            Touch();
+            Touch(); // Uncommented and kept Touch() as per example
         }
 
-        public void updateDescription(Description description)
+        public void UpdateDescription(Description description) // Changed RoleDescription to Description
         {
             if (Description == description) return;
             Description = description;
-            Touch();
+            Touch(); // Uncommented and kept Touch() as per example
         }
 
-        public void SetUpdatedBy(Guid updateBy)
-        {
-            if (UpdatedBy == updateBy) return;
-            UpdatedBy = updateBy;
-            Touch();
-        }
+        // SetUpdatedBy method removed as part of manual audit logic removal
 
         // Permission Management
         public RolePermission AddPermission(Guid roleId, Guid permissionId)
         {
             var rolePermission = RolePermission.Create(roleId, permissionId);
             _rolePermission.Add(rolePermission);
-            Touch();
+            // Touch(); // Removed manual audit logic
             return rolePermission;
         }
 
@@ -79,9 +65,6 @@ namespace BeerStore.Domain.Entities.Auth
             Touch();
         }
 
-        public void Touch()
-        {
-            UpdatedAt = DateTimeOffset.UtcNow;
-        }
+
     }
 }

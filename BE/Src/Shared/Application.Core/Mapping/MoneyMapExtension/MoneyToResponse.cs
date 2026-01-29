@@ -1,5 +1,5 @@
 using Application.Core.DTOs.Responses.Money;
-using Domain.Core.ValueObjects;
+using Domain.Core.ValueObjects.Product;
 
 namespace Application.Core.Mapping.MoneyMapExtension
 {

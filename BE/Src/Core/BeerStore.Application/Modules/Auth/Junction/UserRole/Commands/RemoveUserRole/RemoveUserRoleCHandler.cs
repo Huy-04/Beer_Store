@@ -42,7 +42,12 @@ namespace BeerStore.Application.Modules.Auth.Junction.UserRole.Commands.RemoveUs
                             { ParamField.Value, command.UserRoleId }
                         });
 
-                _auow.WUserRoleRepository.Remove(userRole);
+                // Load User
+                var user = await _auow.RUserRepository.GetByIdWithRolesAsync(userRole.UserId, token);
+                if (user == null) throw new Exception("User not found");
+
+                user.RemoveUserRole(userRole.Id);
+                _auow.WUserRepository.Update(user);
                 await _auow.CommitTransactionAsync(token);
             }
             catch (Exception ex)

@@ -1,4 +1,5 @@
 using BeerStore.Domain.ValueObjects.Auth.User;
+using Domain.Core.ValueObjects.Common;
 
 namespace BeerStore.Application.Interface.Services
 {

@@ -1,6 +1,7 @@
 ﻿using BeerStore.Application.DTOs.Auth.RefreshToken.Requests;
 using BeerStore.Domain.Entities.Auth;
 using BeerStore.Domain.ValueObjects.Auth.RefreshToken;
+using Domain.Core.ValueObjects.Common;
 using Domain.Core.Enums;
 
 namespace BeerStore.Application.Mapping.Auth.RefreshTokenMap
@@ -20,10 +21,6 @@ namespace BeerStore.Application.Mapping.Auth.RefreshTokenMap
                 updatedBy);
         }
 
-        public static void ApplyRefreshToke(this RefreshToken refreshToken, Guid UpdatedBy)
-        {
-            refreshToken.Revoke();
-            refreshToken.SetUpdatedBy(UpdatedBy);
-        }
+
     }
 }

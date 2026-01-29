@@ -10,6 +10,7 @@ using Domain.Core.Enums;
 using Domain.Core.Enums.Messages;
 using Domain.Core.RuleException;
 using Domain.Core.ValueObjects.Address;
+using Domain.Core.ValueObjects.Common;
 using MediatR;
 using Microsoft.Extensions.Logging;
 

@@ -1,7 +1,5 @@
 using BeerStore.Domain.Enums;
-using BeerStore.Domain.ValueObjects.Auth.Address;
 using Domain.Core.Enums;
-using Domain.Core.ValueObjects.Address;
 
 namespace BeerStore.Application.DTOs.Auth.UserAddress.Requests
 {

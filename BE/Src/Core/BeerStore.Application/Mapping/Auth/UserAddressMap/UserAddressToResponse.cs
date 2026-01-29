@@ -1,4 +1,5 @@
 using BeerStore.Application.DTOs.Auth.UserAddress.Responses;
+using BeerStore.Domain.Entities.Auth.Junction;
 using BeerStore.Domain.Entities.Auth;
 
 namespace BeerStore.Application.Mapping.Auth.UserAddressMap
@@ -16,11 +17,7 @@ namespace BeerStore.Application.Mapping.Auth.UserAddressMap
                 address.Ward.Value,
                 address.Street.Value,
                 address.IsDefault.Value,
-                address.UserAddressType.Value,
-                address.CreatedBy,
-                address.UpdatedBy,
-                address.CreatedAt,
-                address.UpdatedAt);
+                address.UserAddressType.Value);
         }
     }
 }

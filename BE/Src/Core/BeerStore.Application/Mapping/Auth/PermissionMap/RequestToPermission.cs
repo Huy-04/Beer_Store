@@ -2,7 +2,7 @@ using BeerStore.Application.DTOs.Auth.Permission.Requests;
 using BeerStore.Domain.Entities.Auth;
 using BeerStore.Domain.ValueObjects.Auth.Permission;
 using BeerStore.Domain.ValueObjects.Auth.Permission.Enums;
-using Domain.Core.ValueObjects;
+using Domain.Core.ValueObjects.Common;
 
 namespace BeerStore.Application.Mapping.Auth.PermissionMap
 {

@@ -43,7 +43,7 @@ namespace BeerStore.Api.Controllers.Auth
             CancellationToken token)
         {   
             var result = await _mediator.Send(new RegisterCommand(request), token);
-            return Ok(result);
+            return StatusCode(201, result);
         }
 
         [Authorize]

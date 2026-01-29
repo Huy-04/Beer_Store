@@ -1,6 +1,6 @@
 using BeerStore.Domain.ValueObjects.Product;
 using Domain.Core.Base;
-using Domain.Core.ValueObjects;
+using Domain.Core.ValueObjects.Common;
 
 namespace BeerStore.Domain.Entities.Product
 {

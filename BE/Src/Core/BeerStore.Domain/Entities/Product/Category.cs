@@ -1,5 +1,5 @@
 using BeerStore.Domain.ValueObjects.Product;
-using Domain.Core.ValueObjects;
+using Domain.Core.ValueObjects.Common;
 
 namespace BeerStore.Domain.Entities.Product
 {
@@ -22,15 +22,6 @@ namespace BeerStore.Domain.Entities.Product
         public int Level { get; private set; }
 
         public string Path { get; private set; }
-
-        // Audit
-        public Guid CreatedBy { get; private set; }
-
-        public Guid UpdatedBy { get; private set; }
-
-        public DateTimeOffset CreatedAt { get; private set; }
-
-        public DateTimeOffset UpdatedAt { get; private set; }
 
         // Navigation
         private readonly List<Category> _children = new();
@@ -64,9 +55,7 @@ namespace BeerStore.Domain.Entities.Product
             Level = level;
             Path = path;
             IsActive = true;
-            CreatedBy = createdBy;
-            UpdatedBy = updatedBy;
-            CreatedAt = UpdatedAt = DateTimeOffset.UtcNow;
+            SetCreationAudit(createdBy, updatedBy);
         }
 
         public static Category Create(
@@ -121,40 +110,6 @@ namespace BeerStore.Domain.Entities.Product
             Touch();
         }
 
-        public void UpdateSortOrder(int sortOrder)
-        {
-            if (SortOrder == sortOrder) return;
-            SortOrder = sortOrder;
-            Touch();
-        }
 
-        public void UpdatePath(string path, int level)
-        {
-            Path = path;
-            Level = level;
-            Touch();
-        }
-
-        public void SetUpdatedBy(Guid updatedBy)
-        {
-            UpdatedBy = updatedBy;
-            Touch();
-        }
-
-        public void Activate()
-        {
-            if (IsActive) return;
-            IsActive = true;
-            Touch();
-        }
-
-        public void Deactivate()
-        {
-            if (!IsActive) return;
-            IsActive = false;
-            Touch();
-        }
-
-        public void Touch() => UpdatedAt = DateTimeOffset.UtcNow;
     }
 }

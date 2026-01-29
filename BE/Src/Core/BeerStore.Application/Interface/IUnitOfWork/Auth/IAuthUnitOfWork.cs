@@ -27,7 +27,7 @@ namespace BeerStore.Application.Interface.IUnitOfWork.Auth
         // UserAddress
         IRUserAddressRepository RUserAddressRepository { get; }
 
-        IWUserAddressRepository WUserAddressRepository { get; }
+
 
         // RefreshToken
         IRRefreshTokenRepository RRefreshTokenRepository { get; }
@@ -37,11 +37,14 @@ namespace BeerStore.Application.Interface.IUnitOfWork.Auth
         // UserRole
         IRUserRoleRepository RUserRoleRepository { get; }
 
-        IWUserRoleRepository WUserRoleRepository { get; }
+
 
         // RolePermission
         IRRolePermissionRepository RRolePermissionRepository { get; }
 
         IWRolePermissionRepository WRolePermissionRepository { get; }
+
+        // UserCredential
+        IRUserCredentialRepository RUserCredentialRepository { get; }
     }
 }

@@ -1,6 +1,7 @@
 using BeerStore.Domain.Entities.Shop;
 using BeerStore.Infrastructure.Persistence.EntityConfigurations.Shop.Converter;
 using Infrastructure.Core.PropertyConverters;
+using Infrastructure.Core.PropertyConverters;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
@@ -20,13 +21,13 @@ namespace BeerStore.Infrastructure.Persistence.EntityConfigurations.Shop
 
             entity.HasIndex(s => s.OwnerId);
 
-            entity.Property(s => s.Name)
+            entity.Property(s => s.StoreName)
                 .HasConversion(ShopConverter.StoreNameConverter)
                 .HasMaxLength(100)
                 .IsRequired();
 
             entity.Property(s => s.Slug)
-                .HasConversion(ShopConverter.SlugConverter)
+                .HasConversion(CommonConverterExtension.SlugConverter)
                 .HasMaxLength(100)
                 .IsRequired();
 

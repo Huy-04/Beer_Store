@@ -12,11 +12,7 @@ namespace BeerStore.Application.DTOs.Auth.UserAddress.Responses
         string Ward,
         string Street,
         StatusEnum IsDefault,
-        AddressTypeEnum AddressType,
-        Guid CreatedBy,
-        Guid UpdatedBy,
-        DateTimeOffset CreatedAt,
-        DateTimeOffset UpdatedAt)
+        AddressTypeEnum AddressType)
     {
     }
 }

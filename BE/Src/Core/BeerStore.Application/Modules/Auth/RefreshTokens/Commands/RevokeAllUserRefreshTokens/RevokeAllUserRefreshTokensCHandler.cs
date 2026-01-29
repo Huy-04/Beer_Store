@@ -31,7 +31,7 @@ namespace BeerStore.Application.Modules.Auth.RefreshTokens.Commands.RevokeAllUse
 
                 foreach (var refreshToken in activeTokens)
                 {
-                    refreshToken.ApplyRefreshToke(command.UpdatedBy);
+                    refreshToken.RevokeBy(command.UpdatedBy);
                     _auow.WRefreshTokenRepository.Update(refreshToken);
                 }
 
